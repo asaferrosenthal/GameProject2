@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 5306664619897595751}
   - component: {fileID: 4231269371415711654}
   - component: {fileID: 6451195554516913765}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: RunMan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
