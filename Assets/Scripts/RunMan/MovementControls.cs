@@ -19,6 +19,10 @@ namespace RunMan
 
         [Tooltip("Factor rotation inputs will be scaled by")]
         public float _DefaultRotationSpeed;
+
+        // to feel better
+        private float _rotationSpeed;
+        
         // Updatable speed value to be modified by interactions
         private float _speed;
         
@@ -36,6 +40,14 @@ namespace RunMan
         
         // Vector built by inputs for rotation translation
         private Vector3 _rotation;
+
+        // Keeps track of total rotation
+        private float _totalRotation = 0f;
+
+        // Set max values for rotation
+        private float _maxRotation = 30f;
+        private float _minRotation = -30f;
+ 
         
         // Initializes default settings for movement functionality
         // The separation of default and actual speeds is to allow for external runtime speed modification without additional storage of the original speed, could remove for testing purposes
@@ -44,23 +56,58 @@ namespace RunMan
             _speed = _DefaultSpeed;
             _jumpHeight = _DefaultJumpHeight;
             _rigidbody = GetComponent<Rigidbody>();
-            _rigidbody = GetComponent<Rigidbody>();
         }
+
         private void FixedUpdate()
         {
             // Inputs for each axis is defined in Input Manager
-            
-            // Fill out the _movement vector with given axis inputs
-            _movement = Input.GetAxis("Vertical") * _speed * transform.forward;
 
+            // Fill out the _movement vector with given axis inputs
+            //_movement = Input.GetAxis("Vertical") * _speed * transform.forward;
+
+            // Apply movement vector to character using physics system
+            _rigidbody.AddForce(Vector3.forward * _speed);
+
+            // Apply rotation to character
+            rotate();
+        }
+
+        // Rotates character based on input
+        private void rotate()
+        {
             // Fill out the _rotation vector with given axis inputs
             _rotation.y = Input.GetAxis("Horizontal") * _DefaultRotationSpeed;
-            
-            // Apply movement vector to character using physics system
-            _rigidbody.AddForce(_movement);
+            _totalRotation += _rotation.y;
 
             // Apply rotation vector to character
-            transform.Rotate(_rotation);
+            if (_totalRotation >= _minRotation && _totalRotation <= _maxRotation)
+            {
+                transform.Rotate(_rotation * setRotationSpeed());
+            }
+
+            _totalRotation = Mathf.Clamp(_totalRotation, _minRotation, _maxRotation);
+
+        }
+
+        // To feel better
+        private float setRotationSpeed()
+        {
+            if (Mathf.Abs(_totalRotation) <= (_maxRotation/4))
+            {
+                _rotationSpeed = _DefaultRotationSpeed * 2f;
+            }
+
+            else if (Mathf.Abs(_totalRotation) >= (_maxRotation*(3/4)))
+            {
+                _rotationSpeed = _DefaultRotationSpeed / 2f;
+            }
+            
+            else
+            {
+                _rotationSpeed = _DefaultRotationSpeed;
+            }
+
+            return _rotationSpeed;
         }
         
         // Collision detection for jumping mechanic (in the event we decide to add this to the project)
