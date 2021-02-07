@@ -1,22 +1,26 @@
 using System;
+using Environment;
 using UnityEngine;
 
 namespace RunMan
 {
+    /// <summary>
+    /// Class that MAY eventually come into use for level transitions/player resets.
+    /// Could do level specific settings for player that are external to prefabs?
+    /// </summary>
     public class PlayerManager : MonoBehaviour
     {
-        private Rigidbody _rigidbody;
+        public Spawner _PlayerSpawner;
         private ScaleAbility _runMan;
         private void Start()
         {
-            _rigidbody = GetComponent<Rigidbody>();
-            _runMan = GetComponent<ScaleAbility>();
+            _runMan = FindObjectOfType<ScaleAbility>(); // very inefficient
         }
 
         public void ResetPlayer()
         {
-            _rigidbody.velocity = Vector3.zero;
-            //_runMan.ResetScale;
+            _runMan.Reset();
+            _PlayerSpawner.ResetObjectPositions();
         }
     }
 }

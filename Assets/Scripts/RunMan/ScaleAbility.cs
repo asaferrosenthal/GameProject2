@@ -23,6 +23,9 @@ namespace RunMan
 
         // Use the on awake mass value as default
         private float _defaultMass;
+        
+        // use the on awake rotation as default
+        private Quaternion _defaultRotation;
 
         // Set maximum and minimum scaling of run man, could make these public for testing
         private const float MaxScale = 1.5f;
@@ -32,8 +35,10 @@ namespace RunMan
         private void Awake()
         {
             _rigidBody = GetComponent<Rigidbody>();
-            _defaultScale = transform.localScale;
+            Transform trans = transform;
+            _defaultScale = trans.localScale;
             _defaultMass = _rigidBody.mass;
+            _defaultRotation = trans.localRotation;
         }
 
         private void Update()
@@ -65,6 +70,16 @@ namespace RunMan
         public float GetDefaultMass()
         {
             return _defaultMass;
+        }
+
+        public void Reset()
+        {
+            Transform trans = transform;
+            trans.localScale = _defaultScale;
+            _rigidBody.mass = _defaultMass;
+            _rigidBody.velocity = Vector3.zero;
+            _rigidBody.angularVelocity = Vector3.zero;
+            trans.localRotation = _defaultRotation;
         }
     }
 }
