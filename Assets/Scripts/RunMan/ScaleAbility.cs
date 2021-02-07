@@ -58,5 +58,13 @@ namespace RunMan
             transform.localScale = _defaultScale * _currentScale;
             _rigidBody.mass = _defaultMass * _currentScale;
         }
+
+        /// <summary>
+        /// Gets default mass
+        /// </summary>
+        public float GetDefaultMass()
+        {
+            return _defaultMass;
+        }
     }
 }
