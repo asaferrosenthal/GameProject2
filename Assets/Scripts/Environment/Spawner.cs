@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.Barracuda;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Environment
 {
@@ -16,6 +13,8 @@ namespace Environment
         public List<int> _SpawnQuantities;
         [Tooltip("Toggle randomizing the y axis position, relative to the spawn locations")]
         public bool _ConsiderYAxis;
+        [Tooltip("Selected game object to parent the newly instantiated objects to. If left empty it will be this object.")]
+        public GameObject _ParentObject;
         
         private List<GameObject> _objectList = new List<GameObject>();
         // This array will be defined by any object that has this object as a parent.
@@ -47,7 +46,8 @@ namespace Environment
                 for (int k = 0; k < _SpawnQuantities[i]; k++)
                 {
                     // Instantiate and add to the object list
-                    GameObject newObject = Instantiate(_Prefabs[i], transform);
+                    GameObject newObject = Instantiate(_Prefabs[i], (_ParentObject != null) ? _ParentObject.transform : transform);
+                    // Add the new object to the object list
                     _objectList.Add(newObject);
                     // Position the new object
                     newObject.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
@@ -58,7 +58,7 @@ namespace Environment
         /// <summary>
         /// Method to be used on runtime to reset the spawn positions of level objects specified by this specific spawner.
         /// </summary>
-        public void ResetObjects()
+        public void ResetObjectPositions()
         {
             // Resets the positions of spawned in objects
             // TO DO: If objects have specific resets we can;
