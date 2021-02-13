@@ -44,9 +44,7 @@ namespace RunMan
         {
             // Inputs for each axis is defined in Input Manager
             
-            
             // Fill out the _movement vector with given axis inputs
-            //Input.GetAxis("Vertical") *
             _movement =  _DefaultSpeed * transform.forward;
 
             // Fill out the _rotation vector with given axis inputs
@@ -54,8 +52,10 @@ namespace RunMan
             
             // Apply movement vector to character using physics system
             _rigidbody.AddForce(_movement);
+            
+            // Apply Clamp for velocity
             _rigidbody.velocity = Vector3.ClampMagnitude(_rigidbody.velocity, _MaxVelocity);
-
+            
             // Apply rotation vector to character
             transform.Rotate(_rotation);
         }
