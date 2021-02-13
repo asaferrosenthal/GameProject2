@@ -5,7 +5,7 @@ namespace Traps
     public class SpeedTrap : Trap
     {
         [Header("Velocity settings")]
-        public float _ChangeFactor = -100f;
+        public float _ChangeFactor = 0f;
         protected override void ApplyTrap()
         {
             base.ApplyTrap();

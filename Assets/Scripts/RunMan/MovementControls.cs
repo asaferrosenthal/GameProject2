@@ -54,7 +54,7 @@ namespace RunMan
             _rigidbody.AddForce(_movement);
             
             // Apply Clamp for velocity
-            _rigidbody.velocity = Vector3.ClampMagnitude(_rigidbody.velocity, _MaxVelocity);
+            //_rigidbody.velocity = Vector3.ClampMagnitude(_rigidbody.velocity, _MaxVelocity);
             
             // Apply rotation vector to character
             transform.Rotate(_rotation);
