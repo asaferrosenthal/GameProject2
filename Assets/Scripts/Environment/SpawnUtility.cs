@@ -46,7 +46,7 @@ namespace Environment
 
             if (!positionFound) throw new Exception("A suitable spawn location could not be found, consider repositioning spawn locations and reducing the quantity of what is being spawned");
             
-            Debug.Log(potentialPosition);
+            //Debug.Log(potentialPosition);
             
             // Return a proven vector
             return potentialPosition;
