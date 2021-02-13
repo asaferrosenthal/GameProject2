@@ -7,13 +7,13 @@ namespace Traps
     {
         protected GameObject _Target;
         
-        protected internal virtual void OnCollisionEnter(Collision other)
+        protected internal virtual void OnCollisionStay(Collision other)
         {
             _Target = other.gameObject;
             ApplyTrap();
         }
 
-        protected internal void OnTriggerEnter(Collider other)
+        protected internal void OnTriggerStay(Collider other)
         {
             _Target = other.gameObject;
             ApplyTrap();

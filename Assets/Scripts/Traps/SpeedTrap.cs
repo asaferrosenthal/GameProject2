@@ -5,7 +5,7 @@ namespace Traps
     public class SpeedTrap : Trap
     {
         [Header("Velocity settings")]
-        public float _ChangeFactor = -10f;
+        public float _ChangeFactor = -100f;
         protected override void ApplyTrap()
         {
             base.ApplyTrap();
@@ -16,8 +16,7 @@ namespace Traps
             if (body == null) return;
             
             Vector3 newForce = body.velocity;
-            
-            
+
             Debug.Log("Adding a force to player " + newForce);
             
             // Create a new force based on the body's velocity and the change factor
