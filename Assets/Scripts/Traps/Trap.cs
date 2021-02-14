@@ -9,6 +9,7 @@ namespace Traps
         public bool _TriggersOnStay;
         public bool _TriggersOnEnter;
         public bool _TriggersOnExit;
+        //public bool _growBalloon = false;
         protected GameObject _Target;
         
         protected internal void OnTriggerStay(Collider other)
@@ -16,6 +17,7 @@ namespace Traps
             if (!_TriggersOnStay) return;
             _Target = other.gameObject;
             ApplyTrap();
+            _Enabled = true;
         }
 
         protected internal void OnTriggerEnter(Collider other)
@@ -23,6 +25,7 @@ namespace Traps
             if (!_TriggersOnEnter) return;
             _Target = other.gameObject;
             ApplyTrap();
+            _Enabled = true;
         }
 
         protected internal void OnTriggerExit(Collider other)
@@ -30,6 +33,7 @@ namespace Traps
             if (!_TriggersOnExit) return;
             _Target = other.gameObject;
             ApplyTrap();
+            _Enabled = false;
         }
 
         protected virtual void ApplyTrap()
