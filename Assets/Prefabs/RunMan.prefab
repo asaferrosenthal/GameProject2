@@ -172,6 +172,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _DefaultSpeed: 10
+<<<<<<< HEAD
   _DefaultJumpHeight: 175.61
   _DefaultRotationSpeed: 3
   _MaxVelocity: 50
@@ -189,6 +190,11 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: -0.0000000840697}
+=======
+  _DefaultJumpHeight: 0
+  _DefaultRotationSpeed: 1
+  _slowndown: 0
+>>>>>>> de3642b3e53ac09f90d8f02430eebddb69e0804f
 --- !u!1 &2510831965480553331
 GameObject:
   m_ObjectHideFlags: 0
@@ -216,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2510831965480553331}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.42, z: -5.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4738877891632619399}
@@ -311,8 +317,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6935746349388031149}
+<<<<<<< HEAD
   m_LocalRotation: {x: 0.17063946, y: 0, z: 0, w: 0.9853335}
   m_LocalPosition: {x: 0, y: 2.74, z: -3.66}
+=======
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.08, y: 0.19, z: -6.51}
+>>>>>>> de3642b3e53ac09f90d8f02430eebddb69e0804f
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3802346277263217321}
