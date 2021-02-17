@@ -18,7 +18,12 @@ namespace Traps{
         {
             if (_Enabled){
                 Debug.Log("GROWING");
-                transform.localScale = new Vector3(transform.localScale.x+transform.localScale.x*scalingFactor*Time.deltaTime, transform.localScale.y+transform.localScale.y*scalingFactor * Time.deltaTime, transform.localScale.z+transform.localScale.z*scalingFactor * Time.deltaTime);
+                float timerate = 0.5f; //lower value will make it inflate and deflate more slowly
+                int growthfactor = 12; //greater value will make it inflate and deflate more drastically
+                
+                //uses sign function to increase and decrease its scale overtime
+                Vector3 vec = new Vector3(growthfactor * Mathf.Sin(Time.time * timerate), growthfactor * Mathf.Sin(Time.time*timerate), growthfactor * Mathf.Sin(Time.time*timerate));
+                transform.localScale = vec;
             }
             else{
                 Debug.Log("not growing");
