@@ -53,27 +53,19 @@ namespace RunMan
             // Apply movement vector to character using physics system
             _rigidbody.AddForce(_movement);
             
-            // Apply Clamp for velocity
-            //_rigidbody.velocity = Vector3.ClampMagnitude(_rigidbody.velocity, _MaxVelocity);
-            
             // Apply rotation vector to character
             transform.Rotate(_rotation);
         }
 
         private void OnCollisionStay(Collision other)
         {
-            print(other.gameObject.name);
+            if (1 << other.gameObject.layer != Floor) return;
             
-            if (1 << other.gameObject.layer == Floor)
-            {
-                print("Jumping");
-                // Eventually a check to see if we can jump
-                // Jumping vector from given axis inputs
-                _jump = Input.GetAxis("Jump") * _jumpHeight * transform.up;
+            // Jumping vector from given axis inputs
+            _jump = Input.GetAxis("Jump") * _jumpHeight * transform.up;
                 
-                // Apply jump vector
-                _rigidbody.AddForce(_jump);
-            }
+            // Apply jump vector
+            _rigidbody.AddForce(_jump);
         }
     }
 }
