@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace RunMan
 {
@@ -16,8 +17,6 @@ namespace RunMan
 
         [Tooltip("Factor rotation inputs will be scaled by")]
         public float _DefaultRotationSpeed;
-
-        public float _MaxVelocity;
 
         // Updatable jump value to be modified by interactions
         private float _jumpHeight;
@@ -54,6 +53,7 @@ namespace RunMan
             
             // Apply rotation vector to character
             transform.Rotate(_rotation);
+
         }
 
         private void OnCollisionStay(Collision other)

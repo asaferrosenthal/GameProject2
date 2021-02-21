@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -8,7 +9,7 @@ namespace RunMan
     /// Scale Ability is responsible for the Run Man mechanic of the size increase/decrease mechanic that also affects mass
     /// </summary>
     [RequireComponent(typeof(Rigidbody))]
-    public class ScaleAbility : MonoBehaviour
+    public class TheRunMan : MonoBehaviour
     {
         [Header("Run Man Settings")]
         [Tooltip("Factor by which inputs change Run Man scale")]
@@ -32,7 +33,6 @@ namespace RunMan
         // use on reset
         private Quaternion _defaultRotation;
 
-        
         // Set maximum and minimum scaling of run man, could make these public for testing
         private const float MaxScale = 1.5f;
         private const float MinScale = 1f;
@@ -52,6 +52,8 @@ namespace RunMan
         {
             UpdateRunManScale();
             ScaleRunMan();
+            // Assign end of game trigger event
+            
         }
 
         /// <summary>
@@ -69,14 +71,6 @@ namespace RunMan
         {
             transform.localScale = _defaultScale * _currentScale;
             _rigidBody.mass = _defaultMass * _currentScale;
-        }
-
-        /// <summary>
-        /// Gets default mass
-        /// </summary>
-        public float GetDefaultMass()
-        {
-            return _defaultMass;
         }
 
         public void ResetRunMan()

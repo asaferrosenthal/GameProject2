@@ -11,15 +11,15 @@ namespace RunMan
     public class PlayerManager : MonoBehaviour
     {
         public Spawner _PlayerSpawner;
-        private ScaleAbility _scaleAbility;
+        private TheRunMan _theRunMan;
         private void Start()
         {
-            _scaleAbility = FindObjectOfType<ScaleAbility>(); // very inefficient
+            _theRunMan = FindObjectOfType<TheRunMan>(); // very inefficient
         }
 
         public void ResetPlayer()
         {
-            _scaleAbility.ResetRunMan();
+            _theRunMan.ResetRunMan();
             _PlayerSpawner.ResetObjectPositions();
         }
     }
