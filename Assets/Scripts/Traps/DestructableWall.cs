@@ -19,7 +19,6 @@ namespace Traps
             _positions = new Vector3[_rigidbodies.Length];
             _rotations = new Quaternion[_rigidbodies.Length];
             
-            print(_rigidbodies.Length);
             // Save initial state
             for (int i = 0; i < _rigidbodies.Length; i++)
             {
@@ -36,7 +35,8 @@ namespace Traps
             if (tar == null) return; // there is no rigidbody
             
             if (!(tar.velocity.magnitude * tar.mass >= _BreakThreshold)) return; // the threshold is not met
-            Debug.Log("disabling kin");
+            
+            // Turn off kinematic setting on rigidbodies in the wall
             foreach (Rigidbody ele in _rigidbodies)
             {
                 ele.isKinematic = false;

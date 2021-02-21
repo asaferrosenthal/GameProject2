@@ -1,10 +1,13 @@
 using Traps;
+using RunMan;
 using UnityEngine;
 
 namespace Environment
 {
     public class EnvironmentManager : MonoBehaviour
     {
+        public ScaleAbility _RunMan;
+        
         private Spawner[] _spawners;
         private Trap[] _traps;
         private void Awake()
@@ -24,6 +27,8 @@ namespace Environment
             {
                 ele.ResetTrap();
             }
+
+            _RunMan.ResetRunMan();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector3 = UnityEngine.Vector3;
 
 namespace RunMan
 {
@@ -11,22 +13,26 @@ namespace RunMan
         [Header("Run Man Settings")]
         [Tooltip("Factor by which inputs change Run Man scale")]
         public float _ScaleFactor = 0.2f;
-
+        
         // record of rigidbody to prevent need to re-access
         private Rigidbody _rigidBody;
 
         // value used for scaling Run Man object
         private float _currentScale = MinScale;
 
-        // Use the on awake scale value as the default Run Man scale
+        // Use on awake scale value as the default Run Man scale_
         private Vector3 _defaultScale;
 
-        // Use the on awake mass value as default
+        // Use on awake mass value as default
         private float _defaultMass;
         
-        // use the on awake rotation as default
+        // Use on reset
+        private Vector3 _defaultPosition;
+        
+        // use on reset
         private Quaternion _defaultRotation;
 
+        
         // Set maximum and minimum scaling of run man, could make these public for testing
         private const float MaxScale = 1.5f;
         private const float MinScale = 1f;
@@ -39,6 +45,7 @@ namespace RunMan
             _defaultScale = trans.localScale;
             _defaultMass = _rigidBody.mass;
             _defaultRotation = trans.localRotation;
+            _defaultPosition = trans.localPosition;
         }
 
         private void Update()
@@ -72,7 +79,7 @@ namespace RunMan
             return _defaultMass;
         }
 
-        public void Reset()
+        public void ResetRunMan()
         {
             Transform trans = transform;
             trans.localScale = _defaultScale;
@@ -80,6 +87,7 @@ namespace RunMan
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
             trans.localRotation = _defaultRotation;
+            trans.localPosition = _defaultPosition;
         }
     }
 }
