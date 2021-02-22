@@ -7,6 +7,8 @@ namespace RunMan
     public class MovementControls : MonoBehaviour
     {
         private const int Floor = 1<<8;
+        private const int Wall = 1 << 9;
+        
         [Header("Movement Settings")]
         
         [Tooltip("Factor movement inputs will be scaled by")]
@@ -18,9 +20,6 @@ namespace RunMan
         [Tooltip("Factor rotation inputs will be scaled by")]
         public float _DefaultRotationSpeed;
 
-        // Updatable jump value to be modified by interactions
-        private float _jumpHeight;
-        
         // record of rigidbody to prevent need to re-access
         private Rigidbody _rigidbody;
         
@@ -32,10 +31,13 @@ namespace RunMan
         
         // Vector built by inputs for rotation translation
         private Vector3 _rotation;
+
+        // used for turning speed back to what it was on spawn
+        private float _speed;
         
         private void Awake()
         {
-            _jumpHeight = _DefaultJumpHeight;
+            _speed = _DefaultSpeed;
             _rigidbody = GetComponent<Rigidbody>();
         }
         private void FixedUpdate()
@@ -44,7 +46,9 @@ namespace RunMan
             
             // Fill out the _movement vector with given axis inputs
             _movement =  _DefaultSpeed * transform.forward;
-
+            // Add force in the direction of rotation, make it feel less sloppy
+            _movement += transform.right * (_DefaultSpeed * Input.GetAxis("Horizontal"));
+            
             // Fill out the _rotation vector with given axis inputs
             _rotation.y = Input.GetAxis("Horizontal") * _DefaultRotationSpeed;
             
@@ -59,12 +63,12 @@ namespace RunMan
         private void OnCollisionStay(Collision other)
         {
             if (1 << other.gameObject.layer != Floor) return;
-            
             // Jumping vector from given axis inputs
-            _jump = Input.GetAxis("Jump") * _jumpHeight * transform.up;
+            _jump = Input.GetAxis("Jump") * _DefaultJumpHeight * transform.up;
                 
             // Apply jump vector
             _rigidbody.AddForce(_jump);
         }
+        
     }
 }

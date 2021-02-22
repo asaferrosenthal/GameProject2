@@ -30,7 +30,7 @@ namespace Environment
 
         private void CheckIfStopped()
         {
-            if (_rigidbody.velocity.magnitude == 0)
+            if (Mathf.Floor(_rigidbody.velocity.magnitude) == 0)
             {
                 // Add how much time has passed since last check
                 _timeSinceStopped += Time.fixedDeltaTime;
@@ -58,6 +58,7 @@ namespace Environment
             }
 
             _RunMan.ResetRunMan();
+            _timeSinceStopped = 0;
         }
     }
 }

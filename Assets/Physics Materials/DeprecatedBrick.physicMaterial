@@ -6,7 +6,7 @@ PhysicMaterial:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Brick
+  m_Name: DeprecatedBrick
   dynamicFriction: 0.4
   staticFriction: 0.4
   bounciness: 0

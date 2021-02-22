@@ -61,7 +61,7 @@ namespace RunMan
         /// </summary>
         private void UpdateRunManScale()
         {
-            _currentScale = Mathf.Clamp(_currentScale + (Input.GetAxis("Scroll") * _ScaleFactor), MinScale, MaxScale);
+            _currentScale = Mathf.Clamp(_currentScale + -1* (Input.GetAxis("Scroll") * _ScaleFactor), MinScale, MaxScale);
         }
 
         /// <summary>
