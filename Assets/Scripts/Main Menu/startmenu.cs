@@ -10,6 +10,10 @@ public class startmenu : MonoBehaviour
 
   public void play(string scene_name) {
     Application.LoadLevel(scene_name);
+    SfxManager.sfxInstance.Audio.PlayOneShot(SfxManager.sfxInstance.Click);
   }
 
+  public void sound_volume(float volume) {
+    PlayerPrefs.SetFloat("volume", volume);
+  }
 }
