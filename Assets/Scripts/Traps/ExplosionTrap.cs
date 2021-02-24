@@ -15,7 +15,6 @@ namespace Traps
         {
             if (!_Enabled) return;
             _Target.GetComponent<Rigidbody>().AddExplosionForce(_Power, _Target.transform.position, _Radius, _UpwardsModifier);
-            _Enabled = false;
         }
     }
 }
