@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Traps;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
@@ -13,8 +14,11 @@ namespace Adversary
         [Tooltip("How much the movement vector will be scaled")]
         public float _MoveForce;
         
-        [Tooltip("How much the rotation vector will be scaled")]
-        public float _RotationSpeed;
+        [Tooltip("How much the jump vector will be scaled")]
+        public float _JumpForce;
+        
+        [Tooltip("How much the Y rotation vector will be scaled")]
+        public float _YawRotationSpeed;
 
         [Tooltip("How far can the agent see around itself")]
         public float _SearchRadius = 5;
@@ -26,6 +30,7 @@ namespace Adversary
         public bool _Frozen;
         
         [Header("Required Information")]
+        [Tooltip("What layers do we have positive consequences for interacting with")]
         public int[] _TargetLayers;
         
         [Tooltip("What layers do we have negative consequences for interacting with")]
@@ -39,18 +44,32 @@ namespace Adversary
         
         // Agent Components and settings
         private Rigidbody _rigidBody;
+        private float _smoothYawChange = 0f;
         
         // world information
         private int _targetLayerMask;
-        private int _obstacleLayerMask;
+        private int _obstacleLayerMask; 
+
+        /* Test Area*/
+        
+        // Nearest of each trap type
+        private SpeedTrap _accelerator;
+
+        private SpeedTrap _deccelerator;
+
+        private ExplosionTrap _explosionTrap;
+
+        private DestructableWall _destructableWall;
+        
+        /*Test Area*/
         
         // target information
         private List<GameObject> _targetRecords;
         private float _targetDistance;
         
-        // Obstacle information
+        /*// Obstacle information
         private List<GameObject> _obstacleRecords;
-        private float _obstacleDistance;
+        private float _obstacleDistance;*/
         
         // Initialize information that will not change
         private void Awake()
@@ -79,9 +98,7 @@ namespace Adversary
         {
             // reset all physics and memory
             _targetDistance = 0;
-            _obstacleDistance = 0;
             _targetRecords = new List<GameObject>();
-            _obstacleRecords = new List<GameObject>();
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
         }
@@ -92,10 +109,7 @@ namespace Adversary
             _targetRecords = CleanList.RemoveDead(_targetRecords, _targetLayerMask);
             _targetRecords = DetectColliderLayer.InLayerRadius(_targetLayerMask, _SearchRadius, position, _targetRecords);
             _targetRecords = Sort.ByDistance(_targetRecords, position);
-
-            _obstacleRecords = CleanList.RemoveDead(_obstacleRecords, _obstacleLayerMask);
-            _obstacleRecords = DetectColliderLayer.InLayerRadius(_obstacleLayerMask, _SearchRadius, position, _obstacleRecords);
-            _obstacleRecords = Sort.ByDistance(_obstacleRecords, position);
+            
         }
 
         /*ML Agent specific methods*/
@@ -111,12 +125,36 @@ namespace Adversary
 
         public override void OnActionReceived(float[] vectorAction)
         {
-            base.OnActionReceived(vectorAction);
+            // if frozen don't take any actions
+            if (_Frozen)
+            {
+                _rigidBody.velocity = Vector3.zero;
+                _rigidBody.angularVelocity = Vector3.zero;
+                return;
+            }
+            
+            // Calculate force applied
+            Vector3 move = (Vector3.forward * _MoveForce * vectorAction[0]) + (Vector3.up * _JumpForce * vectorAction[1]);
+
+            // Apply move force
+            _rigidBody.AddForce(move * _MoveForce);
+            
+            // Calculate rotation applied
+            Vector3 rotationVector = transform.rotation.eulerAngles;
+            
+            // Calculate yaw 
+            float yawChange = vectorAction[3];
+            
+            // Smooth yaw rotation
+            _smoothYawChange = Mathf.MoveTowards(_smoothYawChange, yawChange, 2f * Time.fixedDeltaTime);
+            float yaw = rotationVector.y + _smoothYawChange * Time.fixedDeltaTime * _YawRotationSpeed;
+            
+            // Apply rotation vector
+            transform.rotation = Quaternion.Euler(0f,yaw,0f);
+            
+            // Re-evaluate data
+            UpdateAgentSenseData();
         }
 
-        public override void Heuristic(float[] actionsOut)
-        {
-            base.Heuristic(actionsOut);
-        }
     }
 }
