@@ -5,38 +5,21 @@ using UnityEngine;
 
 namespace Adversary
 {
-    public class Goober : MonoBehaviour
+    public class Goober : InteractionBase
     {
-        private AdversaryAgent _agent;
-        private Rigidbody _rigidbody;
-        private Collider _collider;
-        private Transform _parent;
-
-        private void Awake()
-        {
-            _agent = GetComponent<AdversaryAgent>();
-            _collider = GetComponent<Collider>();
-            _rigidbody = GetComponent<Rigidbody>();
-            _parent = transform;
-        }
+        [SerializeField] private int _FloorLayer = 10;
         
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer != 10 | _agent._Frozen == true) return;
-            
-            _agent._Frozen = true;
-            _agent.transform.SetParent(other.gameObject.transform);
-            other.gameObject.GetComponent<TheRunMan>().AddMass(_rigidbody.mass);
-            _collider.enabled = false;
-            _rigidbody.isKinematic = true;
+            if (other.gameObject.layer != _FloorLayer | _Agent._Frozen) return;
+            _Agent._Frozen = true;
+            other.gameObject.GetComponent<TheRunMan>().AddMass(_Rigidbody.mass);
+            _Collider.enabled = false;
         }
 
-        public void Reset()
+        public override void Reset()
         {
-            _agent._Frozen = false;
-            _agent.transform.SetParent(_parent);
-            _collider.enabled = true;
-            _rigidbody.isKinematic = false;
+            base.Reset();
         }
     }
 }

@@ -46,8 +46,9 @@ namespace RunMan
             _rigidBody = GetComponent<Rigidbody>();
             Transform trans = transform;
             _defaultScale = trans.localScale;
-            _defaultMass = _rigidBody.mass;
-            _currentMass = _defaultMass;
+            var mass = _rigidBody.mass;
+            _defaultMass = mass;
+            _currentMass = mass;
             _defaultRotation = trans.localRotation;
             _defaultPosition = trans.localPosition;
         }
@@ -81,7 +82,9 @@ namespace RunMan
         {
             Transform trans = transform;
             trans.localScale = _defaultScale;
+            _currentScale = MinScale;
             _rigidBody.mass = _defaultMass;
+            _currentMass = _defaultMass;
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
             trans.localRotation = _defaultRotation;

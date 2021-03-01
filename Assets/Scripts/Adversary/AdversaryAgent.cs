@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Environment;
 using Traps;
 using Unity.MLAgents;
@@ -45,10 +46,12 @@ namespace Adversary
         public float _DefaultPunishmentValue;
 
         public EnvironmentManager _Manager;
-
+        public Spawner _Spawner;
+        
         public bool _Master;
         // Agent Components and settings
         private Rigidbody _rigidBody;
+        private InteractionBase _goober;
         private bool _isGrounded = false;
         private float _smoothYawChange = 0f;
         
@@ -82,28 +85,20 @@ namespace Adversary
 
             // Rigid body for physics interactions
             _rigidBody = GetComponentInChildren<Rigidbody>();
+            _goober = GetComponent<InteractionBase>();
+            _Manager = transform.parent.transform.parent.GetComponentInParent<EnvironmentManager>();
+            Debug.Log(_Manager);
         }
 
         private void Start()
         {
-            ResetAgent();
-            if (_Master) _Manager._Training = true;
-        }
-        
-        // Triggers are reserved for interactive components
-        private void OnTriggerEnter(Collider other)
-        {
-            OnTriggerStayOrEnter(other);
-        }
-        
-        private void OnTriggerStay(Collider other)
-        {
-            OnTriggerStayOrEnter(other);
+            _Manager._Training = _TrainingMode;
         }
         
         // Bundled stay and enter together due to desired behaviour is the same in both cases
-        private void OnTriggerStayOrEnter(Collider other)
+        private void OnCollisionStayOrEnter(Collision other)
         {
+            if (_target == null) return;
             float bonusMultiplier = _target.mass; // the heavier the target is, the greater the reward
             float reward = 0;
             
@@ -119,11 +114,17 @@ namespace Adversary
             // adds no reward if neither interaction happened
             AddReward(reward);
         }
-        
-        // Collisions are reserved for map interactions with no interactive components
+
+
+        private void OnCollisionStay(Collision other)
+        {
+            OnCollisionStayOrEnter(other);
+        }
+
         private void OnCollisionEnter(Collision other)
         {
             if (1 << other.gameObject.layer == FloorLayer) _isGrounded = true;
+            OnCollisionStayOrEnter(other);
         }
 
         private void OnCollisionExit(Collision other)
@@ -131,14 +132,6 @@ namespace Adversary
             if (1 << other.gameObject.layer == FloorLayer) _isGrounded = false;
         }
 
-        private void ResetAgent()
-        {
-            // reset all physics and memory
-            _rigidBody.velocity = zero;
-            _rigidBody.angularVelocity = zero;
-            _Frozen = false;
-        }
-        
         private void UpdateAgentSenseData()
         {
             var position = transform.position;
@@ -146,24 +139,39 @@ namespace Adversary
             // Update target data
             // Get targets on possible layers
             Collider[] potentialTargets = Physics.OverlapSphere(position, _SearchRadius, _targetLayerMask);
-            // is there any visible target? if so get the closest, otherwise set target to null
-            _target = potentialTargets?[0].attachedRigidbody;
             
+            // is there any visible target? if so get the closest, otherwise set target to null
+            if (potentialTargets.Length != 0) _target = potentialTargets[0].attachedRigidbody;
+
             // Update obstacle data
             _obstacleRecords = CleanList.RemoveDead(_obstacleRecords, _obstacleLayerMask);
             _obstacleRecords = DetectColliderLayer.InLayerRadius(_obstacleLayerMask, _SearchRadius, position, _obstacleRecords);
             _obstacleRecords = Sort.ByDistance(_obstacleRecords, position);
         }
+        
+        public void ResetAgent()
+        {
+            // reset all physics and memory
+            _target = null;
+            _obstacleRecords = new List<GameObject>();
+            _rigidBody.velocity = zero;
+            _rigidBody.angularVelocity = zero;
+            _Frozen = false;
+            _goober.Reset();
+            _Spawner.RespawnAgent(this);
+            
+        }
 
         /*ML Agent specific methods*/
         public override void OnEpisodeBegin()
         {
+            if (_Master) _Manager.ResetEnvironment();
             ResetAgent();
-            if(_Master) _Manager.ResetEnvironment();
         }
 
         public override void CollectObservations(VectorSensor sensor)
-        { // Total of 32 points
+        {    
+            // Total of 35 points
             // This agents information
             // The current direction the agent is heading
             sensor.AddObservation(_rigidBody.velocity.normalized); // 3
@@ -177,6 +185,9 @@ namespace Adversary
             sensor.AddObservation(_rigidBody.rotation.normalized); // 3
             // Are we currently on the ground
             sensor.AddObservation(_isGrounded); // 1
+            
+            // Are we frozen?
+            sensor.AddObservation(_Frozen); // 1
 
             // Obstacle related information
             if (_obstacleRecords.Count <= 0)
@@ -256,7 +267,7 @@ namespace Adversary
             Vector3 rotationVector = transform.rotation.eulerAngles;
             
             // Calculate yaw 
-            float yawChange = vectorAction[3];
+            float yawChange = vectorAction[2];
             
             // Smooth yaw rotation
             _smoothYawChange = Mathf.MoveTowards(_smoothYawChange, yawChange, 2f * Time.fixedDeltaTime);

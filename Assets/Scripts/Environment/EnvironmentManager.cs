@@ -33,6 +33,7 @@ namespace Environment
 
         private void CheckIfStopped()
         {
+            if (_Training) return;
             if (Mathf.Floor(_rigidbody.velocity.magnitude) == 0)
             {
                 // Add how much time has passed since last check

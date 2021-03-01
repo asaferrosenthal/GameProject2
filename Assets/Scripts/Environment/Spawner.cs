@@ -1,5 +1,7 @@
 using System;
 using System.Collections.Generic;
+using Adversary;
+using Unity.MLAgents;
 using UnityEngine;
 
 namespace Environment
@@ -9,14 +11,17 @@ namespace Environment
         [Header("Spawning Settings")]
         [Tooltip("List of objects that are spawned in by this spawner.")]
         public List<GameObject> _Prefabs;
+        
         [Tooltip("Number of objects to instantiate with respect to the prefabs list.")]
         public List<int> _SpawnQuantities;
+        
         [Tooltip("Toggle randomizing the y axis position, relative to the spawn locations")]
         public bool _ConsiderYAxis;
+        
         [Tooltip("Selected game object to parent the newly instantiated objects to. If left empty it will be this object.")]
         public GameObject _ParentObject;
         
-        private List<GameObject> _objectList = new List<GameObject>();
+        private List<AdversaryAgent> _adversaryList = new List<AdversaryAgent>();
         // This array will be defined by any object that has this object as a parent.
         // These child objects will be used for creating spawn locations
         private SpawnLocation[] _spawnLocations;
@@ -48,9 +53,13 @@ namespace Environment
                     // Instantiate and add to the object list
                     GameObject newObject = Instantiate(_Prefabs[i], (_ParentObject != null) ? _ParentObject.transform : transform);
                     // Add the new object to the object list
-                    _objectList.Add(newObject);
+                    AdversaryAgent agent = newObject.GetComponent<AdversaryAgent>();
+                    _adversaryList.Add(agent);
                     // Position the new object
                     newObject.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
+                    agent._Spawner = this;
+
+                    if (i == 0) agent._Master = true;
                 }
             }
         }
@@ -65,11 +74,28 @@ namespace Environment
             // have a manager for relevant objects that resets the objects data and then calls this spawner... or <--- probably this one
             // create a subscription that notifies objects of this method call ... or
             // specify types the spawner control and directly call resets on this method... or
-            foreach (GameObject ele in _objectList)
+            foreach (AdversaryAgent ele in _adversaryList)
             {
+                ele.gameObject.SetActive(true);
                 ele.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
+                
             }
         }
+
+        /*public void ResetAllAgents()
+        {
+            foreach (var VARIABLE in COLLECTION)
+            {
+                
+            }
+        }*/
+
+        public void RespawnAgent(AdversaryAgent agent)
+        {
+            agent.gameObject.SetActive(true);
+            agent.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
+        }
+        
         
     }
 }

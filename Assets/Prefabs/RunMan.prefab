@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _DefaultSpeed: 10
-  _DefaultJumpHeight: 175.61
+  _DefaultJumpHeight: 175
   _DefaultRotationSpeed: 4
 --- !u!136 &4018389467632008851
 CapsuleCollider:
