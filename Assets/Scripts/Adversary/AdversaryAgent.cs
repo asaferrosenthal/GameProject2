@@ -5,6 +5,7 @@ using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
 using Utility;
+using static UnityEngine.Vector3;
 
 namespace Adversary
 {
@@ -44,32 +45,28 @@ namespace Adversary
         
         // Agent Components and settings
         private Rigidbody _rigidBody;
+        private bool _isGrounded = false;
         private float _smoothYawChange = 0f;
         
         // world information
         private int _targetLayerMask;
-        private int _obstacleLayerMask; 
-
-        /* Test Area*/
-        
-        // Nearest of each trap type
-        private SpeedTrap _accelerator;
-
-        private SpeedTrap _deccelerator;
-
-        private ExplosionTrap _explosionTrap;
-
-        private DestructableWall _destructableWall;
-        
-        /*Test Area*/
+        private int _obstacleLayerMask;
+        //private int _trapLayerMask;
         
         // target information
-        private List<GameObject> _targetRecords;
-        private float _targetDistance;
+        private Rigidbody _target;
         
-        /*// Obstacle information
+        // Obstacle information
         private List<GameObject> _obstacleRecords;
-        private float _obstacleDistance;*/
+
+        // Constants
+        private const int FloorLayer = 1 << 8;
+        
+        // EVENTS
+        public delegate void OnReset();
+
+        public static event OnReset ONReset;
+
         
         // Initialize information that will not change
         private void Awake()
@@ -77,12 +74,12 @@ namespace Adversary
             // Create the full layer masks for targets and obstacles
             foreach (var layer in _TargetLayers)
             {
-                _targetLayerMask = _targetLayerMask | (1 << layer);
+                _targetLayerMask |= (1 << layer);
             }
 
             foreach (var layer in _ObstacleLayers)
             {
-                _obstacleLayerMask = _obstacleLayerMask | (1 << layer);
+                _obstacleLayerMask |= (1 << layer);
             }
 
             // Rigid body for physics interactions
@@ -93,34 +90,148 @@ namespace Adversary
         {
             ResetAgent();
         }
+        
+        // Triggers are reserved for interactive components
+        private void OnTriggerEnter(Collider other)
+        {
+            OnTriggerStayOrEnter(other);
+        }
+        
+        private void OnTriggerStay(Collider other)
+        {
+            OnTriggerStayOrEnter(other);
+        }
+        
+        // Bundled stay and enter together due to desired behaviour is the same in both cases
+        private void OnTriggerStayOrEnter(Collider other)
+        {
+            float bonusMultiplier = _target.mass; // the heavier the target is, the greater the reward
+            float reward = 0;
+            
+            if ((_targetLayerMask | (1 << other.gameObject.layer)) == _targetLayerMask) // positive interaction
+            {
+                reward = bonusMultiplier * _DefaultRewardValue;
+            }
+            else if ((_obstacleLayerMask | (1 << other.gameObject.layer)) == _obstacleLayerMask) // negative interaction
+            {
+                reward = _DefaultPunishmentValue;
+            }
+            
+            // adds no reward if neither interaction happened
+            AddReward(reward);
+        }
+        
+        // Collisions are reserved for map interactions with no interactive components
+        private void OnCollisionEnter(Collision other)
+        {
+            if (1 << other.gameObject.layer == FloorLayer) _isGrounded = true;
+        }
+
+        private void OnCollisionExit(Collision other)
+        {
+            if (1 << other.gameObject.layer == FloorLayer) _isGrounded = false;
+        }
 
         private void ResetAgent()
         {
             // reset all physics and memory
-            _targetDistance = 0;
-            _targetRecords = new List<GameObject>();
-            _rigidBody.velocity = Vector3.zero;
-            _rigidBody.angularVelocity = Vector3.zero;
+            _rigidBody.velocity = zero;
+            _rigidBody.angularVelocity = zero;
+            _Frozen = false;
         }
+        
         private void UpdateAgentSenseData()
         {
             var position = transform.position;
             
-            _targetRecords = CleanList.RemoveDead(_targetRecords, _targetLayerMask);
-            _targetRecords = DetectColliderLayer.InLayerRadius(_targetLayerMask, _SearchRadius, position, _targetRecords);
-            _targetRecords = Sort.ByDistance(_targetRecords, position);
+            // Update target data
+            // Get targets on possible layers
+            Collider[] potentialTargets = Physics.OverlapSphere(position, _SearchRadius, _targetLayerMask);
+            // is there any visible target? if so get the closest, otherwise set target to null
+            _target = potentialTargets?[0].attachedRigidbody;
             
+            // Update obstacle data
+            _obstacleRecords = CleanList.RemoveDead(_obstacleRecords, _obstacleLayerMask);
+            _obstacleRecords = DetectColliderLayer.InLayerRadius(_obstacleLayerMask, _SearchRadius, position, _obstacleRecords);
+            _obstacleRecords = Sort.ByDistance(_obstacleRecords, position);
         }
 
         /*ML Agent specific methods*/
         public override void OnEpisodeBegin()
         {
-            base.OnEpisodeBegin();
+            ResetAgent();
+            ONReset?.Invoke();
         }
 
         public override void CollectObservations(VectorSensor sensor)
-        {
-            base.CollectObservations(sensor);
+        { // Total of 32 points
+            // This agents information
+            // The current direction the agent is heading
+            sensor.AddObservation(_rigidBody.velocity.normalized); // 3
+            // The current velocity of the agent
+            sensor.AddObservation(_rigidBody.velocity.magnitude); // 1
+            // The current direction of the agent's angular velocity
+            sensor.AddObservation(_rigidBody.angularVelocity.normalized); // 3
+            // The current angular velocity of the agent
+            sensor.AddObservation(_rigidBody.angularVelocity.magnitude); // 1
+            // The current direction we are facing
+            sensor.AddObservation(_rigidBody.rotation.normalized); // 3
+            // Are we currently on the ground
+            sensor.AddObservation(_isGrounded); // 1
+
+            // Obstacle related information
+            if (_obstacleRecords.Count <= 0)
+            {
+                sensor.AddObservation(new float[4]);
+            }
+            else // records obstacle information if they exist
+            {
+                // obstacle information
+                Vector3 transformPosition = transform.position;
+                Vector3 dirOfObstacle = (_obstacleRecords[0].transform.position - transformPosition).normalized; 
+                float obstacleDistance = (_obstacleRecords[0].transform.position - transformPosition).magnitude;
+                
+                // relative distance to obstacle
+                sensor.AddObservation(obstacleDistance/_SearchRadius); // 1
+                // Where is the obstacle relative to agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
+                sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.forward.normalized)); // 1
+                sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.right.normalized)); // 1
+                sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.up.normalized)); // 1
+            }
+            
+            // Targets related information
+            if (_target == null)
+            {
+                sensor.AddObservation(new float[16]);
+            }
+            else
+            {
+                Vector3 agentPosition = transform.position;
+                Vector3 targetPosition = _target.transform.position;
+                Vector3 dirOfTarget = (targetPosition - agentPosition).normalized;
+                float targetDistance = (targetPosition - agentPosition).magnitude;
+                
+                // relative distance to target
+                sensor.AddObservation(targetDistance/_SearchRadius); // 1
+                // Where is the target relative to the agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
+                sensor.AddObservation(Dot(dirOfTarget, -_target.transform.forward.normalized)); // 1
+                sensor.AddObservation(Dot(dirOfTarget, -_target.transform.right.normalized)); // 1
+                sensor.AddObservation(Dot(dirOfTarget, -_target.transform.up.normalized)); // 1
+                
+                // The current direction the target is heading
+                sensor.AddObservation(_target.velocity.normalized); // 3
+                // The current velocity of the target
+                sensor.AddObservation(_target.velocity.magnitude); // 1
+                // The current direction of the target's angular velocity
+                sensor.AddObservation(_target.angularVelocity.normalized); // 3
+                // The current angular velocity of the target
+                sensor.AddObservation(_target.angularVelocity.magnitude); // 1
+                // The current direction the target is facing
+                sensor.AddObservation(_target.rotation.normalized); // 3
+                // The current mass of the target
+                sensor.AddObservation(_target.mass); // 1
+            }
+
         }
 
         public override void OnActionReceived(float[] vectorAction)
@@ -128,17 +239,20 @@ namespace Adversary
             // if frozen don't take any actions
             if (_Frozen)
             {
-                _rigidBody.velocity = Vector3.zero;
-                _rigidBody.angularVelocity = Vector3.zero;
+                _rigidBody.velocity = zero;
+                _rigidBody.angularVelocity = zero;
                 return;
             }
-            
-            // Calculate force applied
-            Vector3 move = (Vector3.forward * _MoveForce * vectorAction[0]) + (Vector3.up * _JumpForce * vectorAction[1]);
 
-            // Apply move force
-            _rigidBody.AddForce(move * _MoveForce);
-            
+            if (_isGrounded)
+            {
+                // Calculate force applied
+                Vector3 move = (forward * _MoveForce * vectorAction[0]) + (up * _JumpForce * vectorAction[1]);
+
+                // Apply move force
+                _rigidBody.AddForce(move * _MoveForce);
+            }
+
             // Calculate rotation applied
             Vector3 rotationVector = transform.rotation.eulerAngles;
             

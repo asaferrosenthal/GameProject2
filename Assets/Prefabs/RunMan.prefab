@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4231269371415711654}
   - component: {fileID: 6451195554516913765}
   - component: {fileID: 4018389467632008851}
+  - component: {fileID: 8085744558986477597}
   m_Layer: 10
   m_Name: RunMan
   m_TagString: Untagged
@@ -158,9 +159,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40d268e9b42e3140ba5b1057bf42f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DefaultSpeed: 15
+  _DefaultSpeed: 10
   _DefaultJumpHeight: 175.61
-  _DefaultRotationSpeed: 3
+  _DefaultRotationSpeed: 4
 --- !u!136 &4018389467632008851
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -174,7 +175,21 @@ CapsuleCollider:
   m_Radius: 0.5000001
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: -0.0000000840697}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &8085744558986477597
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136606243839501313}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.525
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2510831965480553331
 GameObject:
   m_ObjectHideFlags: 0

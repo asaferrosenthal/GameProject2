@@ -1,4 +1,5 @@
 using System;
+using Adversary;
 using Traps;
 using RunMan;
 using UnityEngine;
@@ -21,6 +22,11 @@ namespace Environment
             _spawners = GetComponentsInChildren<Spawner>();
             _traps = GetComponentsInChildren<Trap>();
             _rigidbody = _RunMan.GetComponent<Rigidbody>();
+        }
+
+        private void Start()
+        {
+            AdversaryAgent.ONReset += ResetEnvironment;
         }
 
         private void FixedUpdate()

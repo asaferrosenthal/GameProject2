@@ -83,5 +83,12 @@ namespace RunMan
             trans.localRotation = _defaultRotation;
             trans.localPosition = _defaultPosition;
         }
+
+        public void AddMass(float num)
+        {
+            _defaultMass += num;
+            _rigidBody.mass += num;
+        }
+        
     }
 }
