@@ -23,9 +23,12 @@ namespace RunMan
 
         // Use on awake scale value as the default Run Man scale_
         private Vector3 _defaultScale;
-
+        
         // Use on awake mass value as default
         private float _defaultMass;
+        
+        // live mass for updates
+        private float _currentMass;
         
         // Use on reset
         private Vector3 _defaultPosition;
@@ -44,6 +47,7 @@ namespace RunMan
             Transform trans = transform;
             _defaultScale = trans.localScale;
             _defaultMass = _rigidBody.mass;
+            _currentMass = _defaultMass;
             _defaultRotation = trans.localRotation;
             _defaultPosition = trans.localPosition;
         }
@@ -70,7 +74,7 @@ namespace RunMan
         private void ScaleRunMan()
         {
             transform.localScale = _defaultScale * _currentScale;
-            _rigidBody.mass = _defaultMass * _currentScale;
+            _rigidBody.mass = _currentMass * _currentScale;
         }
 
         public void ResetRunMan()
@@ -86,7 +90,7 @@ namespace RunMan
 
         public void AddMass(float num)
         {
-            _defaultMass += num;
+            _currentMass += num;
             _rigidBody.mass += num;
         }
         

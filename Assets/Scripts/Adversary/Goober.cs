@@ -19,12 +19,7 @@ namespace Adversary
             _rigidbody = GetComponent<Rigidbody>();
             _parent = transform;
         }
-
-        private void Start()
-        {
-            AdversaryAgent.ONReset += Reset;
-        }
-
+        
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer != 10 | _agent._Frozen == true) return;

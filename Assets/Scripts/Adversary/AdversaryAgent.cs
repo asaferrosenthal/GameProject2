@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Environment;
 using Traps;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
@@ -42,7 +43,10 @@ namespace Adversary
         
         [Tooltip("How much we punish the agent for negative behaviour, subject to static modifiers according to the situation")]
         public float _DefaultPunishmentValue;
-        
+
+        public EnvironmentManager _Manager;
+
+        public bool _Master;
         // Agent Components and settings
         private Rigidbody _rigidBody;
         private bool _isGrounded = false;
@@ -61,13 +65,7 @@ namespace Adversary
 
         // Constants
         private const int FloorLayer = 1 << 8;
-        
-        // EVENTS
-        public delegate void OnReset();
 
-        public static event OnReset ONReset;
-
-        
         // Initialize information that will not change
         private void Awake()
         {
@@ -89,6 +87,7 @@ namespace Adversary
         private void Start()
         {
             ResetAgent();
+            if (_Master) _Manager._Training = true;
         }
         
         // Triggers are reserved for interactive components
@@ -160,7 +159,7 @@ namespace Adversary
         public override void OnEpisodeBegin()
         {
             ResetAgent();
-            ONReset?.Invoke();
+            if(_Master) _Manager.ResetEnvironment();
         }
 
         public override void CollectObservations(VectorSensor sensor)
