@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Environment;
 using Traps;
+using Unity.Barracuda;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
@@ -64,7 +65,7 @@ namespace Adversary
         private Rigidbody _target;
         
         // Obstacle information
-        private List<GameObject> _obstacleRecords;
+        private List<GameObject> _obstacleRecords = new List<GameObject>();
 
         // Constants
         private const int FloorLayer = 1 << 8;
@@ -98,12 +99,11 @@ namespace Adversary
         // Bundled stay and enter together due to desired behaviour is the same in both cases
         private void OnCollisionStayOrEnter(Collision other)
         {
-            if (_target == null) return;
-            float bonusMultiplier = _target.mass; // the heavier the target is, the greater the reward
             float reward = 0;
-            
+
             if ((_targetLayerMask | (1 << other.gameObject.layer)) == _targetLayerMask) // positive interaction
             {
+                float bonusMultiplier = _target.mass; // the heavier the target is, the greater the reward
                 reward = bonusMultiplier * _DefaultRewardValue;
             }
             else if ((_obstacleLayerMask | (1 << other.gameObject.layer)) == _obstacleLayerMask) // negative interaction
@@ -111,6 +111,7 @@ namespace Adversary
                 reward = _DefaultPunishmentValue;
             }
             
+            UpdateAgentSenseData();
             // adds no reward if neither interaction happened
             AddReward(reward);
         }
@@ -130,6 +131,7 @@ namespace Adversary
         private void OnCollisionExit(Collision other)
         {
             if (1 << other.gameObject.layer == FloorLayer) _isGrounded = false;
+            UpdateAgentSenseData();
         }
 
         private void UpdateAgentSenseData()
@@ -147,6 +149,7 @@ namespace Adversary
             _obstacleRecords = CleanList.RemoveDead(_obstacleRecords, _obstacleLayerMask);
             _obstacleRecords = DetectColliderLayer.InLayerRadius(_obstacleLayerMask, _SearchRadius, position, _obstacleRecords);
             _obstacleRecords = Sort.ByDistance(_obstacleRecords, position);
+
         }
         
         public void ResetAgent()
@@ -159,7 +162,7 @@ namespace Adversary
             _Frozen = false;
             _goober.Reset();
             _Spawner.RespawnAgent(this);
-            
+            UpdateAgentSenseData();
         }
 
         /*ML Agent specific methods*/
@@ -244,6 +247,11 @@ namespace Adversary
 
         }
 
+        public override void Heuristic(float[] actionsOut)
+        {
+            base.Heuristic(actionsOut);
+        }
+
         public override void OnActionReceived(float[] vectorAction)
         {
             // if frozen don't take any actions
@@ -257,17 +265,17 @@ namespace Adversary
             if (_isGrounded)
             {
                 // Calculate force applied
-                Vector3 move = (forward * _MoveForce * vectorAction[0]) + (up * _JumpForce * vectorAction[1]);
+                Vector3 move = (forward * _MoveForce * vectorAction[0]) + (up * _JumpForce * vectorAction[1] + (right * _MoveForce * vectorAction[2]));
 
                 // Apply move force
                 _rigidBody.AddForce(move * _MoveForce);
             }
-
+            
             // Calculate rotation applied
             Vector3 rotationVector = transform.rotation.eulerAngles;
             
             // Calculate yaw 
-            float yawChange = vectorAction[2];
+            float yawChange = vectorAction[3];
             
             // Smooth yaw rotation
             _smoothYawChange = Mathf.MoveTowards(_smoothYawChange, yawChange, 2f * Time.fixedDeltaTime);

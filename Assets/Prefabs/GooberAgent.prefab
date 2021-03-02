@@ -129,17 +129,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 35
+    VectorObservationSize: 34
     NumStackedVectorObservations: 1
-    VectorActionSize: 03000000
+    VectorActionSize: 04000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
   m_Model: {fileID: 0}
-  m_InferenceDevice: 0
+  m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: Goober
   TeamId: 0
-  m_UseChildSensors: 1
+  m_UseChildSensors: 0
 --- !u!114 &5685043310866678637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,10 +156,10 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 500
-  _MoveForce: 150
-  _JumpForce: 100
-  _YawRotationSpeed: 0
-  _SearchRadius: 5
+  _MoveForce: 5
+  _JumpForce: 3.5
+  _YawRotationSpeed: 30
+  _SearchRadius: 20
   _TrainingMode: 1
   _Frozen: 0
   _TargetLayers: 0a000000
