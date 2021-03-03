@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using Environment;
+using UnityEngine;
 using UnityEngine.Events;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -14,6 +16,9 @@ namespace RunMan
         [Header("Run Man Settings")]
         [Tooltip("Factor by which inputs change Run Man scale")]
         public float _ScaleFactor = 0.2f;
+
+        public bool _Training = false;
+        public List<Transform> _TrainingLocations;
         
         // record of rigidbody to prevent need to re-access
         private Rigidbody _rigidBody;
@@ -88,7 +93,16 @@ namespace RunMan
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
             trans.localRotation = _defaultRotation;
-            trans.localPosition = _defaultPosition;
+            if (_Training)
+            {
+                trans.position = RunManTrainingAssistant.RandomizeSpawn(_TrainingLocations, gameObject);
+            }
+            else
+            {
+                trans.localPosition = _defaultPosition;
+            }
+            
+            
         }
 
         public void AddMass(float num)

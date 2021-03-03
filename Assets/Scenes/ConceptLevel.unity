@@ -8572,6 +8572,16 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
+        type: 3}
+      propertyPath: _DefaultSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
+        type: 3}
+      propertyPath: _DefaultRotationSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6935746349388031149, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
       propertyPath: m_IsActive

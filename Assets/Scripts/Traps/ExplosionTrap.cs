@@ -11,10 +11,22 @@ namespace Traps
 
         public float _UpwardsModifier;
         
+        public ParticleSystem _Explosion;
+        
         protected override void ApplyTrap()
         {
             if (!_Enabled) return;
-            _Target.GetComponent<Rigidbody>().AddExplosionForce(_Power, _Target.transform.position, _Radius, _UpwardsModifier);
+            ExplosionEffect();
+            Rigidbody bod = _Target.GetComponent<Rigidbody>();
+            if(bod != null) bod.AddExplosionForce(_Power, _Target.transform.position, _Radius, _UpwardsModifier);
+        }
+        
+        void ExplosionEffect()
+        {
+            if (_Target.name == "RunMan")
+            {
+                _Explosion.Play();
+            }
         }
     }
 }

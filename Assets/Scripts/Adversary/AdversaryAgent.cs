@@ -97,7 +97,7 @@ namespace Adversary
         }
         
         // Bundled stay and enter together due to desired behaviour is the same in both cases
-        private void OnCollisionStayOrEnter(Collision other)
+        private void OnTriggerStayOrEnter(Collider other)
         {
             float reward = 0;
 
@@ -116,16 +116,25 @@ namespace Adversary
             AddReward(reward);
         }
 
+        private void OnTriggerStay(Collider other)
+        {
+            OnTriggerStayOrEnter(other);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            OnTriggerStayOrEnter(other);
+        }
 
         private void OnCollisionStay(Collision other)
         {
-            OnCollisionStayOrEnter(other);
+            
         }
 
         private void OnCollisionEnter(Collision other)
         {
             if (1 << other.gameObject.layer == FloorLayer) _isGrounded = true;
-            OnCollisionStayOrEnter(other);
+            UpdateAgentSenseData();
         }
 
         private void OnCollisionExit(Collision other)
