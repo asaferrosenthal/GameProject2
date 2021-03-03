@@ -46,6 +46,7 @@ namespace RunMan
             
             // Fill out the _movement vector with given axis inputs
             _movement =  _DefaultSpeed * transform.forward;
+            
             // Add force in the direction of rotation, make it feel less sloppy
             _movement += transform.right * (_DefaultSpeed * Input.GetAxis("Horizontal"));
             

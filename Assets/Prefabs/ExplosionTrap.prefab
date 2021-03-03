@@ -115,3 +115,5 @@ MonoBehaviour:
   _Power: 1000
   _Radius: 1000
   _UpwardsModifier: 10
+  _Explosion: {fileID: 2843390057451444753, guid: f619ccb3a926a78408983b72f4378f07,
+    type: 3}

@@ -1,4 +1,5 @@
 using System;
+using Adversary;
 using Traps;
 using RunMan;
 using UnityEngine;
@@ -8,6 +9,7 @@ namespace Environment
     public class EnvironmentManager : MonoBehaviour
     {
         public TheRunMan _RunMan;
+        public bool _Training;
         
         private Spawner[] _spawners;
         private Trap[] _traps;
@@ -16,6 +18,7 @@ namespace Environment
         private float _timeSinceStopped = 0;
         private float _maxTimeSinceStopped = 1f;
         private Rigidbody _rigidbody;
+
         private void Awake()
         {
             _spawners = GetComponentsInChildren<Spawner>();
@@ -30,6 +33,7 @@ namespace Environment
 
         private void CheckIfStopped()
         {
+            if (_Training) return;
             if (Mathf.Floor(_rigidbody.velocity.magnitude) == 0)
             {
                 // Add how much time has passed since last check
