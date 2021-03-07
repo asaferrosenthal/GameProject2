@@ -83,12 +83,14 @@ namespace Adversary
             {
                 _obstacleLayerMask |= (1 << layer);
             }
+            
 
             // Rigid body for physics interactions
             _rigidBody = GetComponentInChildren<Rigidbody>();
             _goober = GetComponent<InteractionBase>();
             _Manager = transform.parent.transform.parent.GetComponentInParent<EnvironmentManager>();
-            Debug.Log(_Manager);
+            Debug.Log(_targetLayerMask);
+            Debug.Log(_obstacleLayerMask);
         }
 
         private void Start()
@@ -113,6 +115,7 @@ namespace Adversary
             
             UpdateAgentSenseData();
             // adds no reward if neither interaction happened
+            Debug.Log("Reward Given: " + reward);
             AddReward(reward);
         }
 
@@ -271,13 +274,41 @@ namespace Adversary
                 return;
             }
 
-            if (_isGrounded)
+            // are we on the ground, and are we moving
+            if (_isGrounded & vectorAction[0] > 0)
             {
-                // Calculate force applied
-                Vector3 move = (forward * _MoveForce * vectorAction[0]) + (up * _JumpForce * vectorAction[1] + (right * _MoveForce * vectorAction[2]));
+                Vector3 move = new Vector3();
+                
+                // Z axis
+                switch (vectorAction[1])
+                {
+                    // forwards movement
+                    case 0:
+                        move += forward * _MoveForce;
+                        break;
+                    // backwards movement
+                    case 1:
+                        move -= forward * _MoveForce;
+                        break;
+                }
+                // X axis
+                switch (vectorAction[2])
+                {
+                    // right movement
+                    case 0:
+                        move += right * _MoveForce;
+                        break;
+                    // left movement
+                    case 1:
+                        move -= right * _MoveForce;
+                        break;
+                }
+                // we always jump when we move 
+                // Y axis
+                move += up * _JumpForce;
 
                 // Apply move force
-                _rigidBody.AddForce(move * _MoveForce);
+                _rigidBody.AddForce(move);
             }
             
             // Calculate rotation applied

@@ -23,7 +23,6 @@ namespace Adversary
         
         public virtual void Reset()
         {
-            Debug.Log("_Parent");
             _Collider.enabled = true;
         }
         

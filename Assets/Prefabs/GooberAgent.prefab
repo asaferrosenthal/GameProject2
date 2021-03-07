@@ -131,9 +131,9 @@ MonoBehaviour:
   m_BrainParameters:
     VectorObservationSize: 34
     NumStackedVectorObservations: 1
-    VectorActionSize: 04000000
+    VectorActionSize: 02000000020000000200000002000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 1
+    VectorActionSpaceType: 0
   m_Model: {fileID: 5022602860645237092, guid: b112439aa244b4f4592436c2cdef9c8c, type: 3}
   m_InferenceDevice: 1
   m_BehaviorType: 0
@@ -156,8 +156,8 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 500
-  _MoveForce: 3.5
-  _JumpForce: 8
+  _MoveForce: 30
+  _JumpForce: 50
   _YawRotationSpeed: 30
   _SearchRadius: 15
   _TrainingMode: 1
@@ -165,7 +165,7 @@ MonoBehaviour:
   _TargetLayers: 0a000000
   _ObstacleLayers: 09000000
   _DefaultRewardValue: 1
-  _DefaultPunishmentValue: -0.1
+  _DefaultPunishmentValue: -0.5
   _Manager: {fileID: 0}
   _Spawner: {fileID: 0}
   _Master: 0
