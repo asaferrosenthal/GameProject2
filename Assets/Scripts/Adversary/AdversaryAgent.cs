@@ -217,7 +217,7 @@ namespace Adversary
                 float obstacleDistance = (_obstacleRecords[0].transform.position - transformPosition).magnitude;
                 
                 // relative distance to obstacle
-                sensor.AddObservation(obstacleDistance/_SearchRadius); // 1
+                sensor.AddObservation(obstacleDistance); // 1
                 // Where is the obstacle relative to agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.right.normalized)); // 1
@@ -227,6 +227,7 @@ namespace Adversary
             // Targets related information
             if (_target == null)
             {
+                Debug.Log("There is no target");
                 sensor.AddObservation(new float[16]);
             }
             else
@@ -237,7 +238,7 @@ namespace Adversary
                 float targetDistance = (targetPosition - agentPosition).magnitude;
                 
                 // relative distance to target
-                sensor.AddObservation(targetDistance/_SearchRadius); // 1
+                sensor.AddObservation(targetDistance); // 1
                 // Where is the target relative to the agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfTarget, -_target.transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfTarget, -_target.transform.right.normalized)); // 1

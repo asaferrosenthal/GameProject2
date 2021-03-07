@@ -23,7 +23,7 @@ namespace Environment
         {
             _spawners = GetComponentsInChildren<Spawner>();
             _traps = GetComponentsInChildren<Trap>();
-            _rigidbody = _RunMan.GetComponent<Rigidbody>();
+            if(_RunMan != null) _rigidbody = _RunMan.GetComponent<Rigidbody>();
         }
 
         private void FixedUpdate()
@@ -61,7 +61,7 @@ namespace Environment
                 ele.ResetTrap();
             }
 
-            _RunMan.ResetRunMan();
+            if(_RunMan != null) _RunMan.ResetRunMan();
             _timeSinceStopped = 0;
         }
     }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Environment;
 using UnityEngine;
 using UnityEngine.Events;
+using static Environment.RunManTrainingAssistant;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
 
@@ -95,7 +95,7 @@ namespace RunMan
             trans.localRotation = _defaultRotation;
             if (_Training)
             {
-                trans.position = RunManTrainingAssistant.RandomizeSpawn(_TrainingLocations, gameObject);
+                trans.position = RandomizeSpawn(_TrainingLocations, gameObject);
             }
             else
             {

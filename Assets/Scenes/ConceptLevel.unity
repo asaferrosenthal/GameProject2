@@ -8564,6 +8564,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5306664619897595751, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
+      propertyPath: m_Mass
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5306664619897595751, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
+        type: 3}
       propertyPath: m_AngularDrag
       value: 15
       objectReference: {fileID: 0}
@@ -8575,7 +8580,12 @@ PrefabInstance:
     - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
       propertyPath: _DefaultSpeed
-      value: 10
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
+        type: 3}
+      propertyPath: _DefaultJumpHeight
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
@@ -8650,6 +8660,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _RunMan: {fileID: 24232981}
+  _Training: 0
 --- !u!43 &1299442519
 Mesh:
   m_ObjectHideFlags: 0
