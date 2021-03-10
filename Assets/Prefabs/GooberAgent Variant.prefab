@@ -79,13 +79,24 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5685043310866678642, guid: 0f6ad011ca1718c46909ad6a73b8920a,
         type: 3}
+      propertyPath: m_BrainParameters.VectorObservationSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685043310866678642, guid: 0f6ad011ca1718c46909ad6a73b8920a,
+        type: 3}
       propertyPath: m_BrainParameters.VectorActionSize.Array.size
-      value: 3
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5685043310866678642, guid: 0f6ad011ca1718c46909ad6a73b8920a,
+        type: 3}
+      propertyPath: m_BrainParameters.NumStackedVectorObservations
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5685043310866678643, guid: 0f6ad011ca1718c46909ad6a73b8920a,
         type: 3}
       propertyPath: _PlayerLayer
       value: 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5685043310866678643, guid: 0f6ad011ca1718c46909ad6a73b8920a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0f6ad011ca1718c46909ad6a73b8920a, type: 3}

@@ -109,8 +109,8 @@ Rigidbody:
   m_GameObject: {fileID: 5685043310866678635}
   serializedVersion: 2
   m_Mass: 0.25
-  m_Drag: 1
-  m_AngularDrag: 1
+  m_Drag: 0.25
+  m_AngularDrag: 0.5
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -129,13 +129,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 10
+    VectorObservationSize: 8
     NumStackedVectorObservations: 1
-    VectorActionSize: 020000000200000002000000
+    VectorActionSize: 03000000
     VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: 5c4c53aa8b3dbbe44a3f4e96acec7321, type: 3}
-  m_InferenceDevice: 0
+    VectorActionSpaceType: 1
+  m_Model: {fileID: 0}
+  m_InferenceDevice: 1
   m_BehaviorType: 0
   m_BehaviorName: Goober
   TeamId: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   _TargetLayers: 0a000000
   _ObstacleLayers: 09000000
   _DefaultRewardValue: 1
-  _DefaultPunishmentValue: -0.5
+  _DefaultPunishmentValue: -0.1
   _Manager: {fileID: 0}
   _Spawner: {fileID: 0}
   _Master: 0
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557626d50e2069c4493e0d1590947294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _PlayerLayer: 11
+  _PlayerLayer: 10
 --- !u!114 &6921091797222599385
 MonoBehaviour:
   m_ObjectHideFlags: 0
