@@ -180,6 +180,8 @@ namespace Adversary
         /*ML Agent specific methods*/
         public override void OnEpisodeBegin()
         {
+            if (!_TrainingMode) return;
+            
             if (_Master) _Manager.ResetEnvironment();
             ResetAgent();
         }
@@ -328,6 +330,5 @@ namespace Adversary
             // Re-evaluate data
             UpdateAgentSenseData();
         }
-
     }
 }

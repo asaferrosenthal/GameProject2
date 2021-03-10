@@ -134,7 +134,7 @@ MonoBehaviour:
     VectorActionSize: 02000000020000000200000002000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: b112439aa244b4f4592436c2cdef9c8c, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 79abfb92c06760344be00b95eab8f708, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Goober
@@ -159,8 +159,8 @@ MonoBehaviour:
   _MoveForce: 30
   _JumpForce: 50
   _YawRotationSpeed: 30
-  _SearchRadius: 15
-  _TrainingMode: 1
+  _SearchRadius: 30
+  _TrainingMode: 0
   _Frozen: 0
   _TargetLayers: 0a000000
   _ObstacleLayers: 09000000
