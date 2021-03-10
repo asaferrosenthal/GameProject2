@@ -129,12 +129,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 34
+    VectorObservationSize: 10
     NumStackedVectorObservations: 1
-    VectorActionSize: 02000000020000000200000002000000
+    VectorActionSize: 020000000200000002000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 0
-  m_Model: {fileID: 5022602860645237092, guid: 79abfb92c06760344be00b95eab8f708, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 5c4c53aa8b3dbbe44a3f4e96acec7321, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Goober
@@ -181,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 557626d50e2069c4493e0d1590947294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _FloorLayer: 10
+  _PlayerLayer: 11
 --- !u!114 &6921091797222599385
 MonoBehaviour:
   m_ObjectHideFlags: 0

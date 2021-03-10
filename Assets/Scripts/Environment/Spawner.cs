@@ -25,6 +25,8 @@ namespace Environment
         // This array will be defined by any object that has this object as a parent.
         // These child objects will be used for creating spawn locations
         private SpawnLocation[] _spawnLocations;
+
+        private int _defaultLayer;
         
         /// <summary>
         /// Spawner's layer mask defines which layers must avoid spawning too close to
@@ -62,6 +64,8 @@ namespace Environment
                     if (i == 0) agent._Master = true;
                 }
             }
+
+            _defaultLayer = _adversaryList[0].gameObject.layer;
         }
 
         /// <summary>
@@ -78,7 +82,8 @@ namespace Environment
             {
                 ele.gameObject.SetActive(true);
                 ele.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
-                
+                ele.gameObject.layer = _defaultLayer;
+
             }
         }
 

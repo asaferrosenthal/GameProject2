@@ -40,6 +40,9 @@ namespace RunMan
         
         // use on reset
         private Quaternion _defaultRotation;
+        
+        // use on reset
+        private int _defaultLayer;
 
         // Set maximum and minimum scaling of run man, could make these public for testing
         private const float MaxScale = 1.5f;
@@ -48,6 +51,7 @@ namespace RunMan
         // Initializes defaults from the rigidbody attached to a shared game object
         private void Awake()
         {
+            _defaultLayer = gameObject.layer;
             _rigidBody = GetComponent<Rigidbody>();
             Transform trans = transform;
             _defaultScale = trans.localScale;
@@ -93,6 +97,8 @@ namespace RunMan
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
             trans.localRotation = _defaultRotation;
+            Debug.Log(_defaultLayer);
+            this.gameObject.layer = _defaultLayer;
             if (_Training)
             {
                 trans.position = RandomizeSpawn(_TrainingLocations, gameObject);

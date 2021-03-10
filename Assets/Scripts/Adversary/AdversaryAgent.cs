@@ -1,9 +1,5 @@
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using Environment;
-using Traps;
-using Unity.Barracuda;
 using Unity.MLAgents;
 using Unity.MLAgents.Sensors;
 using UnityEngine;
@@ -62,7 +58,7 @@ namespace Adversary
         //private int _trapLayerMask;
         
         // target information
-        private Rigidbody _target;
+        private List<GameObject> _targetRecords = new List<GameObject>();
         
         // Obstacle information
         private List<GameObject> _obstacleRecords = new List<GameObject>();
@@ -105,8 +101,9 @@ namespace Adversary
 
             if ((_targetLayerMask | (1 << other.gameObject.layer)) == _targetLayerMask) // positive interaction
             {
-                float bonusMultiplier = _target.mass; // the heavier the target is, the greater the reward
-                reward = bonusMultiplier * _DefaultRewardValue;
+                //other.gameObject.layer = 7; // the dead layer
+                _targetRecords.Remove(other.gameObject);
+                reward = _DefaultRewardValue;
             }
             else if ((_obstacleLayerMask | (1 << other.gameObject.layer)) == _obstacleLayerMask) // negative interaction
             {
@@ -128,12 +125,7 @@ namespace Adversary
         {
             OnTriggerStayOrEnter(other);
         }
-
-        private void OnCollisionStay(Collision other)
-        {
-            
-        }
-
+        
         private void OnCollisionEnter(Collision other)
         {
             if (1 << other.gameObject.layer == FloorLayer) _isGrounded = true;
@@ -148,14 +140,14 @@ namespace Adversary
 
         private void UpdateAgentSenseData()
         {
+            if (_Frozen) return;
+            
             var position = transform.position;
             
             // Update target data
-            // Get targets on possible layers
-            Collider[] potentialTargets = Physics.OverlapSphere(position, _SearchRadius, _targetLayerMask);
-            
-            // is there any visible target? if so get the closest, otherwise set target to null
-            if (potentialTargets.Length != 0) _target = potentialTargets[0].attachedRigidbody;
+            _targetRecords = CleanList.RemoveDead(_targetRecords, _targetLayerMask);
+            _targetRecords = DetectColliderLayer.InLayerRadius(_targetLayerMask, _SearchRadius, position, _targetRecords);
+            _targetRecords = Sort.ByDistance(_obstacleRecords, position);
 
             // Update obstacle data
             _obstacleRecords = CleanList.RemoveDead(_obstacleRecords, _obstacleLayerMask);
@@ -167,7 +159,7 @@ namespace Adversary
         public void ResetAgent()
         {
             // reset all physics and memory
-            _target = null;
+            _targetRecords = new List<GameObject>();
             _obstacleRecords = new List<GameObject>();
             _rigidBody.velocity = zero;
             _rigidBody.angularVelocity = zero;
@@ -187,10 +179,9 @@ namespace Adversary
         }
 
         public override void CollectObservations(VectorSensor sensor)
-        {    
-            // Total of 35 points
+        {
             // This agents information
-            // The current direction the agent is heading
+            /*// The current direction the agent is heading
             sensor.AddObservation(_rigidBody.velocity.normalized); // 3
             // The current velocity of the agent
             sensor.AddObservation(_rigidBody.velocity.magnitude); // 1
@@ -199,7 +190,7 @@ namespace Adversary
             // The current angular velocity of the agent
             sensor.AddObservation(_rigidBody.angularVelocity.magnitude); // 1
             // The current direction we are facing
-            sensor.AddObservation(_rigidBody.rotation.normalized); // 3
+            sensor.AddObservation(_rigidBody.rotation.normalized); */// 3
             // Are we currently on the ground
             sensor.AddObservation(_isGrounded); // 1
             
@@ -219,7 +210,7 @@ namespace Adversary
                 float obstacleDistance = (_obstacleRecords[0].transform.position - transformPosition).magnitude;
                 
                 // relative distance to obstacle
-                sensor.AddObservation(obstacleDistance); // 1
+                sensor.AddObservation(obstacleDistance/_SearchRadius); // 1
                 // Where is the obstacle relative to agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.right.normalized)); // 1
@@ -227,26 +218,25 @@ namespace Adversary
             }
             
             // Targets related information
-            if (_target == null)
+            if (_targetRecords.Count <= 0)
             {
-                Debug.Log("There is no target");
-                sensor.AddObservation(new float[16]);
+                sensor.AddObservation(new float[4]);
             }
             else
             {
                 Vector3 agentPosition = transform.position;
-                Vector3 targetPosition = _target.transform.position;
+                Vector3 targetPosition = _targetRecords[0].transform.position;
                 Vector3 dirOfTarget = (targetPosition - agentPosition).normalized;
                 float targetDistance = (targetPosition - agentPosition).magnitude;
                 
                 // relative distance to target
-                sensor.AddObservation(targetDistance); // 1
+                sensor.AddObservation(targetDistance/_SearchRadius); // 1
                 // Where is the target relative to the agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
-                sensor.AddObservation(Dot(dirOfTarget, -_target.transform.forward.normalized)); // 1
-                sensor.AddObservation(Dot(dirOfTarget, -_target.transform.right.normalized)); // 1
-                sensor.AddObservation(Dot(dirOfTarget, -_target.transform.up.normalized)); // 1
+                sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.forward.normalized)); // 1
+                sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.right.normalized)); // 1
+                sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.up.normalized)); // 1
                 
-                // The current direction the target is heading
+                /*// The current direction the target is heading
                 sensor.AddObservation(_target.velocity.normalized); // 3
                 // The current velocity of the target
                 sensor.AddObservation(_target.velocity.magnitude); // 1
@@ -257,7 +247,7 @@ namespace Adversary
                 // The current direction the target is facing
                 sensor.AddObservation(_target.rotation.normalized); // 3
                 // The current mass of the target
-                sensor.AddObservation(_target.mass); // 1
+                sensor.AddObservation(_target.mass); // 1*/
             }
 
         }

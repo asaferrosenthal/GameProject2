@@ -3855,7 +3855,7 @@ PrefabInstance:
     - target: {fileID: 4778260150303936241, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
       propertyPath: _SpawnQuantities.Array.data[0]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5696081196076302964, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}

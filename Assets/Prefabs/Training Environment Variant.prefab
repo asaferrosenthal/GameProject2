@@ -623,7 +623,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _Prefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 5685043310866678635, guid: 0f6ad011ca1718c46909ad6a73b8920a,
+      objectReference: {fileID: 1723553817072510299, guid: e72ac0fd7b4ee184d910aa07d11821df,
         type: 3}
     - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
@@ -738,7 +738,7 @@ PrefabInstance:
     - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: _SpawnQuantities.Array.data[0]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 268679869685820079, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}

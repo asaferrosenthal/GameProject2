@@ -18,7 +18,6 @@ namespace Adversary
             // object reset information
             var transform1 = transform;
             _Parent = transform1;
-
         }
         
         public virtual void Reset()
