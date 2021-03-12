@@ -2313,6 +2313,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Training Environment
       objectReference: {fileID: 0}
+    - target: {fileID: 2844788565492407271, guid: 4c40908a9f9e9c94ead7f4b2c2918daa,
+        type: 3}
+      propertyPath: _Padding
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4822792084344171217, guid: 4c40908a9f9e9c94ead7f4b2c2918daa,
         type: 3}
       propertyPath: _Prefabs.Array.data[0]

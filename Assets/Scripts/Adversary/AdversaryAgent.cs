@@ -50,8 +50,7 @@ namespace Adversary
         private Rigidbody _rigidBody;
         private InteractionBase _goober;
         private bool _isGrounded = false;
-        private float _smoothYawChange = 0f;
-        
+
         // world information
         private int _targetLayerMask;
         private int _obstacleLayerMask;
@@ -107,9 +106,13 @@ namespace Adversary
         {
             // This agents information
 
+            // direction the agent is heading : 3
+            sensor.AddObservation(_rigidBody.velocity.normalized);
+            // get magnitude of velocity : 1
+            sensor.AddObservation(_rigidBody.velocity.magnitude);
             // Observe the agent's rotation : 3
             sensor.AddObservation(_rigidBody.rotation.normalized);
-            // Are we currently on the ground
+            // Are we on the ground, might not matter
             sensor.AddObservation(_isGrounded); // 1
 
             // Obstacle related information
@@ -129,6 +132,7 @@ namespace Adversary
                 // Where is the obstacle relative to agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.right.normalized)); // 1
+                Debug.Log("Obstacles are being recorded");
             }
             
             // Targets related information
@@ -148,7 +152,7 @@ namespace Adversary
                 // Where is the target relative to the agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.right.normalized)); // 1
-                
+                Debug.Log("Targets are being recorded");
             }
 
         }
@@ -194,11 +198,13 @@ namespace Adversary
             {
                 float bonus = 0;
                 
-                if(_TrainingMode) other.gameObject.layer = 7; // the dead layer
-                _targetRecords.Remove(other.gameObject);
-
                 // 10% bonus for every target hit
                 bonus = _hits * .1f;
+                _hits++;
+                
+                if(_TrainingMode) other.gameObject.layer = 7; // the dead layer
+                _targetRecords.Remove(other.gameObject); // stop tracking the target
+                
                 reward = bonus + _DefaultRewardValue;
             }
             else if ((_obstacleLayerMask | (1 << other.gameObject.layer)) == _obstacleLayerMask) // negative interaction
@@ -242,13 +248,11 @@ namespace Adversary
             // Update target data
             _targetRecords = CleanList.RemoveDead(_targetRecords, _targetLayerMask);
             _targetRecords = DetectColliderLayer.InLayerRadius(_targetLayerMask, _SearchRadius, position, _targetRecords);
-            _targetRecords = Sort.ByDistance(_obstacleRecords, position);
+            _targetRecords = Sort.ByDistance(_targetRecords, position);
 
             // Update obstacle data
-            _obstacleRecords = CleanList.RemoveDead(_obstacleRecords, _obstacleLayerMask);
             _obstacleRecords = DetectColliderLayer.InLayerRadius(_obstacleLayerMask, _SearchRadius, position, _obstacleRecords);
             _obstacleRecords = Sort.ByDistance(_obstacleRecords, position);
-
         }
         
         public void ResetAgent()

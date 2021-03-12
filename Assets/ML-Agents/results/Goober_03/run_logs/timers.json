@@ -1,0 +1,41 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1615436670",
+        "python_version": "3.7.7 (default, May  6 2020, 11:45:54) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "C:\\Users\\Bryan\\anaconda3\\envs\\ml-agent-4.0\\Scripts\\mlagents-learn ./trainer_config.yaml --run-id Goober_03",
+        "mlagents_version": "0.18.0",
+        "mlagents_envs_version": "0.18.0",
+        "communication_protocol_version": "1.0.0",
+        "tensorflow_version": "2.2.0",
+        "end_time_seconds": "1615436732"
+    },
+    "total": 61.9406222,
+    "count": 1,
+    "self": 0.15662769999999426,
+    "children": {
+        "run_training.setup": {
+            "total": 0.005577599999999849,
+            "count": 1,
+            "self": 0.005577599999999849
+        },
+        "TrainerController.start_learning": {
+            "total": 61.7784169,
+            "count": 1,
+            "self": 0.00018130000000837754,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 61.7780584,
+                    "count": 1,
+                    "self": 61.7780584
+                },
+                "TrainerController._save_model": {
+                    "total": 0.00017719999999599167,
+                    "count": 1,
+                    "self": 0.00017719999999599167
+                }
+            }
+        }
+    }
+}
