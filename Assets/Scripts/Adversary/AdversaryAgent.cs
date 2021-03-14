@@ -132,7 +132,7 @@ namespace Adversary
                 // Where is the obstacle relative to agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.right.normalized)); // 1
-                Debug.Log("Obstacles are being recorded");
+                
             }
             
             // Targets related information
@@ -152,7 +152,14 @@ namespace Adversary
                 // Where is the target relative to the agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.right.normalized)); // 1
-                Debug.Log("Targets are being recorded");
+
+                /*Rigidbody body = _targetRecords[0].GetComponent<Rigidbody>();
+                // direction the target is heading : 3
+                sensor.AddObservation(body.velocity.normalized);
+                // get magnitude of velocity : 1
+                sensor.AddObservation(body.velocity.magnitude);
+                // Observe the target's rotation : 3
+                sensor.AddObservation(body.rotation.normalized);*/
             }
 
         }
