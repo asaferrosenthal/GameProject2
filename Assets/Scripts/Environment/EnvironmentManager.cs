@@ -14,6 +14,8 @@ namespace Environment
         private Spawner[] _spawners;
         private Trap[] _traps;
         
+        public DeathField deathfield;
+
         // Triggers for resetting level
         private float _timeSinceStopped = 0;
         private float _maxTimeSinceStopped = 1f;
@@ -40,7 +42,7 @@ namespace Environment
                 _timeSinceStopped += Time.fixedDeltaTime;
                 
                 // End the game if we reached the time limit for being stopped
-                if (_timeSinceStopped >= _maxTimeSinceStopped) ResetEnvironment();
+                if (deathfield.gone) ResetEnvironment();
             }
             else
             {

@@ -28,6 +28,12 @@ namespace Traps {
                 _positions[i] = _rigidbodies[i].transform.position;
                 _rotations[i] = _rigidbodies[i].transform.rotation;
             }
+
+            //turn on kinematic setting 
+            foreach (Rigidbody ele in _rigidbodies)
+            {
+                ele.isKinematic = true;
+            }
         }
 
         protected async override void ApplyTrap()
@@ -46,8 +52,6 @@ namespace Traps {
             }
             
         }
-        
-        
 
         
         public override void ResetTrap()
