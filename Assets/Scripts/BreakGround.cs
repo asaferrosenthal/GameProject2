@@ -63,8 +63,8 @@ namespace Traps {
             {
                 // Stop the Rigidbodies from moving
                 ele.isKinematic = true;
+                ele.gameObject.SetActive(true);
                 var transform1 = ele.transform;
-                
                 // Reset positions
                 transform1.position = _positions[i];
                 transform1.rotation = _rotations[i];

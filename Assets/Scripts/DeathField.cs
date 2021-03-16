@@ -23,11 +23,11 @@ namespace Environment {
         protected void OnTriggerEnter(Collider other)
         {
 
-            other.gameObject.SetActive(false);
-            gone = true;
+            other.gameObject.SetActive(false); //make object disappear
 
-            if (other.tag == "RunMan"){
-                Debug.Log("RunMan collided");
+            //check if the RunMan is disabled
+            if (other.gameObject.tag == "RunMan"){
+                gone = true;
                 EnvManage.ResetEnvironment();
                 
             }
