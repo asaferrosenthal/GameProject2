@@ -1,12 +1,15 @@
 using System;
 using UnityEngine;
 
-namespace Traps
-{
-    public class DestructableWall : Trap
+//Need to include to delay code execution
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace Traps {
+    public class BreakGround : Trap
     {
-        [Tooltip("The momentum required to break through this wall")]
-        public float _BreakThreshold;
+        [Tooltip("The amount of time that the ground takes to break")]
+        public int _BreakTime;
         
         private Rigidbody[] _rigidbodies;
         private Vector3[] _positions;
@@ -25,24 +28,32 @@ namespace Traps
                 _positions[i] = _rigidbodies[i].transform.position;
                 _rotations[i] = _rigidbodies[i].transform.rotation;
             }
+
+            //turn on kinematic setting 
+            foreach (Rigidbody ele in _rigidbodies)
+            {
+                ele.isKinematic = true;
+            }
         }
 
-        protected override void ApplyTrap()
+        protected async override void ApplyTrap()
         {
             base.ApplyTrap();
             Rigidbody tar = _Target.GetComponent<Rigidbody>();
-            
-            if (tar == null) return; // there is no rigidbody
-            
-            if (!(tar.velocity.magnitude * tar.mass >= _BreakThreshold)) return; // the threshold is not met
-            
-            // Turn off kinematic setting on rigidbodies in the wall
+            if (tar == null) return;
+
+            //delay for 10 seconds after runman leaves
+            await Task.Delay(_BreakTime * 1000);
+
+            // Turn off kinematic setting of rigidbodies on the ground, makes the ground "break"
             foreach (Rigidbody ele in _rigidbodies)
             {
                 ele.isKinematic = false;
             }
+            
         }
 
+        
         public override void ResetTrap()
         {
             base.ResetTrap();
@@ -52,13 +63,16 @@ namespace Traps
             {
                 // Stop the Rigidbodies from moving
                 ele.isKinematic = true;
+                ele.gameObject.SetActive(true);
                 var transform1 = ele.transform;
-                
                 // Reset positions
                 transform1.position = _positions[i];
                 transform1.rotation = _rotations[i];
                 i++;
             }
+            
         }
+        
     }
 }
+
