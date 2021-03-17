@@ -33,8 +33,13 @@ namespace Traps
             Rigidbody tar = _Target.GetComponent<Rigidbody>();
             
             if (tar == null) return; // there is no rigidbody
-            
-            if (!(tar.velocity.magnitude * tar.mass >= _BreakThreshold)) return; // the threshold is not met
+
+            // the threshold is not met
+            if (!(tar.velocity.magnitude * tar.mass >= _BreakThreshold))
+            {
+                tar.AddForce(-transform.forward * 25, ForceMode.Impulse);
+                return;
+            }
             
             // Turn off kinematic setting on rigidbodies in the wall
             foreach (Rigidbody ele in _rigidbodies)
