@@ -59,7 +59,6 @@ namespace Traps
                 transform1.rotation = _rotations[i];
                 i++;
             }
-            
         }
     }
 }

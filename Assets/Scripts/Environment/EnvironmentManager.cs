@@ -28,29 +28,6 @@ namespace Environment
             _rigidbody = _RunMan.GetComponent<Rigidbody>();
         }
 
-        private void FixedUpdate()
-        {
-            CheckIfStopped();
-        }
-
-        private void CheckIfStopped()
-        {
-            if (_Training) return;
-            if (Mathf.Floor(_rigidbody.velocity.magnitude) == 0)
-            {
-                // Add how much time has passed since last check
-                _timeSinceStopped += Time.fixedDeltaTime;
-                
-                // End the game if we reached the time limit for being stopped
-                if (deathfield.gone) ResetEnvironment();
-            }
-            else
-            {
-                // Reset the time
-                _timeSinceStopped = 0;
-            }
-        }
-
         public void ResetEnvironment()
         {
             foreach(Spawner ele in _spawners)
