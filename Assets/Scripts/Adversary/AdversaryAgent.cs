@@ -114,8 +114,11 @@ namespace Adversary
             sensor.AddObservation(_rigidBody.rotation.normalized);
             // Are we on the ground, might not matter
             sensor.AddObservation(_isGrounded); // 1
+            
+            // how many hits did this agent get
+            sensor.AddObservation(_hits); // 1
 
-            // Obstacle related information
+            /*// Obstacle related information
             if (_obstacleRecords.Count <= 0)
             {
                 sensor.AddObservation(new float[3]);
@@ -133,7 +136,7 @@ namespace Adversary
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.right.normalized)); // 1
                 
-            }
+            }*/
             
             // Targets related information
             if (_targetRecords.Count <= 0)

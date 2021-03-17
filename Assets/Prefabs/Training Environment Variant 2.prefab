@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 268679869250632901, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: _SpawnRadius
-      value: 14
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 268679869250632906, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
@@ -56,7 +56,7 @@ PrefabInstance:
     - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: _SpawnQuantities.Array.data[0]
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 268679869685820079, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
@@ -134,6 +134,11 @@ PrefabInstance:
       propertyPath: _Training
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 206419832649860353, guid: 0985d2a9e3872a344b33e6c128cabe5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 245568787303660736, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -143,6 +148,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 939843975474513747, guid: 0985d2a9e3872a344b33e6c128cabe5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 1587441759108623117, guid: 0985d2a9e3872a344b33e6c128cabe5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 1830052092249815704, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
@@ -174,6 +189,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 3039207575045770902, guid: 0985d2a9e3872a344b33e6c128cabe5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 3696878259832681595, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -197,7 +217,7 @@ PrefabInstance:
     - target: {fileID: 4778260150137247898, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
       propertyPath: _SpawnRadius
-      value: 14
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 4778260150303936240, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
@@ -213,7 +233,7 @@ PrefabInstance:
     - target: {fileID: 4778260150303936241, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
       propertyPath: _SpawnQuantities.Array.data[0]
-      value: 10
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5696081196076302964, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
@@ -224,6 +244,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8430257481580628570, guid: 0985d2a9e3872a344b33e6c128cabe5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8430257481580628571, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}
@@ -309,6 +334,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Training Environment Variant 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8576794786436054345, guid: 0985d2a9e3872a344b33e6c128cabe5c,
+        type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8727755584993131703, guid: 0985d2a9e3872a344b33e6c128cabe5c,
         type: 3}

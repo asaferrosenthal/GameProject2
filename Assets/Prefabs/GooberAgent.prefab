@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 5685043310866678637}
   - component: {fileID: 5685043310866678643}
   - component: {fileID: 6921091797222599385}
+  - component: {fileID: 1877675854973003506}
   m_Layer: 11
   m_Name: GooberAgent
   m_TagString: Untagged
@@ -129,17 +130,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BrainParameters:
-    VectorObservationSize: 15
+    VectorObservationSize: 13
     NumStackedVectorObservations: 1
     VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: a48259d94e867c54490bad6411173d4b, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 12898ce50db642240a466dbf90493cc0, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Goober
   TeamId: 0
-  m_UseChildSensors: 0
+  m_UseChildSensors: 1
 --- !u!114 &5685043310866678637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -156,7 +157,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 500
-  _MoveForce: 50
+  _MoveForce: 40
   _JumpForce: 30
   _YawRotationSpeed: 30
   _SearchRadius: 30
@@ -165,7 +166,7 @@ MonoBehaviour:
   _TargetLayers: 0a000000
   _ObstacleLayers: 09000000
   _DefaultRewardValue: 1
-  _DefaultPunishmentValue: -0.1
+  _DefaultPunishmentValue: -1
   _Manager: {fileID: 0}
   _Spawner: {fileID: 0}
   _Master: 0
@@ -196,3 +197,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DecisionPeriod: 5
   TakeActionsBetweenDecisions: 1
+--- !u!114 &1877675854973003506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5685043310866678635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bb6b867a41448888c1cd4f99643ad71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags:
+  - Wall
+  m_RaysPerDirection: 8
+  m_MaxRayDegrees: 180
+  m_SphereCastRadius: 0.3
+  m_RayLength: 10
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 1536
+  m_ObservationStacks: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+  m_StartVerticalOffset: 0
+  m_EndVerticalOffset: 0

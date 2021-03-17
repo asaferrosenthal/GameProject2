@@ -83,7 +83,7 @@ namespace Environment
                 ele.gameObject.SetActive(true);
                 ele.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
                 ele.gameObject.layer = _defaultLayer;
-
+                ele.transform.rotation = transform.rotation;
             }
         }
 

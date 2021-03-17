@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 762381786966977434}
   m_Layer: 9
   m_Name: InvisWall (2)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 762381787004100691}
   m_Layer: 9
   m_Name: InvisWall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 762381787190515148}
   m_Layer: 9
   m_Name: InvisWall (1)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -599,7 +599,7 @@ GameObject:
   - component: {fileID: 762381787925571646}
   m_Layer: 9
   m_Name: InvisWall (3)
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1108,7 +1108,7 @@ GameObject:
   - component: {fileID: 4730424884752888345}
   m_Layer: 9
   m_Name: Walls
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1183,7 +1183,7 @@ PrefabInstance:
     - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: _SpawnQuantities.Array.data[0]
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 268679869685820079, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
@@ -1275,6 +1275,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSpawner A
       objectReference: {fileID: 0}
+    - target: {fileID: 268679869685820076, guid: c79849ee0292c4445867b4365d859bda,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: _Prefabs.Array.data[0]
@@ -1284,7 +1289,7 @@ PrefabInstance:
     - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: _SpawnQuantities.Array.data[0]
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 268679869685820079, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
@@ -1358,8 +1363,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 268679869250632901, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
+      propertyPath: _Padding
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 268679869250632901, guid: c79849ee0292c4445867b4365d859bda,
+        type: 3}
       propertyPath: _SpawnRadius
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 268679869685820076, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
@@ -1368,10 +1378,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
+      propertyPath: _Prefabs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
+        type: 3}
       propertyPath: _Prefabs.Array.data[0]
       value: 
       objectReference: {fileID: 1723553817072510299, guid: e72ac0fd7b4ee184d910aa07d11821df,
         type: 3}
+    - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
+        type: 3}
+      propertyPath: _Prefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 6098026203744517776, guid: 6fc9393392d06dc4e93543f3a1ce1055,
+        type: 3}
+    - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
+        type: 3}
+      propertyPath: _SpawnQuantities.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
+        type: 3}
+      propertyPath: _SpawnQuantities.Array.data[0]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
+        type: 3}
+      propertyPath: _SpawnQuantities.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 268679869685820079, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: m_RootOrder
