@@ -161,9 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40d268e9b42e3140ba5b1057bf42f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ForwardSpeed: 1
-  _HorizontalSpeed: 1
-  _DefaultJumpHeight: 175.61
+  _ForwardSpeed: 10
+  _HorizontalSpeed: 20
   _DefaultRotationSpeed: 3
 --- !u!136 &4018389467632008851
 CapsuleCollider:
@@ -175,7 +174,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -205,7 +204,7 @@ GameObject:
   - component: {fileID: 2809967292425696354}
   - component: {fileID: 2095197469665753898}
   m_Layer: 10
-  m_Name: Temp Body
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

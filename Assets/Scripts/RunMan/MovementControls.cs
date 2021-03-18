@@ -16,9 +16,6 @@ namespace RunMan
 
         [Tooltip("Factor by which horizontal movement will be scaled by")]
         public float _HorizontalSpeed = 1f;
-        
-        [Tooltip("Factor jump inputs will be scaled by")]
-        public float _DefaultJumpHeight = 1f;
 
         [Tooltip("Factor rotation inputs will be scaled by")]
         public float _DefaultRotationSpeed;
