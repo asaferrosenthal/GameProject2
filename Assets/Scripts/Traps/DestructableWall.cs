@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Utility;
 
 namespace Traps
 {
@@ -7,7 +8,10 @@ namespace Traps
     {
         [Tooltip("The momentum required to break through this wall")]
         public float _BreakThreshold;
+
+        [SerializeField] private float _pushBack = -100;
         
+        // Wall components
         private Rigidbody[] _rigidbodies;
         private Vector3[] _positions;
         private Quaternion[] _rotations;
@@ -33,14 +37,21 @@ namespace Traps
             Rigidbody tar = _Target.GetComponent<Rigidbody>();
             
             if (tar == null) return; // there is no rigidbody
-            
-            if (!(tar.velocity.magnitude * tar.mass >= _BreakThreshold)) return; // the threshold is not met
+
+            if ((MomentumChecker.GetMomentum(tar) < _BreakThreshold))
+            {
+                //tar.AddForce(tar.transform.forward * _pushBack);
+                tar.velocity = -tar.velocity;
+                return; // the threshold is not met
+            }
             
             // Turn off kinematic setting on rigidbodies in the wall
             foreach (Rigidbody ele in _rigidbodies)
             {
                 ele.isKinematic = false;
             }
+
+            _Enabled = false;
         }
 
         public override void ResetTrap()
@@ -50,6 +61,8 @@ namespace Traps
             int i = 0;
             foreach (Rigidbody ele in _rigidbodies)
             {
+                // enable each brick
+                ele.gameObject.SetActive(true);
                 // Stop the Rigidbodies from moving
                 ele.isKinematic = true;
                 var transform1 = ele.transform;
@@ -59,7 +72,8 @@ namespace Traps
                 transform1.rotation = _rotations[i];
                 i++;
             }
-            
         }
+        
+        
     }
 }

@@ -5,7 +5,7 @@ using Utility;
 
 namespace Debugging
 {
-    public class DebuggerUI : MonoBehaviour
+    public class InGameUI : MonoBehaviour
     {
         public Rigidbody _Player;
         public TextMeshProUGUI _VelocityUI;
@@ -16,9 +16,9 @@ namespace Debugging
         private void FixedUpdate()
         {
             float velocity = _Player.velocity.magnitude;
-            _VelocityUI.text = velocity.ToString();
-            _MassUI.text = _Player.mass.ToString();
-            _CurrentMomentum.text = MomentumChecker.GetMomentum(_Player).ToString();
+            _VelocityUI.text = velocity.ToString("#.00");
+            _MassUI.text = _Player.mass.ToString("#.00");
+            _CurrentMomentum.text = MomentumChecker.GetMomentum(_Player).ToString("#.00");
             _oldVelocity = velocity;
         }
     }
