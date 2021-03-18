@@ -97,7 +97,6 @@ namespace RunMan
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
             trans.localRotation = _defaultRotation;
-            Debug.Log(_defaultLayer);
             this.gameObject.layer = _defaultLayer;
             if (_Training)
             {

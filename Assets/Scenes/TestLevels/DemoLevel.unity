@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 115c5d2b46cfb4f489be556172734fa8,
+  m_LightingDataAsset: {fileID: 112000000, guid: e06863e1336b0814383f73cc78fa4c3d,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 53abcbbf2fc83894f8345e9bd6642614,
     type: 2}
@@ -1599,7 +1599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 281146066}
   m_Layer: 0
-  m_Name: Traps
+  m_Name: Interactive Components
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1620,6 +1620,7 @@ Transform:
   - {fileID: 1967332458}
   - {fileID: 2019610830}
   - {fileID: 744808076}
+  - {fileID: 1847949759}
   m_Father: {fileID: 1277853690}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14649,12 +14650,12 @@ PrefabInstance:
     - target: {fileID: 3802346277263217321, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3802346277263217321, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 60
+      value: -100
       objectReference: {fileID: 0}
     - target: {fileID: 3802346277263217321, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
@@ -14748,8 +14749,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
+      propertyPath: _ForwardSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
+        type: 3}
+      propertyPath: _HorizontalSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
+        type: 3}
       propertyPath: _DefaultRotationSpeed
-      value: 4
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6935746349388031149, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
@@ -19200,7 +19211,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh68634
+  m_Name: pb_Mesh33350
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -20082,6 +20093,66 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1847949758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1847949759}
+  - component: {fileID: 1847949760}
+  - component: {fileID: 1847949761}
+  m_Layer: 0
+  m_Name: DeathField
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1847949759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847949758}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalScale: {x: 100, y: 1, z: 100}
+  m_Children: []
+  m_Father: {fileID: 281146066}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &1847949760
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847949758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1847949761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847949758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f985ff3b2f98641d1a82aad0388972c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _PlayerLayer: 10
+  _Manager: {fileID: 1277853691}
 --- !u!43 &1883761809
 Mesh:
   m_ObjectHideFlags: 0
