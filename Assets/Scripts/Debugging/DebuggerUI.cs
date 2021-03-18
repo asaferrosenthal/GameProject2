@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using Utility;
 
 namespace Debugging
 {
@@ -17,7 +18,7 @@ namespace Debugging
             float velocity = _Player.velocity.magnitude;
             _VelocityUI.text = velocity.ToString();
             _MassUI.text = _Player.mass.ToString();
-            _CurrentMomentum.text = (_Player.mass * velocity).ToString();
+            _CurrentMomentum.text = MomentumChecker.GetMomentum(_Player).ToString();
             _oldVelocity = velocity;
         }
     }
