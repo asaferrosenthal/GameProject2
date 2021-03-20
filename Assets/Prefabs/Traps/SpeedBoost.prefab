@@ -126,5 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6347da56d8cc80549b91aa4c0c5225f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ScrollX: 1
-  ScrollY: 0
+  ScrollX: 0
+  ScrollY: 1
