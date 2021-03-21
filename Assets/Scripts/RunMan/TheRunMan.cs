@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using static Environment.RunManTrainingAssistant;
@@ -62,6 +63,11 @@ namespace RunMan
             _defaultPosition = trans.localPosition;
         }
 
+        private void Start()
+        {
+            ResetRunMan();
+        }
+
         private void Update()
         {
             UpdateRunManScale();
@@ -97,7 +103,6 @@ namespace RunMan
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
             trans.localRotation = _defaultRotation;
-            Debug.Log(_defaultLayer);
             this.gameObject.layer = _defaultLayer;
             if (_Training)
             {
@@ -107,8 +112,7 @@ namespace RunMan
             {
                 trans.localPosition = _defaultPosition;
             }
-            
-            
+
         }
 
         public void AddMass(float num)

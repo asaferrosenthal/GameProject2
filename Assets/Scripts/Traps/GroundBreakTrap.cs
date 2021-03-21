@@ -1,21 +1,23 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-using Utility;
+using Random = Unity.Mathematics.Random;
 
 namespace Traps
 {
-    public class DestructableWall : Trap
+    public class GroundBreakTrap : Trap
     {
-        [Tooltip("The momentum required to break through this wall")]
-        public float _BreakThreshold;
-
-        [SerializeField] private float _pushBack = -100;
-        
-        // Wall components
+        [Tooltip("The time required before each floor tile begins to fall away")]
+        [SerializeField] private float _Threshold = .25f;
+        // Ground components
         private Rigidbody[] _rigidbodies;
         private Vector3[] _positions;
         private Quaternion[] _rotations;
-
+        private Coroutine _groundBreaking;
+        
+        const int PlayerLayer = 10;
         private void Awake()
         {
             // Initialize each array for wall components
@@ -28,27 +30,29 @@ namespace Traps
             {
                 _positions[i] = _rigidbodies[i].transform.position;
                 _rotations[i] = _rigidbodies[i].transform.rotation;
+                _rigidbodies[i].isKinematic = true;
             }
         }
 
         protected override void ApplyTrap()
         {
+            if (_Target.layer != PlayerLayer) return;
+            
+            if(_groundBreaking == null) _groundBreaking = StartCoroutine(GroundBreak());
+        }
+        
+        private IEnumerator GroundBreak()
+        {
             base.ApplyTrap();
-            Rigidbody tar = _Target.GetComponent<Rigidbody>();
-            
-            if (tar == null) return; // there is no rigidbody
+            List<Rigidbody> randomList = _rigidbodies.ToList();
 
-            if ((MomentumChecker.GetMomentum(tar) < _BreakThreshold))
-            {
-                //tar.AddForce(tar.transform.forward * _pushBack);
-                tar.velocity = -tar.velocity;
-                return; // the threshold is not met
-            }
-            
             // Turn off kinematic setting on rigidbodies in the wall
-            foreach (Rigidbody ele in _rigidbodies)
+            for(int i = 0; i < randomList.Count; i++)
             {
-                ele.isKinematic = false;
+                int num = UnityEngine.Random.Range(0, randomList.Count);
+                yield return new WaitForSeconds(_Threshold);
+                randomList[num].isKinematic = false;
+                randomList.Remove(randomList[num]);
             }
 
             _Enabled = false;
@@ -56,9 +60,16 @@ namespace Traps
 
         public override void ResetTrap()
         {
+            if (_groundBreaking != null)
+            {
+                StopCoroutine(_groundBreaking);
+                _groundBreaking = null;
+            }
+            
             base.ResetTrap();
             
             int i = 0;
+            Debug.Log(_rigidbodies.Length);
             foreach (Rigidbody ele in _rigidbodies)
             {
                 // enable each brick
@@ -73,7 +84,5 @@ namespace Traps
                 i++;
             }
         }
-        
-        
     }
 }

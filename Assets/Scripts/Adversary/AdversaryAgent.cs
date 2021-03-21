@@ -267,6 +267,8 @@ namespace Adversary
         
         public void ResetAgent()
         {
+            // Ensure the agent is on
+            gameObject.SetActive(true);
             // reset all physics and memory
             _targetRecords = new List<GameObject>();
             _obstacleRecords = new List<GameObject>();

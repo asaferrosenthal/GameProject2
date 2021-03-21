@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4738877891632619399}
   - component: {fileID: 7176211883624233766}
   - component: {fileID: 163371691128177816}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -161,8 +161,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40d268e9b42e3140ba5b1057bf42f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DefaultSpeed: 15
-  _DefaultJumpHeight: 175.61
+  _ForwardSpeed: 10
+  _HorizontalSpeed: 20
   _DefaultRotationSpeed: 3
 --- !u!136 &4018389467632008851
 CapsuleCollider:
@@ -174,7 +174,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5000001
+  m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -203,8 +203,8 @@ GameObject:
   - component: {fileID: 8932390718159537259}
   - component: {fileID: 2809967292425696354}
   - component: {fileID: 2095197469665753898}
-  m_Layer: 0
-  m_Name: Temp Body
+  m_Layer: 10
+  m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -285,7 +285,7 @@ GameObject:
   - component: {fileID: 4802207415096318617}
   - component: {fileID: 1112771245485854658}
   - component: {fileID: 4018643365329081962}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

@@ -39,6 +39,7 @@ namespace Traps
 
         public virtual void ResetTrap()
         {
+            gameObject.SetActive(true);
             _Enabled = true;
         }
     }
