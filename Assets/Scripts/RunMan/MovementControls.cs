@@ -19,7 +19,10 @@ namespace RunMan
 
         [Tooltip("Factor rotation inputs will be scaled by")]
         public float _DefaultRotationSpeed;
-
+        
+        [Tooltip("Does the player rotate with the mouse position or the keyboard inputs.")]
+        public bool _MouseRotation = true;
+        
         // record of rigidbody to prevent need to re-access
         private Rigidbody _rigidbody;
         
@@ -47,15 +50,23 @@ namespace RunMan
             
             // Add force in the direction of rotation, make it feel less sloppy
             _movement += trans.right * (_HorizontalSpeed * Input.GetAxis("Horizontal"));
-            
-            // Fill out the _rotation vector with given axis inputs
-            _rotation.y = Input.GetAxis("Mouse X") * _DefaultRotationSpeed;
+
+            if (_MouseRotation)
+            {
+                transform.Rotate(Vector3.up * Input.GetAxis("Mouse X"));
+            }
+            else
+            {
+                // Fill out the _rotation vector with given axis inputs
+                _rotation.y = Input.GetAxis("Horizontal") * _DefaultRotationSpeed;
+                // Apply rotation vector to character
+                transform.Rotate(_rotation);
+            }
 
             // Apply movement vector to character using physics system
             _rigidbody.AddForce(_movement);
             
-            // Apply rotation vector to character
-            transform.Rotate(_rotation);
+            
 
         }
     }
