@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using static UnityEngine.Vector3;
 
 namespace RunMan
 {
@@ -53,7 +54,9 @@ namespace RunMan
 
             if (_MouseRotation)
             {
-                transform.Rotate(Vector3.up * Input.GetAxis("Mouse X"));
+
+                transform.eulerAngles += up * (Input.GetAxis("Mouse X") * _DefaultRotationSpeed);
+                //transform.Rotate(Vector3.up * Input.GetAxis("Mouse X"));
             }
             else
             {
