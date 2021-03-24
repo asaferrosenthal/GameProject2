@@ -50,9 +50,13 @@ namespace UI
         // toggles on and off the Escape key menu
         public void ToggleEscapeMenu()
         {
-            _PageSpace.SetActive(!_PageSpace.activeSelf);
-            Cursor.visible = _PageSpace.activeSelf; // toggle the cursor
-            if (_manager != null) _manager.TogglePauseGame();
+            bool isPaused = false;
+            // record if the game is paused or not
+            if (_manager != null) isPaused = _manager.TogglePauseGame();
+            // if the game is paused than show the escape UI
+            _PageSpace.SetActive(isPaused);
+            // toggle the cursor
+            Cursor.visible = isPaused;
         }
         
         // Evokes environment manager level reset and turns off the escape menu

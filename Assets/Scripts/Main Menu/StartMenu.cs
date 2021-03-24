@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -6,6 +7,12 @@ namespace Main_Menu
   public class StartMenu : MonoBehaviour
   {
     public GameObject _EscapeMenu;
+
+    private void OnEnable()
+    {
+      Cursor.visible = true;
+    }
+
     public void Exit() 
     {
       Application.Quit();

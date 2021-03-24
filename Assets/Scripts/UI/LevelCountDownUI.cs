@@ -1,18 +1,32 @@
 using System;
+using Environment;
 using UnityEngine;
 
 namespace UI
 {
     public class LevelCountDownUI : MonoBehaviour
     {
-        private void Awake()
+        [Tooltip("The animation that will be played on level start.")]
+        public Animator _CountDown;
+        
+        // Variable for storing a scenes manager
+        private EnvironmentManager _manager;
+        
+
+        public void SetManager(EnvironmentManager manager)
         {
-            Time.timeScale = 0f;
+            _manager = manager;
+            _manager.CountDownStart();
+        }
+
+        private void OnEnable()
+        {
+
         }
 
         private void OnDisable()
         {
-            Time.timeScale = 1f;
+            _manager.LevelStart();
         }
     }
 }
