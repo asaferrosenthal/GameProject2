@@ -44,7 +44,10 @@ namespace Traps
         private IEnumerator GroundBreak()
         {
             base.ApplyTrap();
+<<<<<<< HEAD
             
+=======
+>>>>>>> 98986ebfbd4392b46aac57780157e545691c5ad2
             yield return new WaitForSeconds(_Threshold);
 
             // Turn off kinematic setting on rigidbodies in the wall
