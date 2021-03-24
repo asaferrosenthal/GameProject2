@@ -1391,7 +1391,7 @@ PrefabInstance:
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.17
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
@@ -1646,6 +1646,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DestructableWall
+      objectReference: {fileID: 0}
+    - target: {fileID: 6925255189820611161, guid: c6fbfe6a950ebfb4aa379dad940af4df,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6fbfe6a950ebfb4aa379dad940af4df, type: 3}

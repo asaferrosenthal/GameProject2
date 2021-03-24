@@ -45,14 +45,7 @@ namespace Environment
         public void TogglePauseGame()
         {
             _isGamePaused = !_isGamePaused;
-            if (_isGamePaused)
-            {
-                Time.timeScale = 0;
-            }
-            else
-            {
-                Time.timeScale = 1;
-            }
+            Time.timeScale = _isGamePaused ? 0 : 1;
         }
 
     }
