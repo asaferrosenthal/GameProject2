@@ -68,13 +68,8 @@ namespace Traps
             
             int i = 0;
             
-            Debug.Log(_rigidbodies.Length);
-            
             foreach (Rigidbody ele in _rigidbodies)
             {
-                // enable each brick
-                ele.gameObject.SetActive(true);
-                
                 // Stop the Rigidbodies from moving
                 ele.isKinematic = true;
                 var transform1 = ele.transform;
@@ -82,6 +77,10 @@ namespace Traps
                 // Reset positions
                 transform1.position = _positions[i];
                 transform1.rotation = _rotations[i];
+                
+                // enable each brick
+                ele.gameObject.SetActive(true);
+                
                 i++;
             }
         }
