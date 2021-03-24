@@ -13,6 +13,8 @@ namespace Environment
         
         private Spawner[] _spawners;
         private Trap[] _traps;
+
+        private bool _isGamePaused = false;
         
         // Triggers for resetting level
         private float _timeSinceStopped = 0;
@@ -39,7 +41,19 @@ namespace Environment
             if(_RunMan != null) _RunMan.ResetRunMan();
             _timeSinceStopped = 0;
         }
-        
-        
+
+        public void TogglePauseGame()
+        {
+            _isGamePaused = !_isGamePaused;
+            if (_isGamePaused)
+            {
+                Time.timeScale = 0;
+            }
+            else
+            {
+                Time.timeScale = 1;
+            }
+        }
+
     }
 }

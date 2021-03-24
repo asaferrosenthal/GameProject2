@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 16522f49031ff414abdf1f83f1b6a36c, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 9ca22510633fbfd4399f1704cd9d5c72, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -2144,10 +2144,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1277853690}
     m_Modifications:
+    - target: {fileID: 1051495235717467365, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495235752358317, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495235799056683, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1051495236015943561, guid: a644cba2739329f4ea56f68fd0a768c9,
         type: 3}
       propertyPath: m_Name
       value: Reset(Remove)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495236015943561, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1051495236015943561, guid: a644cba2739329f4ea56f68fd0a768c9,
         type: 3}
@@ -2159,10 +2179,45 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1277853691}
+    - target: {fileID: 1051495236308000865, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495236711915047, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495236841970454, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495237243965986, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495237262383837, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495237348690256, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1051495237348690258, guid: a644cba2739329f4ea56f68fd0a768c9,
         type: 3}
       propertyPath: m_Maskable
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495237545743930, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1051495237629386211, guid: a644cba2739329f4ea56f68fd0a768c9,
         type: 3}
@@ -2173,6 +2228,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1051495237629386212, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1051495237629386212, guid: a644cba2739329f4ea56f68fd0a768c9,
         type: 3}
@@ -2284,10 +2344,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1051495237651255081, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1051495237651255083, guid: a644cba2739329f4ea56f68fd0a768c9,
         type: 3}
       propertyPath: m_Color.a
       value: 0.7058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 5667732492218056711, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8811259215241594015, guid: a644cba2739329f4ea56f68fd0a768c9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a644cba2739329f4ea56f68fd0a768c9, type: 3}
