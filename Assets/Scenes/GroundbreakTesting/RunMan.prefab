@@ -160,9 +160,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40d268e9b42e3140ba5b1057bf42f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DefaultSpeed: 15
-  _DefaultJumpHeight: 175.61
-  _DefaultRotationSpeed: 3
+  _ForwardSpeed: 10
+  _HorizontalSpeed: 20
+  _DefaultRotationSpeed: 8
+  _MouseRotation: 1
 --- !u!136 &4018389467632008851
 CapsuleCollider:
   m_ObjectHideFlags: 0

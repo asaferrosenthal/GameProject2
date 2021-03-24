@@ -30,12 +30,15 @@ namespace Environment
 
         private void OnTriggerExit(Collider other)
         {
+            if (other.gameObject.layer != PlayerLayer) return;
+            
             _indicator.material = _invalid;
             _indicator.enabled = false;
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.gameObject.layer != PlayerLayer) return;
             _indicator.enabled = true;
         }
     }

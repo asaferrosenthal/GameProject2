@@ -54,9 +54,7 @@ namespace RunMan
 
             if (_MouseRotation)
             {
-
                 transform.eulerAngles += up * (Input.GetAxis("Mouse X") * _DefaultRotationSpeed);
-                //transform.Rotate(Vector3.up * Input.GetAxis("Mouse X"));
             }
             else
             {

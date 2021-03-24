@@ -108,6 +108,5 @@ namespace UI
             Debug.Log(_manager + " was found.");
         }
         
-        
     }
 }

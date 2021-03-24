@@ -164,6 +164,7 @@ MonoBehaviour:
   _ForwardSpeed: 10
   _HorizontalSpeed: 20
   _DefaultRotationSpeed: 3
+  _MouseRotation: 0
 --- !u!136 &4018389467632008851
 CapsuleCollider:
   m_ObjectHideFlags: 0
