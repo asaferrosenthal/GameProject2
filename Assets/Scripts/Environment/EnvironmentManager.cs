@@ -48,5 +48,6 @@ namespace Environment
             Time.timeScale = _isGamePaused ? 0 : 1;
         }
 
+        
     }
 }

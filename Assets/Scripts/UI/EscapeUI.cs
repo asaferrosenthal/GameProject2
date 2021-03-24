@@ -51,6 +51,7 @@ namespace UI
         public void ToggleEscapeMenu()
         {
             _PageSpace.SetActive(!_PageSpace.activeSelf);
+            Cursor.visible = _PageSpace.activeSelf; // toggle the cursor
             if (_manager != null) _manager.TogglePauseGame();
         }
         
