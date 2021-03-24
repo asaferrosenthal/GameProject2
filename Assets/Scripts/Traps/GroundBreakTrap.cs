@@ -10,7 +10,7 @@ namespace Traps
     public class GroundBreakTrap : Trap
     {
         [Tooltip("The time required before each floor tile begins to fall away")]
-        [SerializeField] private float _Threshold = .25f;
+        [SerializeField] private float _Threshold = 5f;
         // Ground components
         private Rigidbody[] _rigidbodies;
         private Vector3[] _positions;
@@ -44,15 +44,13 @@ namespace Traps
         private IEnumerator GroundBreak()
         {
             base.ApplyTrap();
-            List<Rigidbody> randomList = _rigidbodies.ToList();
+            
+            yield return new WaitForSeconds(_Threshold);
 
             // Turn off kinematic setting on rigidbodies in the wall
-            for(int i = 0; i < randomList.Count; i++)
+            foreach(Rigidbody ele in _rigidbodies)
             {
-                int num = UnityEngine.Random.Range(0, randomList.Count);
-                yield return new WaitForSeconds(_Threshold);
-                randomList[num].isKinematic = false;
-                randomList.Remove(randomList[num]);
+                ele.isKinematic = false;
             }
 
             _Enabled = false;
@@ -69,11 +67,14 @@ namespace Traps
             base.ResetTrap();
             
             int i = 0;
+            
             Debug.Log(_rigidbodies.Length);
+            
             foreach (Rigidbody ele in _rigidbodies)
             {
                 // enable each brick
                 ele.gameObject.SetActive(true);
+                
                 // Stop the Rigidbodies from moving
                 ele.isKinematic = true;
                 var transform1 = ele.transform;

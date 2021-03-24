@@ -40,8 +40,7 @@ namespace Traps
 
             if ((MomentumChecker.GetMomentum(tar) < _BreakThreshold))
             {
-                //tar.AddForce(tar.transform.forward * _pushBack);
-                tar.velocity = -tar.velocity;
+                tar.AddForce(tar.transform.forward * _pushBack);
                 return; // the threshold is not met
             }
             

@@ -10,11 +10,11 @@ namespace Environment
 
         public GameObject completeLevelUI;
 
-        IEnumerator OnCollisionEnter()
+        void OnCollisionEnter()  //IEnumerator
         {
-            yield return new WaitForSeconds(0.5f);
-            completeLevelUI.SetActive(true);
-            yield return new WaitForSeconds(1);
+            //yield return new WaitForSeconds(0.5f);
+            //completeLevelUI.SetActive(true);
+            //yield return new WaitForSeconds(1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }

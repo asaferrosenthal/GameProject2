@@ -5149,7 +5149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 855e6dd04aa3a024cb4d2fb92492ff3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _Enabled: 1
+  _Enabled: 0
   _TriggersOnStay: 0
   _TriggersOnEnter: 1
   _TriggersOnExit: 0
