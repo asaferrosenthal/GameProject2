@@ -36,6 +36,7 @@ namespace Traps
         protected override void ApplyTrap()
         {
             base.ApplyTrap();
+
             Rigidbody tar = _Target.GetComponent<Rigidbody>();
             
             if (tar == null) return; // there is no rigidbody
@@ -56,6 +57,7 @@ namespace Traps
             {
                 ele.isKinematic = false;
             }
+
         }
 
         public override void ResetTrap()

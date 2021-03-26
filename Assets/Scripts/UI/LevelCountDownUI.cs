@@ -4,29 +4,22 @@ using UnityEngine;
 
 namespace UI
 {
-    public class LevelCountDownUI : MonoBehaviour
+    public class LevelCountDownUI : LevelUIBase
     {
         [Tooltip("The animation that will be played on level start.")]
         public Animator _CountDown;
-        
-        // Variable for storing a scenes manager
-        private EnvironmentManager _manager;
-        
 
-        public void SetManager(EnvironmentManager manager)
-        {
-            _manager = manager;
-            _manager.CountDownStart();
-        }
-
+        public Animation _Animation;
+        
         private void OnEnable()
         {
-
+            _CountDown.Play("Base Layer.CountDown", 0, 0f);
+            _Manager?.InitializeLevelStart();
         }
 
         private void OnDisable()
         {
-            _manager.LevelStart();
+            _Manager.LevelStart();
         }
     }
 }

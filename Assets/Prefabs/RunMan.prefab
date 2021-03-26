@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 4231269371415711654}
   - component: {fileID: 6451195554516913765}
   - component: {fileID: 4018389467632008851}
-  - component: {fileID: 8835889942451661963}
   m_Layer: 10
   m_Name: RunMan
   m_TagString: Player
@@ -176,20 +175,6 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &8835889942451661963
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1136606243839501313}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.6
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}

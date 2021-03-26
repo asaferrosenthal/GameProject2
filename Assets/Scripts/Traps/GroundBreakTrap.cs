@@ -49,7 +49,6 @@ namespace Traps
             // Turn off kinematic setting on rigidbodies in the wall
             foreach(Rigidbody ele in _rigidbodies)
             {
-                
                 ele.isKinematic = false;
             }
 
