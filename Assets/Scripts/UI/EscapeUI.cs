@@ -14,8 +14,10 @@ namespace UI
     {
         // The interactable area of the escape menu
         public GameObject _PageSpace;
+        
         // Variable for storing a scenes manager
-        private EnvironmentManager _manager;
+        public EnvironmentManager _Manager;
+        
         // Level selection drop down
         private TMP_Dropdown _dropdown;
         private void Awake()
@@ -23,19 +25,6 @@ namespace UI
             _dropdown = GetComponentInChildren<TMP_Dropdown>();
             _PageSpace.SetActive(false);
             LoadDropDown();
-            DontDestroyOnLoad(this);
-        }
-
-        // Listen for delegate OnSceneLoaded 
-        private void OnEnable()
-        {
-            SceneManager.sceneLoaded += OnSceneLoaded;
-        }
-
-        // Stop listening for OnSceneLoaded
-        private void OnDisable()
-        {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
         }
 
         private void Update()
@@ -52,17 +41,15 @@ namespace UI
         {
             bool isPaused = false;
             // record if the game is paused or not
-            if (_manager != null) isPaused = _manager.TogglePauseGame();
+            if (_Manager != null) isPaused = _Manager.TogglePauseGame();
             // if the game is paused than show the escape UI
             _PageSpace.SetActive(isPaused);
-            // toggle the cursor
-            Cursor.visible = isPaused;
         }
         
         // Evokes environment manager level reset and turns off the escape menu
         public void RestartLevel()
         {
-            if (_manager != null) _manager.ResetEnvironment();
+            if (_Manager != null) _Manager.ResetEnvironment();
             ToggleEscapeMenu();
         }
         
@@ -71,7 +58,6 @@ namespace UI
         {
             SceneManager.LoadScene(0);
             ToggleEscapeMenu();
-            Destroy(this.gameObject);
         }
 
         // utility for going to a specific scene
@@ -104,14 +90,7 @@ namespace UI
 
             _dropdown.options = optionList;
         }
-
-        // Delegate for scene loading
-        private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-        {
-            Debug.Log(scene.name + " was loaded successfully.");
-            _manager = (EnvironmentManager) FindObjectOfType(typeof(EnvironmentManager));
-            Debug.Log(_manager + " was found.");
-        }
+        
         
     }
 }

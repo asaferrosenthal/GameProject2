@@ -325,7 +325,7 @@ PrefabInstance:
     - target: {fileID: 3653117604829994329, guid: 83a6d1012afdb4741a7ef96bc5efdf35,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.54
+      value: 0.57
       objectReference: {fileID: 0}
     - target: {fileID: 3653117604829994329, guid: 83a6d1012afdb4741a7ef96bc5efdf35,
         type: 3}
@@ -367,11 +367,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3961976740707789662, guid: 83a6d1012afdb4741a7ef96bc5efdf35,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4234310492697426741, guid: 83a6d1012afdb4741a7ef96bc5efdf35,
         type: 3}
       propertyPath: m_Name
       value: EndOfLevelTrigger
       objectReference: {fileID: 0}
+    - target: {fileID: 4872819743978185067, guid: 83a6d1012afdb4741a7ef96bc5efdf35,
+        type: 3}
+      propertyPath: _Manager
+      value: 
+      objectReference: {fileID: 1277853691}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83a6d1012afdb4741a7ef96bc5efdf35, type: 3}
 --- !u!4 &366037116 stripped
@@ -822,6 +832,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1504281643786971196, guid: 17ef590e4469d854d849ad8638d92b22,
+        type: 3}
+      propertyPath: _ChangeFactor
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ef590e4469d854d849ad8638d92b22, type: 3}
 --- !u!4 &1221186484 stripped
@@ -879,6 +894,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _RunMan: {fileID: 1935737147}
   _LevelStartUI: {fileID: 1205522500583943284, guid: 70f3d054c19cdf54e8c35f8b4ee2bcf2,
+    type: 3}
+  _LevelEndUI: {fileID: 6220493777379888483, guid: ef23d2b4d80225a49843e48b4fedc826,
+    type: 3}
+  _EscapeUI: {fileID: 6220493777379888483, guid: 7354d4166b0a8424ab7c96e65174a4c8,
     type: 3}
   _Training: 0
 --- !u!1001 &1339623663

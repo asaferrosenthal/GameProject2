@@ -10,7 +10,7 @@ namespace UI
         public Animator _CountDown;
 
         public Animation _Animation;
-        
+
         private void OnEnable()
         {
             _CountDown.Play("Base Layer.CountDown", 0, 0f);

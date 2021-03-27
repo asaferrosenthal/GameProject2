@@ -1,21 +1,18 @@
+using System;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
 
 namespace Environment
 {
-
+    
     public class EndTrigger : MonoBehaviour
     {
-
-        public GameObject completeLevelUI;
-
-        IEnumerator OnCollisionEnter()
+        public EnvironmentManager _Manager;
+        private const int PlayerLayer = 10;
+        private void OnTriggerEnter(Collider other)
         {
-            yield return new WaitForSeconds(0.5f);
-            completeLevelUI.SetActive(true);
-            yield return new WaitForSeconds(1);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            if (other.gameObject.layer == PlayerLayer) StartCoroutine(_Manager.LevelEnd());
         }
     }
 

@@ -1,4 +1,7 @@
+using System;
 using TMPro;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace UI
 {
@@ -10,5 +13,6 @@ namespace UI
         {
             _ScoreUI.text = num.ToString("#.");
         }
+        
     }
 }

@@ -120,9 +120,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI.EscapeUI, Assembly-CSharp
-        m_MethodName: RestartLevel
+      - m_Target: {fileID: 4823730774526329953}
+        m_TargetAssemblyTypeName: UI.LevelUIBase, Assembly-CSharp
+        m_MethodName: NextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 1520345305273192438}
   - component: {fileID: 40881419424577784}
   m_Layer: 5
-  m_Name: PageSpace
+  m_Name: Score Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,8 +349,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI.EscapeUI, Assembly-CSharp
+      - m_Target: {fileID: 4823730774526329953}
+        m_TargetAssemblyTypeName: UI.LevelUIBase, Assembly-CSharp
         m_MethodName: RestartLevel
         m_Mode: 1
         m_Arguments:
@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 2718572352873493993}
   - component: {fileID: 4675250171273715796}
   m_Layer: 5
-  m_Name: PageSpace
+  m_Name: Button Page
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,8 +579,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: UI.EscapeUI, Assembly-CSharp
+      - m_Target: {fileID: 4823730774526329953}
+        m_TargetAssemblyTypeName: UI.LevelUIBase, Assembly-CSharp
         m_MethodName: ReturnToStartMenu
         m_Mode: 1
         m_Arguments:
@@ -684,7 +684,7 @@ GameObject:
   - component: {fileID: 3687359131986082835}
   - component: {fileID: 4823730774526329953}
   m_Layer: 5
-  m_Name: LevelCompleteUI
+  m_Name: LevelEndUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1003,7 +1003,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Score:'
+  m_text: 'Time(s):'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

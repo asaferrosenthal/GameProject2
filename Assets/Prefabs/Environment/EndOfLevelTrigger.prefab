@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7397834864213460398}
   - component: {fileID: 3835464449615522227}
   - component: {fileID: 3961976740707789662}
-  - component: {fileID: 5302635132889822079}
+  - component: {fileID: 4872819743978185067}
   m_Layer: 0
   m_Name: EndOfLevelTrigger
   m_TagString: Untagged
@@ -96,7 +96,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5302635132889822079
+--- !u!114 &4872819743978185067
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
