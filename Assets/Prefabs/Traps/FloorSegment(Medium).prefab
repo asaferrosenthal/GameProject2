@@ -10783,7 +10783,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 10, z: 1.5}
+  m_Size: {x: 10, y: 10, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &733097994795592651
 MonoBehaviour:
@@ -10801,7 +10801,7 @@ MonoBehaviour:
   _TriggersOnStay: 0
   _TriggersOnEnter: 1
   _TriggersOnExit: 0
-  _Threshold: 2.5
+  _Threshold: 4
 --- !u!1 &733097994802807457
 GameObject:
   m_ObjectHideFlags: 0
