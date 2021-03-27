@@ -21,6 +21,9 @@ namespace Environment
         [Tooltip("The UI to be displayed on a escape press")]
         public GameObject _EscapeUI;
 
+        // the in use movement settings
+        private MovementControls _movement;
+        
         // Level object information
         private Spawner[] _spawners;
         private Trap[] _traps;
@@ -34,23 +37,29 @@ namespace Environment
         // Score information
         private float _startTime;
 
+        // other
         public bool _Training;
         private void Awake()
         {
             _spawners = GetComponentsInChildren<Spawner>();
             _traps = GetComponentsInChildren<Trap>();
+            
             // initialize level start count down
             _levelCountDownUI = Instantiate(_LevelStartUI).GetComponent<LevelCountDownUI>();
             _levelCountDownUI.SetManager(this);
             InitializeLevelStart();
+            
             // initialize end game menu
             _endOfLevelUI = Instantiate(_LevelEndUI).GetComponent<EndOfLevelUI>();
             _endOfLevelUI.SetManager(this);
             _endOfLevelUI.gameObject.SetActive(false);
+            
             // initialize escape menu
             _escapeUI = Instantiate(_EscapeUI).GetComponent<EscapeUI>();
             _escapeUI._Manager = this;
-
+            
+            // get the movement controls
+            _movement = _RunMan.GetComponent<MovementControls>();
         }
 
         public void ResetEnvironment()
@@ -111,6 +120,16 @@ namespace Environment
             float score = 0;
             score = Time.time - _startTime;
             _endOfLevelUI.SetScore(score);
+        }
+
+        public void UpdateMouseSense(float num)
+        {
+            _movement._DefaultRotationSpeed = num;
+        }
+
+        public float GetMouseSense()
+        {
+            return _movement._DefaultRotationSpeed;
         }
     }
 }

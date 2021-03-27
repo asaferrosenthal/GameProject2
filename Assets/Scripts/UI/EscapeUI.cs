@@ -20,11 +20,21 @@ namespace UI
         
         // Level selection drop down
         private TMP_Dropdown _dropdown;
+
+        // sensitivity select
+        private TMP_InputField _inputField;
+        
         private void Awake()
         {
             _dropdown = GetComponentInChildren<TMP_Dropdown>();
+            _inputField = GetComponentInChildren<TMP_InputField>();
             _PageSpace.SetActive(false);
             LoadDropDown();
+        }
+
+        private void Start()
+        {
+            GetMouseSensitivity();
         }
 
         private void Update()
@@ -84,7 +94,18 @@ namespace UI
 
             _dropdown.options = optionList;
         }
-        
+
+        public void UpdateSensitivity()
+        {
+            var input = Single.Parse(_inputField.text);
+            if (input == null) return;
+            _Manager.UpdateMouseSense(input);
+        }
+
+        public void GetMouseSensitivity()
+        {
+             _inputField.text = _Manager.GetMouseSense().ToString();
+        }
         
     }
 }

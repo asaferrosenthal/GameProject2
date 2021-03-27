@@ -19,6 +19,7 @@ public class PlayerAnimationController : MonoBehaviour
     private void Awake()
     {
         _body = _RunMan.GetComponent<Rigidbody>();
+        _Animator.runtimeAnimatorController = _Idle;
     }
 
     private void FixedUpdate()
