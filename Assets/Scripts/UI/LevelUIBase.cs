@@ -18,7 +18,8 @@ namespace UI
 
         public void NextLevel()
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            int index = SceneManager.GetActiveScene().buildIndex + 1;
+            SceneManager.LoadScene(index >= SceneManager.sceneCountInBuildSettings ? 0 : index);
         }
 
         public void RestartLevel()

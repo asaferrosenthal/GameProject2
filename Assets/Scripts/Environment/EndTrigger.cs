@@ -12,7 +12,12 @@ namespace Environment
         private const int PlayerLayer = 10;
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.layer == PlayerLayer) StartCoroutine(_Manager.LevelEnd());
+            if (other.gameObject.layer == PlayerLayer)
+            {
+                other.gameObject.GetComponent<Rigidbody>().velocity *= 0.25f;
+                StartCoroutine(_Manager.LevelEnd());
+            }
+            
         }
     }
 

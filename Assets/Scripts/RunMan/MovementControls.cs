@@ -66,9 +66,6 @@ namespace RunMan
 
             // Apply movement vector to character using physics system
             _rigidbody.AddForce(_movement);
-            
-            
-
         }
     }
 }

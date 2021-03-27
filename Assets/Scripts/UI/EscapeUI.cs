@@ -59,13 +59,7 @@ namespace UI
             SceneManager.LoadScene(0);
             ToggleEscapeMenu();
         }
-
-        // utility for going to a specific scene
-        public void SelectScene(SceneAsset scene)
-        {
-            SceneManager.LoadScene(scene.name);
-        }
-
+        
         // Takes currently selected option and loads it
         public void LoadDropDownScene()
         {

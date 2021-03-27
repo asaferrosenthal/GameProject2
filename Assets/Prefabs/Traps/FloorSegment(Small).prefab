@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4975053226893274658}
   - component: {fileID: 4975053226893274661}
   - component: {fileID: 6157088610588176328}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 4975053226962806076}
   - component: {fileID: 4975053226962806079}
   - component: {fileID: 5505636492359251307}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -237,7 +237,7 @@ GameObject:
   - component: {fileID: 4975053227063741387}
   - component: {fileID: 4975053227063741386}
   - component: {fileID: 8061692591468345622}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -349,7 +349,7 @@ GameObject:
   - component: {fileID: 4975053227121572876}
   - component: {fileID: 4975053227121572879}
   - component: {fileID: 4445357519962531950}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 4975053227243910937}
   - component: {fileID: 4975053227243910936}
   - component: {fileID: 4528911026423828313}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -573,7 +573,7 @@ GameObject:
   - component: {fileID: 4975053227482898975}
   - component: {fileID: 4975053227482898974}
   - component: {fileID: 589089961901452865}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -685,7 +685,7 @@ GameObject:
   - component: {fileID: 4975053227529554697}
   - component: {fileID: 4975053227529554696}
   - component: {fileID: 3541668002997086175}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 4975053227531639511}
   - component: {fileID: 4975053227531639510}
   - component: {fileID: 5939326636588497587}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -909,7 +909,7 @@ GameObject:
   - component: {fileID: 4975053227633254074}
   - component: {fileID: 4975053227633254077}
   - component: {fileID: 8595364667777835239}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 4975053227754519724}
   - component: {fileID: 4975053227754519727}
   - component: {fileID: 2563509143718647321}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -1133,7 +1133,7 @@ GameObject:
   - component: {fileID: 4975053227767813330}
   - component: {fileID: 4975053227767813333}
   - component: {fileID: 6830674541974881200}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -1245,7 +1245,7 @@ GameObject:
   - component: {fileID: 4975053227790993726}
   - component: {fileID: 4975053227790993697}
   - component: {fileID: 498525740530051583}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -1357,7 +1357,7 @@ GameObject:
   - component: {fileID: 4975053227938988763}
   - component: {fileID: 4975053227938988762}
   - component: {fileID: 4667819783541613090}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -1469,7 +1469,7 @@ GameObject:
   - component: {fileID: 4975053227956308408}
   - component: {fileID: 4975053227956308411}
   - component: {fileID: 6529285796402612835}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -1581,7 +1581,7 @@ GameObject:
   - component: {fileID: 4975053228166171832}
   - component: {fileID: 4975053228166171835}
   - component: {fileID: 4481730794829558334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -1692,7 +1692,7 @@ GameObject:
   - component: {fileID: 4975053228363747781}
   - component: {fileID: 4975053228363747778}
   - component: {fileID: 7307018336118753986}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FloorSegment(Small)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1797,7 +1797,7 @@ GameObject:
   - component: {fileID: 4975053228406955970}
   - component: {fileID: 4975053228406955973}
   - component: {fileID: 4885424129971992987}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -1909,7 +1909,7 @@ GameObject:
   - component: {fileID: 4975053228483055915}
   - component: {fileID: 4975053228483055914}
   - component: {fileID: 932171138580675373}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -2021,7 +2021,7 @@ GameObject:
   - component: {fileID: 4975053228490159037}
   - component: {fileID: 4975053228490159036}
   - component: {fileID: 3712548536414396196}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -2133,7 +2133,7 @@ GameObject:
   - component: {fileID: 4975053228556938521}
   - component: {fileID: 4975053228556938520}
   - component: {fileID: 8656220077864250952}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -2245,7 +2245,7 @@ GameObject:
   - component: {fileID: 4975053228566588702}
   - component: {fileID: 4975053228566588673}
   - component: {fileID: 2602806157504740026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -2357,7 +2357,7 @@ GameObject:
   - component: {fileID: 4975053228573152618}
   - component: {fileID: 4975053228573152621}
   - component: {fileID: 2734622226267621484}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -2469,7 +2469,7 @@ GameObject:
   - component: {fileID: 4975053228642373065}
   - component: {fileID: 4975053228642373064}
   - component: {fileID: 1178657986972028998}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -2581,7 +2581,7 @@ GameObject:
   - component: {fileID: 4975053228691221898}
   - component: {fileID: 4975053228691221901}
   - component: {fileID: 8214918717587269020}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -2693,7 +2693,7 @@ GameObject:
   - component: {fileID: 4975053228833387887}
   - component: {fileID: 4975053228833387886}
   - component: {fileID: 5337065564045249577}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -2805,7 +2805,7 @@ GameObject:
   - component: {fileID: 4975053228890018661}
   - component: {fileID: 4975053228890018660}
   - component: {fileID: 1797926915546325348}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Brick
   m_TagString: Destructible
   m_Icon: {fileID: 0}
