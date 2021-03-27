@@ -44,10 +44,6 @@ namespace Traps
         private IEnumerator GroundBreak()
         {
             base.ApplyTrap();
-<<<<<<< HEAD
-            
-=======
->>>>>>> 98986ebfbd4392b46aac57780157e545691c5ad2
             yield return new WaitForSeconds(_Threshold);
 
             // Turn off kinematic setting on rigidbodies in the wall
@@ -70,14 +66,11 @@ namespace Traps
             base.ResetTrap();
             
             int i = 0;
-            
             Debug.Log(_rigidbodies.Length);
-            
             foreach (Rigidbody ele in _rigidbodies)
             {
                 // enable each brick
                 ele.gameObject.SetActive(true);
-                
                 // Stop the Rigidbodies from moving
                 ele.isKinematic = true;
                 var transform1 = ele.transform;
