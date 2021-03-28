@@ -878,7 +878,7 @@ Transform:
   - {fileID: 233877991}
   - {fileID: 2221025128112995179}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1277853691
 MonoBehaviour:
@@ -896,8 +896,6 @@ MonoBehaviour:
   _LevelStartUI: {fileID: 1205522500583943284, guid: 70f3d054c19cdf54e8c35f8b4ee2bcf2,
     type: 3}
   _LevelEndUI: {fileID: 6220493777379888483, guid: ef23d2b4d80225a49843e48b4fedc826,
-    type: 3}
-  _EscapeUI: {fileID: 6220493777379888483, guid: 7354d4166b0a8424ab7c96e65174a4c8,
     type: 3}
   _Training: 0
 --- !u!1001 &1339623663
@@ -1685,7 +1683,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &733097993130025414 stripped
 Transform:
