@@ -68,7 +68,6 @@ MonoBehaviour:
   _ScaleFactor: 0.5
   _Training: 0
   _TrainingLocations: []
-  _isGrounded: 0
 --- !u!114 &6451195554516913765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -112,8 +111,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Animator: {fileID: 7163373551426439307}
-  _Idle: {fileID: 9100000, guid: a8555c0cff30527479e32562cef9141f, type: 2}
-  _Run: {fileID: 9100000, guid: eb79e3fd0dd669f40a90a984b92a0ccf, type: 2}
   _RunMan: {fileID: 4231269371415711654}
 --- !u!1 &6935746349388031149
 GameObject:
@@ -256,10 +253,14 @@ PrefabInstance:
     - target: {fileID: 9500000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: a8555c0cff30527479e32562cef9141f, type: 2}
+      objectReference: {fileID: 9100000, guid: 138729d86dcd53f469bcbe325e13500d, type: 2}
     - target: {fileID: 9500000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
       propertyPath: m_UpdateMode
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}
+      propertyPath: m_CullingMode
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5917c0e93d180a842b61d1ebc62a195c, type: 3}

@@ -53,7 +53,7 @@ namespace Environment
             
             // initialize escape menu
             _escapeUI = FindObjectOfType<EscapeUI>();
-            _escapeUI._Manager = this;
+            if(_escapeUI != null) _escapeUI._Manager = this;
             
             // get the movement controls
             _movement = _RunMan.GetComponent<MovementControls>();
@@ -87,7 +87,7 @@ namespace Environment
             _isGamePaused = !_isGamePaused;
             Time.timeScale = _isGamePaused ? 0 : 1;
             Cursor.visible = _isGamePaused;
-            
+
             return _isGamePaused;
         }
 

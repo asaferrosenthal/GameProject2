@@ -1075,8 +1075,6 @@ MonoBehaviour:
     type: 3}
   _LevelEndUI: {fileID: 6220493777379888483, guid: ef23d2b4d80225a49843e48b4fedc826,
     type: 3}
-  _EscapeUI: {fileID: 6220493777379888483, guid: 7354d4166b0a8424ab7c96e65174a4c8,
-    type: 3}
   _Training: 0
 --- !u!1 &1303059656 stripped
 GameObject:
@@ -2135,7 +2133,7 @@ PrefabInstance:
     - target: {fileID: 3802346277263217321, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 3802346277263217321, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}

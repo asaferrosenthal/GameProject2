@@ -36,7 +36,7 @@ namespace UI
 
         private void Start()
         {
-            GetMouseSensitivity();
+            if(_Manager != null) GetMouseSensitivity();
         }
 
         private void Update()
@@ -112,7 +112,7 @@ namespace UI
 
         public void UpdateScale()
         {
-            _Manager.UpdateMouseScale(_ScaleSlider.value);
+            if(_Manager != null) _Manager.UpdateMouseScale(_ScaleSlider.value);
         }
 
         public void GetScale()

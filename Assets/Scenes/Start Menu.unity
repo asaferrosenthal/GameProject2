@@ -165,6 +165,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2457101846201049367, guid: 7354d4166b0a8424ab7c96e65174a4c8,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457101846201049367, guid: 7354d4166b0a8424ab7c96e65174a4c8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2457101846201049367, guid: 7354d4166b0a8424ab7c96e65174a4c8,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2498776925552083476, guid: 7354d4166b0a8424ab7c96e65174a4c8,
         type: 3}
       propertyPath: m_Layer
@@ -403,6 +418,16 @@ PrefabInstance:
     - target: {fileID: 8465675772661271233, guid: 7354d4166b0a8424ab7c96e65174a4c8,
         type: 3}
       propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472858711978654836, guid: 7354d4166b0a8424ab7c96e65174a4c8,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8472858711978654836, guid: 7354d4166b0a8424ab7c96e65174a4c8,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8651145382821123307, guid: 7354d4166b0a8424ab7c96e65174a4c8,
@@ -772,7 +797,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 42c318391ccef44c98d333ad91f68321, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -2779,10 +2804,11 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "A and D to move left and right respectively\n\nScroll wheel up a down
-    to scale the size/mass of the player object to a minimum or maximum\n\nWhen the
-    player\u2019s size/mass is lower, they move faster (vice-versa for bigger size/mass)\n\nYou
-    lose when you fall to your doom!"
+  m_Text: "A and D to move left and right respectively\n\nHold down left or right
+    click to use your mouse to rotate, otherwise A and D will work\n\nScroll wheel
+    up a down to scale the size/mass of the player object to a minimum or maximum\n\nWhen
+    the player\u2019s size/mass is lower, they move faster (vice-versa for bigger
+    size/mass)\n\nYou lose when you fall to your doom!"
 --- !u!222 &1236361434
 CanvasRenderer:
   m_ObjectHideFlags: 0
