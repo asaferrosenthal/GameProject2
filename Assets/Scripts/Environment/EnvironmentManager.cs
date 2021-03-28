@@ -18,9 +18,6 @@ namespace Environment
         [Tooltip("The UI to be displayed on a level completion")]
         public GameObject _LevelEndUI;
 
-        [Tooltip("The UI to be displayed on a escape press")]
-        public GameObject _EscapeUI;
-
         // the in use movement settings
         private MovementControls _movement;
         
@@ -55,13 +52,16 @@ namespace Environment
             _endOfLevelUI.gameObject.SetActive(false);
             
             // initialize escape menu
-            _escapeUI = Instantiate(_EscapeUI).GetComponent<EscapeUI>();
+            _escapeUI = FindObjectOfType<EscapeUI>();
             _escapeUI._Manager = this;
             
             // get the movement controls
             _movement = _RunMan.GetComponent<MovementControls>();
+            _escapeUI.UpdateSensitivity();
+            _escapeUI.UpdateScale();
         }
 
+        
         public void ResetEnvironment()
         {
             foreach(Spawner ele in _spawners)
@@ -130,6 +130,16 @@ namespace Environment
         public float GetMouseSense()
         {
             return _movement._DefaultRotationSpeed;
+        }
+
+        public void UpdateMouseScale(float num)
+        {
+            _RunMan._ScaleFactor = num;
+        }
+
+        public float GetMouseScale()
+        {
+            return _RunMan._ScaleFactor;
         }
     }
 }

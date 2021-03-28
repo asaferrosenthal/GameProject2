@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using Environment;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,15 +20,18 @@ namespace UI
         // Level selection drop down
         private TMP_Dropdown _dropdown;
 
-        // sensitivity select
-        private TMP_InputField _inputField;
+        [Tooltip("Sensitivity field")]
+        public TMP_InputField _SensitivityInputField;
+        
+        [Tooltip("Sensitivity field")]
+        public Slider _ScaleSlider;
         
         private void Awake()
         {
             _dropdown = GetComponentInChildren<TMP_Dropdown>();
-            _inputField = GetComponentInChildren<TMP_InputField>();
             _PageSpace.SetActive(false);
             LoadDropDown();
+            DontDestroyOnLoad(this);
         }
 
         private void Start()
@@ -68,6 +70,7 @@ namespace UI
         {
             SceneManager.LoadScene(0);
             ToggleEscapeMenu();
+            Destroy(this.gameObject);
         }
         
         // Takes currently selected option and loads it
@@ -97,15 +100,25 @@ namespace UI
 
         public void UpdateSensitivity()
         {
-            var input = Single.Parse(_inputField.text);
+            var input = Single.Parse(_SensitivityInputField.text);
             if (input == null) return;
             _Manager.UpdateMouseSense(input);
         }
 
         public void GetMouseSensitivity()
         {
-             _inputField.text = _Manager.GetMouseSense().ToString();
+             _SensitivityInputField.text = _Manager.GetMouseSense().ToString();
         }
-        
+
+        public void UpdateScale()
+        {
+            _Manager.UpdateMouseScale(_ScaleSlider.value);
+        }
+
+        public void GetScale()
+        {
+            _ScaleSlider.value = _Manager.GetMouseScale();
+        }
+
     }
 }

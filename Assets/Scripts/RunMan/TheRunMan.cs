@@ -44,9 +44,6 @@ namespace RunMan
         
         // use on reset
         private int _defaultLayer;
-        
-        // use for animations
-       public bool _isGrounded;
 
         // Set maximum and minimum scaling of run man, could make these public for testing
         private const float MaxScale = 1.5f;
@@ -122,16 +119,6 @@ namespace RunMan
         {
             _currentMass += num;
             _rigidBody.mass += num;
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject.layer == 8) _isGrounded = true;
-        }
-
-        private void OnCollisionExit(Collision other)
-        {
-            if (other.gameObject.layer == 8) _isGrounded = false;
         }
     }
 }

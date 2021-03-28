@@ -68,6 +68,7 @@ MonoBehaviour:
   _ScaleFactor: 0.5
   _Training: 0
   _TrainingLocations: []
+  _isGrounded: 0
 --- !u!114 &6451195554516913765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ForwardSpeed: 10
   _HorizontalSpeed: 20
-  _DefaultRotationSpeed: 5
+  _DefaultRotationSpeed: 1
   _MouseRotation: 1
 --- !u!136 &7635772102609386516
 CapsuleCollider:

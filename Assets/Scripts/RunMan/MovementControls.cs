@@ -41,6 +41,7 @@ namespace RunMan
         
         private void FixedUpdate()
         {
+            
             // transform save
             Transform trans = transform;
             
@@ -52,7 +53,7 @@ namespace RunMan
             // Add force in the direction of rotation, make it feel less sloppy
             _movement += trans.right * (_HorizontalSpeed * Input.GetAxis("Horizontal"));
 
-            if (_MouseRotation)
+            if (_MouseRotation & ( (Input.GetMouseButton(0) | Input.GetMouseButton(1)) ))
             {
                 transform.eulerAngles += up * (Input.GetAxis("Mouse X") * _DefaultRotationSpeed);
             }
