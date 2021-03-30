@@ -40,7 +40,8 @@ namespace Environment
         {
             _spawners = GetComponentsInChildren<Spawner>();
             _traps = GetComponentsInChildren<Trap>();
-            
+
+            if (_Training) return;
             // initialize level start count down
             _levelCountDownUI = Instantiate(_LevelStartUI).GetComponent<LevelCountDownUI>();
             _levelCountDownUI.SetManager(this);
@@ -56,7 +57,7 @@ namespace Environment
             if(_escapeUI != null) _escapeUI._Manager = this;
             
             // get the movement controls
-            _movement = _RunMan.GetComponent<MovementControls>();
+            if (_RunMan != null) _movement = _RunMan.GetComponent<MovementControls>();
             _escapeUI.UpdateSensitivity();
             _escapeUI.UpdateScale();
         }
@@ -74,6 +75,8 @@ namespace Environment
                 ele.ResetTrap();
             }
 
+            if (_Training) return;
+            
             if (_RunMan != null) _RunMan.ResetRunMan();
             _levelCountDownUI.enabled = true;
             _startTime = 0;
