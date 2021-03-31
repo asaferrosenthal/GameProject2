@@ -17,9 +17,12 @@ namespace Adversary
             _Collider.enabled = false;
         }
 
-        public override void Reset()
+        private void OnCollisionEnter(Collision other)
         {
-            base.Reset();
+            if (other.gameObject.layer != _PlayerLayer | _Agent._Frozen) return;
+            _Agent._Frozen = true;
+            other.gameObject.GetComponent<TheRunMan>().AddMass(_Rigidbody.mass);
+            _Collider.enabled = false;
         }
     }
 }

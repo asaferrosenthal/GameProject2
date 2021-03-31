@@ -218,7 +218,7 @@ MonoBehaviour:
     VectorActionSize: 03000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 12898ce50db642240a466dbf90493cc0, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 05db650d1ea0c8548a5c45d58d1c7709, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Goober

@@ -48,7 +48,7 @@ checkpoint_settings:
   run_id: '3242021_01'
   initialize_from: null
   load_model: false
-  resume: false
+  resume: true
   force: false
   train_model: false
   inference: false

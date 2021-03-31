@@ -99,7 +99,7 @@ namespace Adversary
         {
             // when we are not training, freeze this agent if there are no targets
             if (_TrainingMode) return;
-            _Frozen = _targetRecords.Count == 0;
+            /*_Frozen = _targetRecords.Count == 0;*/
         }
 
         public override void OnEpisodeBegin()
