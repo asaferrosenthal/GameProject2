@@ -121,33 +121,9 @@ namespace Adversary
             // Observe the agent's rotation : 3
             sensor.AddObservation(_rigidBody.rotation.normalized);
             // Are we on the ground, might not matter
-            sensor.AddObservation(_isGrounded); // 1
-            
-            // how many hits did this agent get
-            sensor.AddObservation(_hits); // 1
 
-            /*// Obstacle related information
-            if (_obstacleRecords.Count <= 0)
-            {
-                sensor.AddObservation(new float[3]);
-            }
-            else // records obstacle information if they exist
-            {
-                // obstacle information
-                Vector3 transformPosition = transform.position;
-                Vector3 dirOfObstacle = (_obstacleRecords[0].transform.position - transformPosition).normalized; 
-                float obstacleDistance = (_obstacleRecords[0].transform.position - transformPosition).magnitude;
-                
-                // relative distance to obstacle
-                sensor.AddObservation(obstacleDistance/_SearchRadius); // 1
-                // Where is the obstacle relative to agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
-                sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.forward.normalized)); // 1
-                sensor.AddObservation(Dot(dirOfObstacle, -_obstacleRecords[0].transform.right.normalized)); // 1
-                
-            }*/
-            
             // Targets related information
-            if (_targetRecords.Count <= 0)
+            if (_targetRecords.Count <= 0 | _isGrounded)
             {
                 sensor.AddObservation(new float[3]);
             }
@@ -163,14 +139,7 @@ namespace Adversary
                 // Where is the target relative to the agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.right.normalized)); // 1
-
-                /*Rigidbody body = _targetRecords[0].GetComponent<Rigidbody>();
-                // direction the target is heading : 3
-                sensor.AddObservation(body.velocity.normalized);
-                // get magnitude of velocity : 1
-                sensor.AddObservation(body.velocity.magnitude);
-                // Observe the target's rotation : 3
-                sensor.AddObservation(body.rotation.normalized);*/
+                
             }
 
         }
