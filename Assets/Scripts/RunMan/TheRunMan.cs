@@ -50,8 +50,9 @@ namespace RunMan
         private const float MinScale = 1f;
 
         // Set colors for mass change
-        public Color colorSmall = Color.green;
-        public Color colorBig = Color.red;
+        public Color _colorBig = Color.red;
+        
+        private Color _originalColour;
         float duration = 1.0f;
         private SkinnedMeshRenderer _mSkinnedMeshRenderer;
 
@@ -75,6 +76,8 @@ namespace RunMan
             ResetRunMan();
             //get skin renderer for runman's dummy 
             _mSkinnedMeshRenderer = GameObject.Find("Dummy").GetComponent<SkinnedMeshRenderer>();
+            _originalColour = _mSkinnedMeshRenderer.material.color;
+        
         }
 
         private void Update()
@@ -89,19 +92,11 @@ namespace RunMan
         /// </summary>
         private void UpdateRunManScale()
         {
+            // clamp the scale of the character between max and min
             _currentScale = Mathf.Clamp(_currentScale + -1* (Input.GetAxis("Scroll") * _ScaleFactor), MinScale, MaxScale);
             
             //mechanics for runman's colour change according to mass
-            float lerp = Mathf.PingPong(Time.time, duration) / duration;
-            
-             if (Input.GetAxis("Scroll") > 0f) // runman gets smaller
-            {
-                _mSkinnedMeshRenderer.material.color = Color.Lerp(_mSkinnedMeshRenderer.material.color, colorSmall, Time.deltaTime);
-            }
-            if (Input.GetAxis("Scroll") < 0f) // runman gets bigger
-            {
-               _mSkinnedMeshRenderer.material.color = Color.Lerp(_mSkinnedMeshRenderer.material.color, colorBig, Time.deltaTime);
-            }
+            _mSkinnedMeshRenderer.material.color = Color.Lerp(_originalColour, _colorBig, _currentScale/MaxScale);
 
         }
 
