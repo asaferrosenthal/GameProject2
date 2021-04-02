@@ -9,7 +9,7 @@ namespace Traps
         [Tooltip("The momentum required to break through this wall")]
         public float _BreakThreshold;
 
-        [SerializeField] private float _pushBack = -100;
+        [SerializeField] private float _pushBack = -25;
         
         // Wall components
         private Rigidbody[] _rigidbodies;
@@ -36,13 +36,14 @@ namespace Traps
         protected override void ApplyTrap()
         {
             base.ApplyTrap();
+
             Rigidbody tar = _Target.GetComponent<Rigidbody>();
             
             if (tar == null) return; // there is no rigidbody
 
             if ((MomentumChecker.GetMomentum(tar) <= _BreakThreshold))
             {
-                tar.AddForce(Vector3.forward * _pushBack);
+                tar.AddForce(Vector3.forward * _pushBack, ForceMode.Impulse);
                 return; // the threshold is not met
             }
             
@@ -56,6 +57,7 @@ namespace Traps
             {
                 ele.isKinematic = false;
             }
+
         }
 
         public override void ResetTrap()
@@ -68,8 +70,6 @@ namespace Traps
             int i = 0;
             foreach (Rigidbody ele in _rigidbodies)
             {
-                // enable each brick
-                ele.gameObject.SetActive(true);
                 // Stop the Rigidbodies from moving
                 ele.isKinematic = true;
                 var transform1 = ele.transform;
@@ -77,6 +77,10 @@ namespace Traps
                 // Reset positions
                 transform1.position = _positions[i];
                 transform1.rotation = _rotations[i];
+                
+                // enable each brick
+                ele.gameObject.SetActive(true);
+                
                 i++;
             }
         }

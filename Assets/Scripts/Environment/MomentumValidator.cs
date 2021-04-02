@@ -27,5 +27,19 @@ namespace Environment
             
             _indicator.material = MomentumChecker.GetMomentum(other.attachedRigidbody) >= _threshHold ? _valid : _invalid;
         }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.gameObject.layer != PlayerLayer) return;
+            
+            _indicator.material = _invalid;
+            _indicator.enabled = false;
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.layer != PlayerLayer) return;
+            _indicator.enabled = true;
+        }
     }
 }

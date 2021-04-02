@@ -59,8 +59,8 @@ namespace RunMan
             var mass = _rigidBody.mass;
             _defaultMass = mass;
             _currentMass = mass;
-            _defaultRotation = trans.localRotation;
-            _defaultPosition = trans.localPosition;
+            _defaultRotation = trans.rotation;
+            _defaultPosition = trans.position;
         }
 
         private void Start()
@@ -102,7 +102,7 @@ namespace RunMan
             _currentMass = _defaultMass;
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
-            trans.localRotation = _defaultRotation;
+            trans.rotation = _defaultRotation;
             this.gameObject.layer = _defaultLayer;
             if (_Training)
             {
@@ -110,7 +110,7 @@ namespace RunMan
             }
             else
             {
-                trans.localPosition = _defaultPosition;
+                trans.position = _defaultPosition;
             }
 
         }
@@ -120,6 +120,5 @@ namespace RunMan
             _currentMass += num;
             _rigidBody.mass += num;
         }
-        
     }
 }

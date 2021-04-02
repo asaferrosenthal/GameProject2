@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Traps
@@ -12,21 +13,19 @@ namespace Traps
         public float _UpwardsModifier;
         
         public ParticleSystem _Explosion;
-        
+
+        private void Awake()
+        {
+            _Explosion.Stop(true);
+        }
+
         protected override void ApplyTrap()
         {
             if (!_Enabled) return;
-            ExplosionEffect();
+            _Explosion.Play(true);
             Rigidbody bod = _Target.GetComponent<Rigidbody>();
             if(bod != null) bod.AddExplosionForce(_Power, _Target.transform.position, _Radius, _UpwardsModifier);
         }
         
-        void ExplosionEffect()
-        {
-            if (_Target.name == "RunMan")
-            {
-                _Explosion.Play();
-            }
-        }
     }
 }

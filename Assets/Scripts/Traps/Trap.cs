@@ -35,6 +35,7 @@ namespace Traps
         protected virtual void ApplyTrap()
         {
             if (!_Enabled) return;
+            //Debug.Log(_Target.name + " has triggered the trap");
         }
 
         public virtual void ResetTrap()
