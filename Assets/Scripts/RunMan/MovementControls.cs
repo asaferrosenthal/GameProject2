@@ -33,6 +33,7 @@ namespace RunMan
         // Vector built by inputs for rotation translation
         private Vector3 _rotation;
         
+        
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -68,5 +69,6 @@ namespace RunMan
             // Apply movement vector to character using physics system
             _rigidbody.AddForce(_movement);
         }
+
     }
 }
