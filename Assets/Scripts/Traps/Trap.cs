@@ -12,10 +12,9 @@ namespace Traps
         protected GameObject _Target;
         public AudioSource audioSource;
 
-        void Start()
+        void Awake()
         {
             audioSource = GetComponent<AudioSource>();
-
         }
 
         protected internal void OnTriggerStay(Collider other)
@@ -30,8 +29,20 @@ namespace Traps
 
             if (!_TriggersOnEnter) return;
             _Target = other.gameObject;
-            audioSource.Stop();
+
+            if (Time.timeSinceLevelLoad != 0)
+            {
+                audioSource.volume = 1;
+            }
+            else
+            {
+                audioSource.volume = 0;
+
+            }
+
+            audioSource.Play();
             ApplyTrap();
+
         }
 
         protected internal void OnTriggerExit(Collider other)

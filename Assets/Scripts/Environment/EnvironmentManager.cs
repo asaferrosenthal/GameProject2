@@ -36,10 +36,17 @@ namespace Environment
 
         // other
         public bool _Training;
+
+        // Sound Effects
+        public AudioSource audioSource;
+        public AudioClip complete, start, escape;
+
         private void Awake()
         {
+            audioSource = GetComponent<AudioSource>();
             _spawners = GetComponentsInChildren<Spawner>();
             _traps = GetComponentsInChildren<Trap>();
+            
 
             if (_Training) return;
             // initialize level start count down
@@ -60,15 +67,16 @@ namespace Environment
             if (_RunMan != null) _movement = _RunMan.GetComponent<MovementControls>();
             _escapeUI.UpdateSensitivity();
             _escapeUI.UpdateScale();
+
         }
 
-        
         public void ResetEnvironment()
         {
-            foreach(Spawner ele in _spawners)
+            foreach (Spawner ele in _spawners)
             {
                 ele.ResetObjectPositions();
             }
+
 
             foreach (Trap ele in _traps)
             {
@@ -76,9 +84,14 @@ namespace Environment
             }
 
             if (_Training) return;
-            
+
             if (_RunMan != null) _RunMan.ResetRunMan();
+
             _levelCountDownUI.enabled = true;
+
+            audioSource.clip = start;
+            audioSource.Play();
+
             _startTime = 0;
         }
 
@@ -91,6 +104,9 @@ namespace Environment
             Time.timeScale = _isGamePaused ? 0 : 1;
             Cursor.visible = _isGamePaused;
 
+            audioSource.clip = escape;
+            audioSource.Play();
+
             return _isGamePaused;
         }
 
@@ -98,6 +114,8 @@ namespace Environment
         {
             Debug.Log("INIT LevelStarted");
             Time.timeScale = 0;
+            audioSource.clip = start;
+            audioSource.Play();
             _isGamePaused = true;
         }
         
@@ -118,7 +136,11 @@ namespace Environment
             
             TogglePauseGame();
             _endOfLevelUI.gameObject.SetActive(true);
-            
+
+            audioSource.clip = complete;
+            audioSource.Play();
+
+
             // Build Score value
             float score = 0;
             score = Time.time - _startTime;

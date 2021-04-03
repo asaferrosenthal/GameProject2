@@ -10,7 +10,8 @@ namespace Environment
   {
       public EnvironmentManager _Manager;
       private const int PlayerLayer = 10;
-      private void OnTriggerEnter(Collider other)
+
+        private void OnTriggerEnter(Collider other)
       {
           if (other.gameObject.layer == PlayerLayer)
           {

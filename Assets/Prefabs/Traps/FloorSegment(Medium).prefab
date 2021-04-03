@@ -10799,9 +10799,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _Enabled: 1
   _TriggersOnStay: 0
-  _TriggersOnEnter: 0
+  _TriggersOnEnter: 1
   _TriggersOnExit: 0
-  _Threshold: 0.25
+  audioSource: {fileID: 0}
+  _Threshold: 4
 --- !u!1 &733097994802807457
 GameObject:
   m_ObjectHideFlags: 0
