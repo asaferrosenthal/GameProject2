@@ -20,11 +20,10 @@ namespace Utility
         /// Non-linearly translates from local object's current position to a target object's position.
         /// This script could be expanded to have toggles choosing the style of non-linear transition.
         /// </summary>
-        private void FixedUpdate()
+        private void Update()
         {
             var position = _Target.transform.position;
-            transform.localPosition = Vector3.Lerp(transform.localPosition,
-                new Vector3(_Offset.x, _Offset.y, _Offset.z), Time.deltaTime * _Speed);
+            transform.position = Vector3.Lerp(transform.position, position + new Vector3(_Offset.x, _Offset.y, _Offset.z), Time.unscaledTime * _Speed);
         }
     }
 }
