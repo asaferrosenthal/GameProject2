@@ -5,17 +5,18 @@ namespace Traps
 {
     public class Trap : MonoBehaviour
     {
+        [Tooltip("Can this trap be activated.")]
         public bool _Enabled = true;
+        [Tooltip("This trap is activated when objects stay in it.")]
         public bool _TriggersOnStay;
+        [Tooltip("This trap is activated when object enter into it.")]
         public bool _TriggersOnEnter;
+        [Tooltip("This trap is activated when objects exit it.")]
         public bool _TriggersOnExit;
+        [Tooltip("The audio source played on a trigger of this trap.")]
+        public AudioSource _audioSource;
+        
         protected GameObject _Target;
-        public AudioSource audioSource;
-
-        void Awake()
-        {
-            audioSource = GetComponent<AudioSource>();
-        }
 
         protected internal void OnTriggerStay(Collider other)
         {
@@ -32,15 +33,14 @@ namespace Traps
 
             if (Time.timeSinceLevelLoad != 0)
             {
-                audioSource.volume = 1;
+                _audioSource.volume = 1;
             }
             else
             {
-                audioSource.volume = 0;
+                _audioSource.volume = 0;
 
             }
-
-            audioSource.Play();
+            
             ApplyTrap();
 
         }
@@ -55,7 +55,7 @@ namespace Traps
         protected virtual void ApplyTrap()
         {
             if (!_Enabled) return;
-            //Debug.Log(_Target.name + " has triggered the trap");
+            _audioSource.Play();
         }
 
         public virtual void ResetTrap()
