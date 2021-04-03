@@ -38,12 +38,12 @@ namespace Environment
         public bool _Training;
 
         // Sound Effects
-        public AudioSource audioSource;
-        public AudioClip complete, start, escape;
+        public AudioSource _AudioSource;
+        public AudioClip _Complete, _Escape;
 
         private void Awake()
         {
-            audioSource = GetComponent<AudioSource>();
+            _AudioSource = GetComponent<AudioSource>();
             _spawners = GetComponentsInChildren<Spawner>();
             _traps = GetComponentsInChildren<Trap>();
             
@@ -67,7 +67,6 @@ namespace Environment
             if (_RunMan != null) _movement = _RunMan.GetComponent<MovementControls>();
             _escapeUI.UpdateSensitivity();
             _escapeUI.UpdateScale();
-
         }
 
         public void ResetEnvironment()
@@ -76,7 +75,6 @@ namespace Environment
             {
                 ele.ResetObjectPositions();
             }
-
 
             foreach (Trap ele in _traps)
             {
@@ -89,9 +87,6 @@ namespace Environment
 
             _levelCountDownUI.enabled = true;
 
-            audioSource.clip = start;
-            audioSource.Play();
-
             _startTime = 0;
         }
 
@@ -100,12 +95,14 @@ namespace Environment
             // if the countdown is occuring we cant toggle the game
             if (_levelCountDownUI.enabled | _endOfLevelUI.gameObject.activeSelf) return false;
             
+            // set audio up for escape menu
+            _AudioSource.clip = _Escape;
+            _AudioSource.pitch = _isGamePaused ? -1 : 1;
+            _AudioSource.Play();
+            
             _isGamePaused = !_isGamePaused;
             Time.timeScale = _isGamePaused ? 0 : 1;
             Cursor.visible = _isGamePaused;
-
-            audioSource.clip = escape;
-            audioSource.Play();
 
             return _isGamePaused;
         }
@@ -114,9 +111,8 @@ namespace Environment
         {
             Debug.Log("INIT LevelStarted");
             Time.timeScale = 0;
-            audioSource.clip = start;
-            audioSource.Play();
             _isGamePaused = true;
+            
         }
         
         public void LevelStart()
@@ -137,8 +133,8 @@ namespace Environment
             TogglePauseGame();
             _endOfLevelUI.gameObject.SetActive(true);
 
-            audioSource.clip = complete;
-            audioSource.Play();
+            _AudioSource.clip = _Complete;
+            _AudioSource.Play();
 
 
             // Build Score value

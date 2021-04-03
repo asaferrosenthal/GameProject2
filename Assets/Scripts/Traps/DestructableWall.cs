@@ -9,16 +9,13 @@ namespace Traps
         [Tooltip("The momentum required to break through this wall")]
         public float _BreakThreshold;
 
-        [SerializeField] private float _pushBack = -25;
+        [SerializeField] private float _PushBack = -25;
         
         // Wall components
         private Rigidbody[] _rigidbodies;
         private Vector3[] _positions;
         private Quaternion[] _rotations;
         private BoxCollider _thisCollider;
-
-        public AudioClip wallbound, wallbreak;
-
         
         private void Awake()
         {
@@ -46,9 +43,7 @@ namespace Traps
 
             if ((MomentumChecker.GetMomentum(tar) <= _BreakThreshold))
             {
-                tar.AddForce(Vector3.forward * _pushBack, ForceMode.Impulse);
-                _audioSource.clip = wallbound;
-                _audioSource.Play();
+                tar.AddForce(Vector3.forward * _PushBack, ForceMode.Impulse);
                 return; // the threshold is not met
             }
             
@@ -61,8 +56,6 @@ namespace Traps
             foreach (Rigidbody ele in _rigidbodies)
             {
                 ele.isKinematic = false;
-                _audioSource.clip = wallbreak;
-                _audioSource.Play();
             }
 
         }

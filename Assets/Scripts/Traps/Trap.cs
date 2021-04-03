@@ -13,8 +13,8 @@ namespace Traps
         public bool _TriggersOnEnter;
         [Tooltip("This trap is activated when objects exit it.")]
         public bool _TriggersOnExit;
-        [Tooltip("The audio source played on a trigger of this trap.")]
-        public AudioSource _audioSource;
+        /*[Tooltip("The audio source played on a trigger of this trap.")]
+        public AudioSource _audioSource;*/
         
         protected GameObject _Target;
 
@@ -31,16 +31,6 @@ namespace Traps
             if (!_TriggersOnEnter) return;
             _Target = other.gameObject;
 
-            if (Time.timeSinceLevelLoad != 0)
-            {
-                _audioSource.volume = 1;
-            }
-            else
-            {
-                _audioSource.volume = 0;
-
-            }
-            
             ApplyTrap();
 
         }
@@ -55,7 +45,6 @@ namespace Traps
         protected virtual void ApplyTrap()
         {
             if (!_Enabled) return;
-            _audioSource.Play();
         }
 
         public virtual void ResetTrap()
