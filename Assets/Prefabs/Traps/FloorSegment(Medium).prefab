@@ -10794,14 +10794,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 733097994795592645}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc4f76624fb504b4f96e30b1169ed733, type: 3}
+  m_Script: {fileID: 11500000, guid: aeb64e8498a65d94fbe280f188e83160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _Enabled: 1
   _TriggersOnStay: 0
-  _TriggersOnEnter: 1
+  _TriggersOnEnter: 0
   _TriggersOnExit: 0
-  _Threshold: 4
+  _Threshold: 0.25
 --- !u!1 &733097994802807457
 GameObject:
   m_ObjectHideFlags: 0
