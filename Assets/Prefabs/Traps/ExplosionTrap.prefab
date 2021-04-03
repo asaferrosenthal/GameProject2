@@ -114,7 +114,7 @@ MonoBehaviour:
   _TriggersOnStay: 0
   _TriggersOnEnter: 1
   _TriggersOnExit: 0
-  audioSource: {fileID: 0}
+  _AudioSource: {fileID: -2829771286603350113}
   _Power: 1000
   _Radius: 1000
   _UpwardsModifier: 10

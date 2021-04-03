@@ -57,6 +57,8 @@ namespace Traps
             {
                 ele.isKinematic = false;
             }
+            
+            _AudioSource.Play();
 
         }
 
@@ -84,7 +86,5 @@ namespace Traps
                 i++;
             }
         }
-        
-        
     }
 }

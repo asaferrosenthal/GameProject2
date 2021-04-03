@@ -39,7 +39,7 @@ namespace Environment
 
         // Sound Effects
         public AudioSource _AudioSource;
-        public AudioClip _Complete, _Escape;
+        public AudioClip _Complete;
 
         private void Awake()
         {
@@ -95,11 +95,6 @@ namespace Environment
             // if the countdown is occuring we cant toggle the game
             if (_levelCountDownUI.enabled | _endOfLevelUI.gameObject.activeSelf) return false;
             
-            // set audio up for escape menu
-            _AudioSource.clip = _Escape;
-            _AudioSource.pitch = _isGamePaused ? -1 : 1;
-            _AudioSource.Play();
-            
             _isGamePaused = !_isGamePaused;
             Time.timeScale = _isGamePaused ? 0 : 1;
             Cursor.visible = _isGamePaused;
@@ -126,16 +121,13 @@ namespace Environment
         
         public IEnumerator LevelEnd()
         {
-            _RunMan.AddMass(100);
+            _AudioSource.clip = _Complete;
+            _AudioSource.Play();
             
             yield return new WaitForSeconds(1f);
             
             TogglePauseGame();
             _endOfLevelUI.gameObject.SetActive(true);
-
-            _AudioSource.clip = _Complete;
-            _AudioSource.Play();
-
 
             // Build Score value
             float score = 0;

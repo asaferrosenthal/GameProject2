@@ -114,7 +114,7 @@ MonoBehaviour:
   _TriggersOnStay: 1
   _TriggersOnEnter: 1
   _TriggersOnExit: 0
-  _audioSource: {fileID: 4750264522806277597}
+  _AudioSource: {fileID: 4750264522806277597}
   _ChangeFactor: 2.5
 --- !u!114 &7101324296589566327
 MonoBehaviour:

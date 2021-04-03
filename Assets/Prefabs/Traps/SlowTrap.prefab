@@ -115,7 +115,7 @@ MonoBehaviour:
   _TriggersOnStay: 0
   _TriggersOnEnter: 1
   _TriggersOnExit: 0
-  audioSource: {fileID: -5008741445777382719}
+  _AudioSource: {fileID: -5008741445777382719}
   _ChangeFactor: -2.5
 --- !u!54 &-8838007081984920154
 Rigidbody:
@@ -159,7 +159,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 9cc0b4cd6220d458ba442ad29d220a76, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 332e8e03b99503d4d83864865738c9f6, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

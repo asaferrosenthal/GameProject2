@@ -25,7 +25,8 @@ namespace UI
         
         [Tooltip("Sensitivity field")]
         public Slider _ScaleSlider;
-        
+
+        public AudioSource _AudioSource;
         private void Awake()
         {
             _dropdown = GetComponentInChildren<TMP_Dropdown>();
@@ -52,8 +53,12 @@ namespace UI
         public void ToggleEscapeMenu()
         {
             bool isPaused = false;
+            
             // record if the game is paused or not
             if (_Manager != null) isPaused = _Manager.TogglePauseGame();
+            
+            // play opening sound;
+            if(isPaused) _AudioSource.Play();
             // if the game is paused than show the escape UI
             _PageSpace.SetActive(isPaused);
         }

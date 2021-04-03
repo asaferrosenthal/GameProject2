@@ -13,7 +13,7 @@ namespace Traps
         public float _UpwardsModifier;
         
         public ParticleSystem _Explosion;
-
+        
         private void Awake()
         {
             _Explosion.Stop(true);
