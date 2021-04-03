@@ -17,6 +17,9 @@ namespace Traps
         private Quaternion[] _rotations;
         private BoxCollider _thisCollider;
 
+        public AudioClip wallbound, wallbreak;
+
+        
         private void Awake()
         {
             // Initialize each array for wall components
@@ -44,6 +47,8 @@ namespace Traps
             if ((MomentumChecker.GetMomentum(tar) <= _BreakThreshold))
             {
                 tar.AddForce(Vector3.forward * _pushBack, ForceMode.Impulse);
+                audioSource.clip = wallbound;
+                audioSource.Play();
                 return; // the threshold is not met
             }
             
@@ -56,6 +61,8 @@ namespace Traps
             foreach (Rigidbody ele in _rigidbodies)
             {
                 ele.isKinematic = false;
+                audioSource.clip = wallbreak;
+                audioSource.Play();
             }
 
         }

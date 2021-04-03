@@ -10,7 +10,14 @@ namespace Traps
         public bool _TriggersOnEnter;
         public bool _TriggersOnExit;
         protected GameObject _Target;
-        
+        public AudioSource audioSource;
+
+        void Start()
+        {
+            audioSource = GetComponent<AudioSource>();
+
+        }
+
         protected internal void OnTriggerStay(Collider other)
         {
             if (!_TriggersOnStay) return;
@@ -20,8 +27,10 @@ namespace Traps
 
         protected internal void OnTriggerEnter(Collider other)
         {
+
             if (!_TriggersOnEnter) return;
             _Target = other.gameObject;
+            audioSource.Stop();
             ApplyTrap();
         }
 
