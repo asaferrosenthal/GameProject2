@@ -9,6 +9,7 @@ namespace Traps
         protected override void ApplyTrap()
         {
             base.ApplyTrap();
+
             // Initialize variables for the affected rigidbody and forces
             Rigidbody body = _Target.GetComponent<Rigidbody>();
             
@@ -21,7 +22,6 @@ namespace Traps
             
             // Apply this new force
             body.AddForce(newForce);
-            
         }
     }
 }

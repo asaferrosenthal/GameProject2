@@ -3,7 +3,15 @@ guid: 76e366b6b7158464ab6ad22a32a4582c
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _RunMan: {instanceID: 0}
+  - _LevelStartUI: {instanceID: 0}
+  - _LevelEndUI: {instanceID: 0}
+  - audioSource: {instanceID: 0}
+  - complete: {fileID: 8300000, guid: 6f1670933dc054b2a8ebe35071e353b9, type: 3}
+  - start: {fileID: 8300000, guid: 30cf21d542572471a8ee75d063fd78a7, type: 3}
+  - escape: {fileID: 8300000, guid: 2083a51f9c3804a7d9b5ce871f23a620, type: 3}
+  - fallOff: {fileID: 8300000, guid: f632913be79bb41db80c82e4aed29280, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

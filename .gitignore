@@ -56,7 +56,7 @@ sysinfo.txt
 *.unitypackage
 
 #Temporarily blocking
-*.wav
+
 
 # Crashlytics generated file
 crashlytics-build.properties

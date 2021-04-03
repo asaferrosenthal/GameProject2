@@ -5,12 +5,19 @@ namespace Traps
 {
     public class Trap : MonoBehaviour
     {
+        [Tooltip("Can this trap be activated.")]
         public bool _Enabled = true;
+        [Tooltip("This trap is activated when objects stay in it.")]
         public bool _TriggersOnStay;
+        [Tooltip("This trap is activated when object enter into it.")]
         public bool _TriggersOnEnter;
+        [Tooltip("This trap is activated when objects exit it.")]
         public bool _TriggersOnExit;
-        protected GameObject _Target;
+        [Tooltip("The audio source played on a trigger of this trap.")]
+        public AudioSource _audioSource;
         
+        protected GameObject _Target;
+
         protected internal void OnTriggerStay(Collider other)
         {
             if (!_TriggersOnStay) return;
@@ -20,9 +27,22 @@ namespace Traps
 
         protected internal void OnTriggerEnter(Collider other)
         {
+
             if (!_TriggersOnEnter) return;
             _Target = other.gameObject;
+
+            if (Time.timeSinceLevelLoad != 0)
+            {
+                _audioSource.volume = 1;
+            }
+            else
+            {
+                _audioSource.volume = 0;
+
+            }
+            
             ApplyTrap();
+
         }
 
         protected internal void OnTriggerExit(Collider other)
@@ -35,7 +55,7 @@ namespace Traps
         protected virtual void ApplyTrap()
         {
             if (!_Enabled) return;
-            //Debug.Log(_Target.name + " has triggered the trap");
+            _audioSource.Play();
         }
 
         public virtual void ResetTrap()
