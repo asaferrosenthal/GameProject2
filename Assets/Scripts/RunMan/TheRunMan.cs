@@ -84,7 +84,6 @@ namespace RunMan
         {
             UpdateRunManScale();
             ScaleRunMan();
-            
         }
 
         /// <summary>
@@ -97,7 +96,6 @@ namespace RunMan
             
             //mechanics for runman's colour change according to mass
             _mSkinnedMeshRenderer.material.color = Color.Lerp(_originalColour, _colorBig, _currentScale/MaxScale);
-
         }
 
         /// <summary>

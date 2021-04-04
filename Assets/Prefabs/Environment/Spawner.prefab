@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Prefabs:
-  - {fileID: 7221211987578073869, guid: 27431d7876186034c81903c5be3bce45, type: 3}
+  - {fileID: 5685043310866678635, guid: 0f6ad011ca1718c46909ad6a73b8920a, type: 3}
   _SpawnQuantities: 0a000000
   _ConsiderYAxis: 0
   _ParentObject: {fileID: 0}

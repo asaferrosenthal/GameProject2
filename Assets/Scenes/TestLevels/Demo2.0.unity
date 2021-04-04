@@ -208,6 +208,11 @@ PrefabInstance:
       objectReference: {fileID: 563032538}
     - target: {fileID: 4787707582301236700, guid: b624e136de76bc7429365918c2f8c356,
         type: 3}
+      propertyPath: InitialModule.rotation3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4787707582301236700, guid: b624e136de76bc7429365918c2f8c356,
+        type: 3}
       propertyPath: VelocityModule.x.minScalar
       value: 0.05
       objectReference: {fileID: 0}
