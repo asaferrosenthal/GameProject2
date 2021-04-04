@@ -32,8 +32,9 @@ namespace RunMan
 
         // Vector built by inputs for rotation translation
         private Vector3 _rotation;
-        
-        
+
+        public Transform _RotationBox;
+
         private void Awake()
         {
             _rigidbody = GetComponent<Rigidbody>();
@@ -42,9 +43,8 @@ namespace RunMan
         
         private void FixedUpdate()
         {
-            
             // transform save
-            Transform trans = transform;
+            Transform trans = Camera.main.transform;
             
             // Inputs for each axis is defined in Input Manager
             // Fill out the _movement vector with given axis inputs
@@ -54,18 +54,10 @@ namespace RunMan
             // Add force in the direction of rotation, make it feel less sloppy
             _movement += trans.right * (_HorizontalSpeed * Input.GetAxis("Horizontal"));
 
-            if (_MouseRotation & ( (Input.GetMouseButton(0) | Input.GetMouseButton(1)) ))
-            {
-                transform.eulerAngles += up * (Input.GetAxis("Mouse X") * _DefaultRotationSpeed);
-            }
-            else
-            {
-                // Fill out the _rotation vector with given axis inputs
-                _rotation.y = Input.GetAxis("Horizontal") * _DefaultRotationSpeed;
-                // Apply rotation vector to character
-                transform.Rotate(_rotation);
-            }
-
+            transform.LookAt(_RotationBox);
+            
+            transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
+            
             // Apply movement vector to character using physics system
             _rigidbody.AddForce(_movement);
         }

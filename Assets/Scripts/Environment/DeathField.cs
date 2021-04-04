@@ -10,7 +10,7 @@ namespace Environment
      */
     public class DeathField : MonoBehaviour
     {
-        public FollowObject _PlayerCam;
+        public PlayerCamera _PlayerCam;
         [SerializeField] private int _PlayerLayer = 10;
         [SerializeField] private EnvironmentManager _Manager;
 

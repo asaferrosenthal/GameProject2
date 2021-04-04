@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace Utility
 {
     /// <summary>
     /// Follow Object class follows an assigned target object
     /// </summary>
-    public class FollowObject : MonoBehaviour
+    public class PlayerCamera : MonoBehaviour
     {
         [Tooltip("The game object to be followed by this object")]
         public GameObject _Target;
@@ -23,7 +24,12 @@ namespace Utility
         private void Update()
         {
             var position = _Target.transform.position;
-            transform.position = Vector3.Lerp(transform.position, position + new Vector3(_Offset.x, _Offset.y, _Offset.z), Time.unscaledTime * _Speed);
+            
+            transform.position = Vector3.Lerp(transform.position, position + _Offset, Time.unscaledTime * _Speed);
+            
+            Vector3 rotation = new Vector3(( -1 * Input.GetAxis("Mouse Y")), (Input.GetAxis("Mouse X")), 0);
+            
+            transform.eulerAngles += rotation;
         }
     }
 }
