@@ -31,5 +31,10 @@ namespace Utility
             
             transform.eulerAngles += rotation;
         }
+
+        public void Reset()
+        {
+            transform.eulerAngles = _Target.transform.eulerAngles;
+        }
     }
 }

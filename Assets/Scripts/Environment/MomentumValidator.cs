@@ -7,39 +7,41 @@ namespace Environment
 {
     public class MomentumValidator : MonoBehaviour
     {
-        public Material _valid;
+        public Material _Valid;
 
-        public Material _invalid;
+        public Material _Invalid;
+        
         // Particle indicator
-        private Renderer _indicator;
+        public Renderer _Indicator;
+        public DestructableWall _Wall;
         private float _threshHold;
 
         private const int PlayerLayer = 10;
         private void Awake()
         {
-            _indicator = GetComponent<Renderer>();
-            _threshHold = GetComponentInParent<DestructableWall>()._BreakThreshold;
+            _Indicator = GetComponent<Renderer>();
+            _threshHold = _Wall._BreakThreshold;
         }
 
         private void OnTriggerStay(Collider other)
         {
             if (other.gameObject.layer != PlayerLayer) return;
             
-            _indicator.material = MomentumChecker.GetMomentum(other.attachedRigidbody) >= _threshHold ? _valid : _invalid;
+            _Indicator.material = MomentumChecker.GetMomentum(other.attachedRigidbody) >= _threshHold ? _Valid : _Invalid;
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.gameObject.layer != PlayerLayer) return;
             
-            _indicator.material = _invalid;
-            _indicator.enabled = false;
+            _Indicator.material = _Invalid;
+            _Indicator.enabled = false;
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.layer != PlayerLayer) return;
-            _indicator.enabled = true;
+            _Indicator.enabled = true;
         }
     }
 }

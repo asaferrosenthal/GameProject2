@@ -121,11 +121,16 @@ namespace Environment
         
         public IEnumerator LevelEnd()
         {
-            _AudioSource.clip = _Complete;
-            _AudioSource.Play();
-            
+            // slow the player and stop forward propulsion
+            _RunMan._Movement._StopPlayer = true;
+            _RunMan.AlterVelocity(.1f);
+
             yield return new WaitForSeconds(1f);
             
+            // idle the runman
+            _RunMan._AnimationController.GoIdle();
+            
+            // pause game
             TogglePauseGame();
             _endOfLevelUI.gameObject.SetActive(true);
 

@@ -20,18 +20,15 @@ namespace RunMan
 
         [Tooltip("Factor rotation inputs will be scaled by")]
         public float _DefaultRotationSpeed;
-        
-        [Tooltip("Does the player rotate with the mouse position or the keyboard inputs.")]
-        public bool _MouseRotation = true;
+
+        [Tooltip("Stop player movement?")] 
+        public bool _StopPlayer = false;
         
         // record of rigidbody to prevent need to re-access
         private Rigidbody _rigidbody;
         
         // Vector built by inputs for physics based movement
         private Vector3 _movement;
-
-        // Vector built by inputs for rotation translation
-        private Vector3 _rotation;
 
         public Transform _RotationBox;
 
@@ -45,6 +42,11 @@ namespace RunMan
         {
             // transform save
             Transform trans = Camera.main.transform;
+
+            // player rotation relative to camera look position
+            transform.LookAt(_RotationBox);
+            // correct any rotation in the x and z axis
+            transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
             
             // Inputs for each axis is defined in Input Manager
             // Fill out the _movement vector with given axis inputs
@@ -53,13 +55,10 @@ namespace RunMan
             
             // Add force in the direction of rotation, make it feel less sloppy
             _movement += trans.right * (_HorizontalSpeed * Input.GetAxis("Horizontal"));
-
-            transform.LookAt(_RotationBox);
-            
-            transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
             
             // Apply movement vector to character using physics system
-            _rigidbody.AddForce(_movement);
+            if(!_StopPlayer) _rigidbody.AddForce(_movement, ForceMode.Impulse);
+            
         }
 
     }

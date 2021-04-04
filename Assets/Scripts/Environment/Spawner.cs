@@ -84,16 +84,9 @@ namespace Environment
                 ele.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
                 ele.gameObject.layer = _defaultLayer;
                 ele.transform.rotation = transform.rotation;
+                if(!ele._TrainingMode) ele.ResetAgent();
             }
         }
-
-        /*public void ResetAllAgents()
-        {
-            foreach (var VARIABLE in COLLECTION)
-            {
-                
-            }
-        }*/
 
         public void RespawnAgent(AdversaryAgent agent)
         {

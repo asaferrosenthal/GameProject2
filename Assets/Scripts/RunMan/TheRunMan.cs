@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Utility;
 using static Environment.RunManTrainingAssistant;
 using Quaternion = UnityEngine.Quaternion;
 using Vector3 = UnityEngine.Vector3;
@@ -17,9 +18,18 @@ namespace RunMan
         [Header("Run Man Settings")]
         [Tooltip("Factor by which inputs change Run Man scale")]
         public float _ScaleFactor = 0.2f;
+        
+        [Tooltip("The Animator responsible for the logic of the player animation")]
+        public PlayerAnimationController _AnimationController;
 
-        public bool _Training = false;
-        public List<Transform> _TrainingLocations;
+        [Tooltip("The run man camera controller")]
+        public PlayerCamera _PlayerCamera;
+
+        [Tooltip("Run man movement control reference")]
+        public MovementControls _Movement;
+
+        [Tooltip("List of goober visualizers")]
+        public List<GameObject> _GooberVisualizer;
         
         // record of rigidbody to prevent need to re-access
         private Rigidbody _rigidBody;
@@ -45,6 +55,9 @@ namespace RunMan
         // use on reset
         private int _defaultLayer;
 
+        // how many goobers have hit the player
+        private int _hits = 0;
+
         // Set maximum and minimum scaling of run man, could make these public for testing
         private const float MaxScale = 1.5f;
         private const float MinScale = 1f;
@@ -69,12 +82,18 @@ namespace RunMan
             _currentMass = mass;
             _defaultRotation = trans.rotation;
             _defaultPosition = trans.position;
+            
+            // ensure visualizers are off
+            foreach (GameObject ele in _GooberVisualizer)
+            {
+                ele.SetActive(false);
+            }
         }
 
         private void Start()
         {
             ResetRunMan();
-            //get skin renderer for runman's dummy 
+            //get skin renderer for run man's dummy 
             _mSkinnedMeshRenderer = GameObject.Find("Dummy").GetComponent<SkinnedMeshRenderer>();
             _originalColour = _mSkinnedMeshRenderer.material.color;
         
@@ -109,23 +128,45 @@ namespace RunMan
 
         public void ResetRunMan()
         {
+            // for multi-reference
             Transform trans = transform;
+            
+            // set default and current scale respectively
             trans.localScale = _defaultScale;
             _currentScale = MinScale;
+            
+            // set default and current mass respectively
             _rigidBody.mass = _defaultMass;
             _currentMass = _defaultMass;
+            
+            // reset the velocities of the Run Man
             _rigidBody.velocity = Vector3.zero;
             _rigidBody.angularVelocity = Vector3.zero;
+            
+            // reset the rotation of the run man
             trans.rotation = _defaultRotation;
-            this.gameObject.layer = _defaultLayer;
-            if (_Training)
+            
+            // reset the object layer
+            gameObject.layer = _defaultLayer;
+
+            // reset object position
+            trans.position = _defaultPosition;
+            
+            // reset hits on player
+            _hits = 0;
+            foreach (GameObject ele in _GooberVisualizer)
             {
-                trans.position = RandomizeSpawn(_TrainingLocations, gameObject);
+                ele.SetActive(false);
             }
-            else
-            {
-                trans.position = _defaultPosition;
-            }
+
+            // reset player movement
+            _Movement._StopPlayer = false;
+            
+            // reset the player animation
+            _AnimationController.GoIdle();
+            
+            // reset the camera relative to run man
+            _PlayerCamera.Reset();
 
         }
 
@@ -133,6 +174,18 @@ namespace RunMan
         {
             _currentMass += num;
             _rigidBody.mass += num;
+            if (_GooberVisualizer.Count <= _hits) return;
+            _GooberVisualizer[_hits].SetActive(true);
+            _hits++;
+        }
+
+        /// <summary>
+        /// Multiples the player speed by the input value
+        /// </summary>
+        /// <param name="num"></param>
+        public void AlterVelocity(float num)
+        {
+            _rigidBody.velocity *= num;
         }
     }
 }

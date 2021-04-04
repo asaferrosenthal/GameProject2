@@ -1,24 +1,31 @@
 using System;
 using UnityEngine;
 using System.Collections;
+using Traps;
 using UnityEngine.SceneManagement;
 
 namespace Environment
 {
   
-  public class EndTrigger : MonoBehaviour
+  public class EndTrigger : Trap
   {
       public EnvironmentManager _Manager;
       private const int PlayerLayer = 10;
+      private Coroutine _levelEnd;
 
-        private void OnTriggerEnter(Collider other)
+      protected override void OnTriggerEnter(Collider other)
       {
-          if (other.gameObject.layer == PlayerLayer)
+          if (other.gameObject.layer == PlayerLayer && _levelEnd == null)
           {
-              other.gameObject.GetComponent<Rigidbody>().velocity *= 0.25f;
-              StartCoroutine(_Manager.LevelEnd());
+              // play end of level audio
+              _AudioSource.Play();
+              _levelEnd = StartCoroutine(_Manager.LevelEnd());
           }
-          
+      }
+
+      public override void ResetTrap()
+      {
+          _levelEnd = null;
       }
   }
 

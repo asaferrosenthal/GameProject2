@@ -12,7 +12,7 @@ namespace UI
         public TextMeshProUGUI _CurrentMomentum;
 
         private float _oldVelocity;
-        private void FixedUpdate()
+        private void Update()
         {
             float velocity = _Player.velocity.magnitude;
             _VelocityUI.text = velocity.ToString("#.00");

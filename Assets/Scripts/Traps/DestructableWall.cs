@@ -9,6 +9,8 @@ namespace Traps
         [Tooltip("The momentum required to break through this wall")]
         public float _BreakThreshold;
 
+        public AudioClip _BreakAudio, _BounceAudio;
+        
         [SerializeField] private float _PushBack = -25;
         
         // Wall components
@@ -35,8 +37,9 @@ namespace Traps
 
         protected override void ApplyTrap()
         {
-            base.ApplyTrap();
-
+            // only react to the player hitting it
+            if (_Target.layer != 10) return;
+            
             Rigidbody tar = _Target.GetComponent<Rigidbody>();
             
             if (tar == null) return; // there is no rigidbody
@@ -44,6 +47,8 @@ namespace Traps
             if ((MomentumChecker.GetMomentum(tar) <= _BreakThreshold))
             {
                 tar.AddForce(Vector3.forward * _PushBack, ForceMode.Impulse);
+                _AudioSource.clip = _BounceAudio;
+                _AudioSource.Play();
                 return; // the threshold is not met
             }
             
@@ -57,7 +62,8 @@ namespace Traps
             {
                 ele.isKinematic = false;
             }
-            
+
+            _AudioSource.clip = _BreakAudio;
             _AudioSource.Play();
 
         }
