@@ -1017,7 +1017,12 @@ PrefabInstance:
     - target: {fileID: 268679869250632906, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -50.9
+      value: 3.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 268679869250632906, guid: c79849ee0292c4445867b4365d859bda,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 268679869250632906, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
@@ -1038,7 +1043,7 @@ PrefabInstance:
     - target: {fileID: 268679869685820078, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
       propertyPath: _SpawnQuantities.Array.data[0]
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 268679869685820079, guid: c79849ee0292c4445867b4365d859bda,
         type: 3}
@@ -1971,7 +1976,7 @@ GameObject:
   - component: {fileID: 1961107973}
   - component: {fileID: 1961107972}
   - component: {fileID: 1961107971}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
