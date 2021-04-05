@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 8630624406088054080}
   - component: {fileID: 8630624406088054111}
   - component: {fileID: -8838007081984920154}
-  - component: {fileID: 5765418889137093747}
   - component: {fileID: -5008741445777382719}
   m_Layer: 0
   m_Name: SlowTrap
@@ -112,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Enabled: 1
-  _TriggersOnStay: 0
+  _TriggersOnStay: 1
   _TriggersOnEnter: 1
   _TriggersOnExit: 0
   _AudioSource: {fileID: -5008741445777382719}
@@ -133,22 +132,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5765418889137093747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8630624406088054109}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a40d268e9b42e3140ba5b1057bf42f0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _ForwardSpeed: -0.1
-  _HorizontalSpeed: 0
-  _DefaultRotationSpeed: 0.1
-  _MouseRotation: 1
 --- !u!82 &-5008741445777382719
 AudioSource:
   m_ObjectHideFlags: 0
@@ -161,7 +144,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 332e8e03b99503d4d83864865738c9f6, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
