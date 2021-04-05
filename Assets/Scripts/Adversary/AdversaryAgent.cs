@@ -154,6 +154,9 @@ namespace Adversary
                 return;
             }
 
+            // Calculate rotation applied
+            _rigidBody.transform.Rotate(transform.rotation.eulerAngles,vectorAction[2] * _YawRotationSpeed);
+            
             // are we on the ground, and are we moving
             if (_isGrounded)
             {
@@ -168,9 +171,7 @@ namespace Adversary
                 // Apply move force
                 _rigidBody.AddForce(move);
             }
-            
-            // Calculate rotation applied
-            _rigidBody.transform.Rotate(transform.rotation.eulerAngles,vectorAction[2] * _YawRotationSpeed);
+
             //if(_targetRecords.Count > 0) _rigidBody.transform.LookAt(_targetRecords[0].transform);
             
             // Re-evaluate data

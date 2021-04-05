@@ -29,7 +29,6 @@ namespace Adversary
             _MeshRenderer.enabled = true;
             _Collider.enabled = true;
             _eyes.SetActive(true);
-
         }
     }
 }

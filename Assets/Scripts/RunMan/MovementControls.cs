@@ -43,10 +43,14 @@ namespace RunMan
             // transform save
             Transform trans = Camera.main.transform;
 
-            // player rotation relative to camera look position
-            transform.LookAt(_RotationBox);
-            // correct any rotation in the x and z axis
-            transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
+            if (!Input.GetMouseButton(1))
+            {
+                // player rotation relative to camera look position
+                transform.LookAt(_RotationBox);
+                // correct any rotation in the x and z axis
+                transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
+            }
+            
             
             // Inputs for each axis is defined in Input Manager
             // Fill out the _movement vector with given axis inputs

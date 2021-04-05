@@ -29,7 +29,7 @@ namespace Utility
             
             Vector3 rotation = new Vector3(( -1 * Input.GetAxis("Mouse Y")), (Input.GetAxis("Mouse X")), 0);
             
-            transform.eulerAngles += rotation;
+            if(Time.timeScale != 0) transform.eulerAngles += rotation;
         }
 
         public void Reset()

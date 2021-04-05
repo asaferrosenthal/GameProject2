@@ -61,12 +61,13 @@ namespace Environment
             
             // initialize escape menu
             _escapeUI = FindObjectOfType<EscapeUI>();
-            if(_escapeUI != null) _escapeUI._Manager = this;
+            _escapeUI._Manager = this;
+            
+            //_escapeUI.UpdateSensitivity();
+            _escapeUI.UpdateScale();
             
             // get the movement controls
             if (_RunMan != null) _movement = _RunMan.GetComponent<MovementControls>();
-            _escapeUI.UpdateSensitivity();
-            _escapeUI.UpdateScale();
         }
 
         public void ResetEnvironment()

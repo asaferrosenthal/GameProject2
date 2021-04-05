@@ -103,12 +103,12 @@ namespace UI
             _dropdown.options = optionList;
         }
 
-        public void UpdateSensitivity()
+        /*public void UpdateSensitivity()
         {
             var input = Single.Parse(_SensitivityInputField.text);
             if (input == null) return;
             _Manager.UpdateMouseSense(input);
-        }
+        }*/
 
         public void GetMouseSensitivity()
         {
