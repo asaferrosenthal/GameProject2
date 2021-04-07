@@ -8,7 +8,8 @@ namespace RunMan
     public class PlayerAnimationController : MonoBehaviour
     {
         public Animator _Animator;
-
+        public float _animationMultiplier;
+        
         public TheRunMan _RunMan;
         private Rigidbody _body;
 
@@ -29,6 +30,10 @@ namespace RunMan
 
         private void FixedUpdate()
         {
+            float animSpeed = 0;
+            animSpeed = MomentumChecker.GetMomentum(_body) * _animationMultiplier;
+            _Animator.SetFloat("runSpeed", animSpeed);
+            
             // check if we are falling
             if (Mathf.Abs(_body.velocity.y) > 1f)
             {

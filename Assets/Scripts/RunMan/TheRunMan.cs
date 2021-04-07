@@ -110,9 +110,11 @@ namespace RunMan
         /// </summary>
         private void UpdateRunManScale()
         {
-            // clamp the scale of the character between max and min
-            _currentScale = Mathf.Clamp(_currentScale + -1* (Input.GetAxis("Scroll") * _ScaleFactor), MinScale, MaxScale);
+            _currentScale += -1 * (Input.GetAxis("Scroll") * _ScaleFactor);
             
+            // clamp the scale of the character between max and min
+            _currentScale = Mathf.Clamp(_currentScale, MinScale, MaxScale);
+
             //mechanics for runman's colour change according to mass
             _mSkinnedMeshRenderer.material.color = Color.Lerp(_originalColour, _colorBig, _currentScale/MaxScale);
         }

@@ -841,12 +841,7 @@ PrefabInstance:
     - target: {fileID: 1429384394614989130, guid: b624e136de76bc7429365918c2f8c356,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1552388998621063482, guid: b624e136de76bc7429365918c2f8c356,
-        type: 3}
-      propertyPath: _ForwardSpeed
-      value: 0.25
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2225271384482827466, guid: b624e136de76bc7429365918c2f8c356,
         type: 3}

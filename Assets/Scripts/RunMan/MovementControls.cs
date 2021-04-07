@@ -51,7 +51,6 @@ namespace RunMan
                 transform.rotation = new Quaternion(0f, transform.rotation.y, 0f, transform.rotation.w);
             }
             
-            
             // Inputs for each axis is defined in Input Manager
             // Fill out the _movement vector with given axis inputs
             _movement =  _ForwardSpeed * transform.forward;

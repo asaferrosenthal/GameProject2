@@ -336,9 +336,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a40d268e9b42e3140ba5b1057bf42f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _ForwardSpeed: 10
-  _HorizontalSpeed: 0.5
-  _DefaultRotationSpeed: 1
+  _ForwardSpeed: 0.25
+  _HorizontalSpeed: 0.4
+  _DefaultRotationSpeed: 0
   _StopPlayer: 0
   _RotationBox: {fileID: 0}
 --- !u!136 &7635772102609386516
@@ -368,6 +368,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _Animator: {fileID: 7163373551426439307}
+  _animationMultiplier: 0.1
   _RunMan: {fileID: 4231269371415711654}
 --- !u!1 &1223544572835006429
 GameObject:
