@@ -146,7 +146,7 @@ namespace Adversary
         public override void OnActionReceived(float[] vectorAction)
         {
             // if frozen don't take any actions
-            if (_Frozen)
+            if (_Frozen) 
             {
                 //_rigidBody.velocity = zero;
                 //_rigidBody.angularVelocity = zero;
@@ -241,7 +241,7 @@ namespace Adversary
             _obstacleRecords = DetectColliderLayer.InLayerRadius(_obstacleLayerMask, _SearchRadius, position, _obstacleRecords);
             _obstacleRecords = Sort.ByDistance(_obstacleRecords, position);
 
-            if (!_TrainingMode && _targetRecords.Count == 0)
+            /*if (!_TrainingMode && _targetRecords.Count == 0)
             {
                 _Frozen = true;
             }
@@ -249,8 +249,7 @@ namespace Adversary
             {
                 _Frozen = false;
                 _rigidBody.WakeUp();
-                _isGrounded = true;
-            }
+            }*/
             
         }
         
@@ -261,11 +260,17 @@ namespace Adversary
             // reset all physics and memory
             _targetRecords = new List<GameObject>();
             _obstacleRecords = new List<GameObject>();
+            
+            // reset speeds
             _rigidBody.velocity = zero;
             _rigidBody.angularVelocity = zero;
+            
             _Frozen = false;
+            
             if(_goober != null) _goober.Reset();
+            
             _hits = 0;
+            //_rigidBody.WakeUp();
             UpdateAgentSenseData();
         }
 
