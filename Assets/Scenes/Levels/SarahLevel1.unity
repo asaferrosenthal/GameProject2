@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2000008
+      value: -2.4
       objectReference: {fileID: 0}
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
@@ -242,7 +242,7 @@ PrefabInstance:
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 69.5
+      value: 71.2
       objectReference: {fileID: 0}
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
@@ -539,7 +539,7 @@ PrefabInstance:
     - target: {fileID: 6483287452285795632, guid: c6fbfe6a950ebfb4aa379dad940af4df,
         type: 3}
       propertyPath: _BreakThreshold
-      value: 14
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6483287452285795633, guid: c6fbfe6a950ebfb4aa379dad940af4df,
         type: 3}
@@ -559,7 +559,7 @@ PrefabInstance:
     - target: {fileID: 6483287452285795633, guid: c6fbfe6a950ebfb4aa379dad940af4df,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 72.4
+      value: 74.4
       objectReference: {fileID: 0}
     - target: {fileID: 6483287452285795633, guid: c6fbfe6a950ebfb4aa379dad940af4df,
         type: 3}
@@ -790,7 +790,7 @@ PrefabInstance:
     - target: {fileID: 6483287452285795632, guid: c6fbfe6a950ebfb4aa379dad940af4df,
         type: 3}
       propertyPath: _BreakThreshold
-      value: 14
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6483287452285795633, guid: c6fbfe6a950ebfb4aa379dad940af4df,
         type: 3}
@@ -1111,7 +1111,7 @@ PrefabInstance:
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.2000008
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
@@ -1536,6 +1536,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SpeedBoost (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504281643786971191, guid: 17ef590e4469d854d849ad8638d92b22,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1504281643786971192, guid: 17ef590e4469d854d849ad8638d92b22,
         type: 3}
