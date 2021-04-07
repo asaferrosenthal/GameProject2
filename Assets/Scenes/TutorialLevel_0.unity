@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.587538, g: 0.76818794, b: 0.84892696, a: 1}
+  m_IndirectSpecularColor: {r: 0.63176376, g: 0.87316626, b: 0.9914723, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: e06863e1336b0814383f73cc78fa4c3d,
+  m_LightingDataAsset: {fileID: 112000000, guid: 53eae43fefe4069499a78270adfb6fd9,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 53abcbbf2fc83894f8345e9bd6642614,
     type: 2}
@@ -210,6 +210,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415166636831948878, guid: b624e136de76bc7429365918c2f8c356,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415166636845781268, guid: b624e136de76bc7429365918c2f8c356,
+        type: 3}
+      propertyPath: m_AABB.m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415166636845781268, guid: b624e136de76bc7429365918c2f8c356,
+        type: 3}
+      propertyPath: m_AABB.m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3415166636845781268, guid: b624e136de76bc7429365918c2f8c356,
+        type: 3}
+      propertyPath: m_AABB.m_Center.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4493015438444767276, guid: b624e136de76bc7429365918c2f8c356,
         type: 3}
@@ -480,6 +500,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1757450208}
     m_Modifications:
+    - target: {fileID: 81688245454588020, guid: 2862de7d87d1e95488563114045752c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2125231741070922368, guid: 2862de7d87d1e95488563114045752c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6992480625268143155, guid: 2862de7d87d1e95488563114045752c8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6992480625341040016, guid: 2862de7d87d1e95488563114045752c8,
         type: 3}
       propertyPath: m_Pivot.x
@@ -590,6 +625,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tutorial UI
       objectReference: {fileID: 0}
+    - target: {fileID: 6992480625341040018, guid: 2862de7d87d1e95488563114045752c8,
+        type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6992480625341040029, guid: 2862de7d87d1e95488563114045752c8,
         type: 3}
       propertyPath: m_Camera
@@ -609,16 +649,6 @@ PrefabInstance:
         type: 3}
       propertyPath: _Scale
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7852101457969932213, guid: 2862de7d87d1e95488563114045752c8,
-        type: 3}
-      propertyPath: _Speed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7852101457969932213, guid: 2862de7d87d1e95488563114045752c8,
-        type: 3}
-      propertyPath: _Amplitude
-      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6992480625341040028, guid: 2862de7d87d1e95488563114045752c8, type: 3}

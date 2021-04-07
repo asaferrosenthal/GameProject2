@@ -24,7 +24,7 @@ namespace Traps
             if (!_Enabled) return;
             _Explosion.Play(true);
             if(_Target.layer == 10) _AudioSource.Play();
-            Rigidbody bod = _Target.GetComponent<Rigidbody>();
+            Rigidbody bod = _Target.GetComponentInParent<Rigidbody>();
             if(bod != null) bod.AddExplosionForce(_Power, _Target.transform.position, _Radius, _UpwardsModifier);
         }
         

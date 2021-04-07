@@ -30,6 +30,9 @@ namespace RunMan
 
         [Tooltip("List of goober visualizers")]
         public List<GameObject> _GooberVisualizer;
+
+        [Tooltip("The scaled model with attached collider.")]
+        public Transform _RunManModel;
         
         // record of rigidbody to prevent need to re-access
         private Rigidbody _rigidBody;
@@ -75,6 +78,7 @@ namespace RunMan
         {
             _defaultLayer = gameObject.layer;
             _rigidBody = GetComponent<Rigidbody>();
+            
             Transform trans = transform;
             _defaultScale = trans.localScale;
             var mass = _rigidBody.mass;
@@ -117,6 +121,7 @@ namespace RunMan
 
             //mechanics for runman's colour change according to mass
             _mSkinnedMeshRenderer.material.color = Color.Lerp(_originalColour, _colorBig, _currentScale/MaxScale);
+            
         }
 
         /// <summary>
@@ -124,7 +129,8 @@ namespace RunMan
         /// </summary>
         private void ScaleRunMan()
         {
-            transform.localScale = _defaultScale * _currentScale;
+            
+            _RunManModel.localScale = _defaultScale * _currentScale;
             _rigidBody.mass = _currentMass * _currentScale;
         }
 
@@ -176,6 +182,8 @@ namespace RunMan
         {
             _currentMass += num;
             _rigidBody.mass += num;
+            
+            // are there any visualizers left
             if (_GooberVisualizer.Count <= _hits) return;
             _GooberVisualizer[_hits].SetActive(true);
             _hits++;

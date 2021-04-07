@@ -40,7 +40,7 @@ namespace Traps
             // only react to the player hitting it
             if (_Target.layer != 10) return;
             
-            Rigidbody tar = _Target.GetComponent<Rigidbody>();
+            Rigidbody tar = _Target.GetComponentInParent<Rigidbody>();
             
             if (tar == null) return; // there is no rigidbody
 

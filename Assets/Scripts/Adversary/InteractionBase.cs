@@ -15,6 +15,7 @@ namespace Adversary
             _Agent = GetComponent<AdversaryAgent>();
             _Collider = GetComponent<Collider>();
             _Rigidbody = GetComponent<Rigidbody>();
+            
             // object reset information
             var transform1 = transform;
             _Parent = transform1;

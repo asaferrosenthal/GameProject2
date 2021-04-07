@@ -12,7 +12,7 @@ namespace Traps
             base.ApplyTrap();
             
             // Initialize variables for the affected rigidbody and forces
-            Rigidbody body = _Target.GetComponent<Rigidbody>();
+            Rigidbody body = _Target.GetComponentInParent<Rigidbody>();
             
             if (body == null) return;
             
