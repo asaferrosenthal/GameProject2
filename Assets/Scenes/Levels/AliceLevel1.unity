@@ -1187,7 +1187,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1277853689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.27, y: 0, z: 0}
+  m_LocalPosition: {x: -47.18, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 674833028}
@@ -1215,10 +1215,8 @@ MonoBehaviour:
   _LevelEndUI: {fileID: 6220493777379888483, guid: ef23d2b4d80225a49843e48b4fedc826,
     type: 3}
   _Training: 0
-  audioSource: {fileID: 1277853692}
-  complete: {fileID: 8300000, guid: 6f1670933dc054b2a8ebe35071e353b9, type: 3}
-  start: {fileID: 8300000, guid: 30cf21d542572471a8ee75d063fd78a7, type: 3}
-  escape: {fileID: 8300000, guid: 2083a51f9c3804a7d9b5ce871f23a620, type: 3}
+  _AudioSource: {fileID: 0}
+  _Complete: {fileID: 0}
 --- !u!82 &1277853692
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2171,9 +2169,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f985ff3b2f98641d1a82aad0388972c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _PlayerCam: {fileID: 0}
   _PlayerLayer: 10
   _Manager: {fileID: 1277853691}
-  audioSource: {fileID: 1847949762}
+  _AudioSource: {fileID: 0}
 --- !u!82 &1847949762
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2297,7 +2296,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848765200}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.27, y: -8, z: 130}
+  m_LocalPosition: {x: -2.8, y: -8, z: 130}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1755692690}
@@ -3239,7 +3238,7 @@ RectTransform:
   - {fileID: 2011115719}
   - {fileID: 624345062}
   m_Father: {fileID: 233877991}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 30, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3419,7 +3418,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2141367056}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -22.91, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

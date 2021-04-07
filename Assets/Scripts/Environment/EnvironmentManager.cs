@@ -68,6 +68,9 @@ namespace Environment
             
             // get the movement controls
             if (_RunMan != null) _movement = _RunMan.GetComponent<MovementControls>();
+            
+            // ensure the cursor can't leave the window
+            Cursor.lockState = CursorLockMode.Confined;
         }
 
         public void ResetEnvironment()
@@ -108,6 +111,7 @@ namespace Environment
             Debug.Log("INIT LevelStarted");
             Time.timeScale = 0;
             _isGamePaused = true;
+            Cursor.visible = false;
             
         }
         

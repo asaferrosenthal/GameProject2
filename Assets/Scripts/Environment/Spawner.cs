@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using Adversary;
-using Unity.MLAgents;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Environment
 {
@@ -59,9 +59,10 @@ namespace Environment
                     _adversaryList.Add(agent);
                     // Position the new object
                     newObject.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
+                    newObject.transform.rotation = new Quaternion(transform.rotation.x,Random.Range(0f,361f), transform.rotation.z, transform.rotation.w);
                     agent._Spawner = this;
 
-                    if (i == 0) agent._Master = true;
+                    if (k == 0) agent._Master = true;
                 }
             }
 
@@ -80,11 +81,8 @@ namespace Environment
             // specify types the spawner control and directly call resets on this method... or
             foreach (AdversaryAgent ele in _adversaryList)
             {
-                ele.gameObject.SetActive(true);
-                ele.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
-                ele.gameObject.layer = _defaultLayer;
-                ele.transform.rotation = transform.rotation;
-                if(!ele._TrainingMode) ele.ResetAgent();
+                RespawnAgent(ele);
+                ele.ResetAgent();
             }
         }
 
@@ -92,6 +90,8 @@ namespace Environment
         {
             agent.gameObject.SetActive(true);
             agent.transform.position = SpawnUtility.FindSpawnNearTarget(_spawnLocations, LayerMask, _ConsiderYAxis);
+            agent.transform.eulerAngles = new Vector3(transform.rotation.x,Random.Range(0f, 361), transform.rotation.z);
+            agent.gameObject.layer = _defaultLayer;
         }
         
         

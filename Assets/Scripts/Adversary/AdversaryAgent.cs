@@ -155,7 +155,7 @@ namespace Adversary
             }
 
             // Calculate rotation applied
-            _rigidBody.transform.Rotate(transform.rotation.eulerAngles,vectorAction[2] * _YawRotationSpeed);
+            //_rigidBody.transform.Rotate(transform.rotation.eulerAngles,vectorAction[2] * _YawRotationSpeed);
             
             // are we on the ground, and are we moving
             if (_isGrounded)
@@ -172,7 +172,7 @@ namespace Adversary
                 _rigidBody.AddForce(move);
             }
 
-            //if(_targetRecords.Count > 0) _rigidBody.transform.LookAt(_targetRecords[0].transform);
+            if(_targetRecords.Count > 0) _rigidBody.transform.LookAt(_targetRecords[0].transform);
             
             // Re-evaluate data
             UpdateAgentSenseData();
@@ -255,7 +255,6 @@ namespace Adversary
             _rigidBody.angularVelocity = zero;
             _Frozen = false;
             if(_goober != null) _goober.Reset();
-            _Spawner.RespawnAgent(this);
             _hits = 0;
             UpdateAgentSenseData();
         }

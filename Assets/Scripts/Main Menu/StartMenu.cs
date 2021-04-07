@@ -8,6 +8,12 @@ namespace Main_Menu
   {
     public GameObject _EscapeMenu;
 
+    private void Awake()
+    {
+      // ensure the cursor can't leave the window
+      Cursor.lockState = CursorLockMode.None;
+    }
+
     private void OnEnable()
     {
       Cursor.visible = true;

@@ -201,26 +201,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 750197440205300109, guid: b624e136de76bc7429365918c2f8c356,
+    - target: {fileID: 245939499994281763, guid: b624e136de76bc7429365918c2f8c356,
         type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
+      propertyPath: m_RootOrder
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1429384394614989130, guid: b624e136de76bc7429365918c2f8c356,
         type: 3}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1552388998621063482, guid: b624e136de76bc7429365918c2f8c356,
-        type: 3}
-      propertyPath: _ForwardSpeed
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2225271384482827466, guid: b624e136de76bc7429365918c2f8c356,
-        type: 3}
-      propertyPath: _Target
-      value: 
-      objectReference: {fileID: 563032538}
     - target: {fileID: 4493015438444767276, guid: b624e136de76bc7429365918c2f8c356,
         type: 3}
       propertyPath: _TriggersOnEnter
@@ -326,12 +316,6 @@ PrefabInstance:
 --- !u!4 &563032537 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5479879901291190519, guid: b624e136de76bc7429365918c2f8c356,
-    type: 3}
-  m_PrefabInstance: {fileID: 563032536}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &563032538 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4884849683094848350, guid: b624e136de76bc7429365918c2f8c356,
     type: 3}
   m_PrefabInstance: {fileID: 563032536}
   m_PrefabAsset: {fileID: 0}

@@ -82,17 +82,6 @@ PrefabInstance:
       propertyPath: _DefaultPunishmentValue
       value: -2
       objectReference: {fileID: 0}
-    - target: {fileID: 5685043310866678642, guid: 0f6ad011ca1718c46909ad6a73b8920a,
-        type: 3}
-      propertyPath: m_Model
-      value: 
-      objectReference: {fileID: 5022602860645237092, guid: 5901f042b5ad7cf4ba99a9f4d3a3f2e9,
-        type: 3}
-    - target: {fileID: 5685043310866678642, guid: 0f6ad011ca1718c46909ad6a73b8920a,
-        type: 3}
-      propertyPath: m_BrainParameters.VectorObservationSize
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 5685043310866678643, guid: 0f6ad011ca1718c46909ad6a73b8920a,
         type: 3}
       propertyPath: _PlayerLayer

@@ -59,7 +59,7 @@ namespace RunMan
             
             // Add force in the direction of rotation, make it feel less sloppy
             _movement += trans.right * (_HorizontalSpeed * Input.GetAxis("Horizontal"));
-            
+
             // Apply movement vector to character using physics system
             if(!_StopPlayer) _rigidbody.AddForce(_movement, ForceMode.Impulse);
             

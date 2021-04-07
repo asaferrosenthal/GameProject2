@@ -246,10 +246,10 @@ MonoBehaviour:
   m_BrainParameters:
     VectorObservationSize: 11
     NumStackedVectorObservations: 1
-    VectorActionSize: 03000000
+    VectorActionSize: 02000000
     VectorActionDescriptions: []
     VectorActionSpaceType: 1
-  m_Model: {fileID: 5022602860645237092, guid: 5901f042b5ad7cf4ba99a9f4d3a3f2e9, type: 3}
+  m_Model: {fileID: 5022602860645237092, guid: 2b77ea06e06f4ac4cb21321d595d1dc9, type: 3}
   m_InferenceDevice: 0
   m_BehaviorType: 0
   m_BehaviorName: Goober

@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TutorialLevel_3.unity
     guid: a95f6ade6223a2d42bbf7dbfcb50af4c
+  - enabled: 1
+    path: Assets/Scenes/Sound Test level.unity
+    guid: b114e5c58bb94ab49b8cc774baa1d466
   m_configObjects: {}
