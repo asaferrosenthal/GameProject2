@@ -54,7 +54,6 @@ namespace RunMan
             
             // Inputs for each axis is defined in Input Manager
             // Fill out the _movement vector with given axis inputs
-
             _movement =  _ForwardSpeed * transform.forward;
             
             // Add force in the direction of rotation, make it feel less sloppy

@@ -31,12 +31,26 @@ namespace Utility
             
             if(Time.timeScale != 0) transform.eulerAngles += rotation;
             
-            //transform.eulerAngles = new Vector3(Mathf.Clamp(transform.eulerAngles.x,-45,45), transform.eulerAngles.y, transform.eulerAngles.z);
+            transform.eulerAngles = new Vector3(ClampAngle(transform.eulerAngles.x,-20,45), transform.eulerAngles.y, transform.eulerAngles.z);
         }
 
         public void Reset()
         {
             transform.eulerAngles = _Target.transform.eulerAngles;
+        }
+        
+        private float ClampAngle(float angle, float min,float max)
+        {
+            if (angle<90 || angle>270)
+            {       
+                // if angle in the critic region...
+                if (angle>180) angle -= 360;  // convert all angles to -180..+180
+                if (max>180) max -= 360;
+                if (min>180) min -= 360;
+            }    
+            angle = Mathf.Clamp(angle, min, max);
+            if (angle<0) angle += 360;  // if angle negative, convert to 0..360
+            return angle;
         }
     }
 }
