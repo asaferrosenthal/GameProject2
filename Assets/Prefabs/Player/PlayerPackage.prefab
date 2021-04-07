@@ -338,6 +338,11 @@ PrefabInstance:
       propertyPath: _PlayerCamera
       value: 
       objectReference: {fileID: 384554830588191067}
+    - target: {fileID: 5306664619897595751, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6451195554516913765, guid: 6b9e3ea9b39d8144eb7fc5fdf3e499e3,
         type: 3}
       propertyPath: _RotationBox
