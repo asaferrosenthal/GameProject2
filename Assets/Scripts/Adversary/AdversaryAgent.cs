@@ -139,7 +139,6 @@ namespace Adversary
                 // Where is the target relative to the agent ( -1 means behind, left of, beneath. 1 means in front, right of, above)
                 sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.forward.normalized)); // 1
                 sensor.AddObservation(Dot(dirOfTarget, -_targetRecords[0].transform.right.normalized)); // 1
-                
             }
 
         }
@@ -147,10 +146,11 @@ namespace Adversary
         public override void OnActionReceived(float[] vectorAction)
         {
             // if frozen don't take any actions
-            if (_Frozen)
+            if (_Frozen) 
             {
-                _rigidBody.velocity = zero;
-                _rigidBody.angularVelocity = zero;
+                //_rigidBody.velocity = zero;
+                //_rigidBody.angularVelocity = zero;
+                UpdateAgentSenseData();
                 return;
             }
 
@@ -230,8 +230,6 @@ namespace Adversary
 
         private void UpdateAgentSenseData()
         {
-            if (_Frozen) return;
-            
             var position = transform.position;
             
             // Update target data
@@ -242,6 +240,17 @@ namespace Adversary
             // Update obstacle data
             _obstacleRecords = DetectColliderLayer.InLayerRadius(_obstacleLayerMask, _SearchRadius, position, _obstacleRecords);
             _obstacleRecords = Sort.ByDistance(_obstacleRecords, position);
+
+            /*if (!_TrainingMode && _targetRecords.Count == 0)
+            {
+                _Frozen = true;
+            }
+            else if(_Frozen)
+            {
+                _Frozen = false;
+                _rigidBody.WakeUp();
+            }*/
+            
         }
         
         public void ResetAgent()
@@ -251,11 +260,17 @@ namespace Adversary
             // reset all physics and memory
             _targetRecords = new List<GameObject>();
             _obstacleRecords = new List<GameObject>();
+            
+            // reset speeds
             _rigidBody.velocity = zero;
             _rigidBody.angularVelocity = zero;
+            
             _Frozen = false;
+            
             if(_goober != null) _goober.Reset();
+            
             _hits = 0;
+            //_rigidBody.WakeUp();
             UpdateAgentSenseData();
         }
 

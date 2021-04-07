@@ -1045,7 +1045,7 @@ PrefabInstance:
     - target: {fileID: 6483287452285795632, guid: c6fbfe6a950ebfb4aa379dad940af4df,
         type: 3}
       propertyPath: _BreakThreshold
-      value: 15
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 6483287452285795633, guid: c6fbfe6a950ebfb4aa379dad940af4df,
         type: 3}
